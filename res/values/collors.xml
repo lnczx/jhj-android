@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="text_normal">#525252</color>
+    <color name="text_chinaday">#a3a3a3</color>
+    <color name="text_light">#ababab</color>
+    <color name="text_super_light">#c0c0c0</color>
+    
+    <!-- 日历点击效果，淡灰色 -->
+    <color name="red_light">#D9D9D9</color> 
+    <!-- 日历选中效果，淡灰色 -->
+    <color name="red_dark">#D9D9D9</color>
+    <color name="stroke">#FECFD3</color>
+
+</resources>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Base application theme, dependent on API level. This theme is replaced by AppBaseTheme from res/values-vXX/styles.xml on newer devices. -->
+    <style name="AppBaseTheme" parent="android:Theme.Light.NoTitleBar">
+        <!-- Theme customizations available in newer API levels can go in res/values-vXX/styles.xml, while customizations related to backward-compatibility can go here. -->
+    </style>
+
+    <!-- 标题layout style -->
+    <style name="title_Layout_style">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:background">#E82058</item>
+    </style>
+
+    <!-- 标题文字style -->
+    <style name="title_text_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/title_text_color</item>
+    </style>
+
+    <!-- 标题右侧文字style -->
+    <style name="title_text_right_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:textColor">#a3a3a3</item>
+    </style>
+
+    <!-- 标题返回按钮style -->
+    <style name="title_btn_back_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@null</item>
+        <item name="android:src">@drawable/title_btn_back_inverse</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="CalendarTheme">
+        <item name="calendarViewStyle">@style/CalendarStyle</item>
+    </style>
+
+    <style name="CalendarStyle">
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="daysTextview">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/text_normal</item>
+    </style>
+
+    <!-- 多张图片上传样式 -->
+    <style name="PostBarShareAnim">
+        <item name="android:windowEnterAnimation">@anim/postbar_share_anim_fade_in</item>
+        <item name="android:windowExitAnimation">@anim/postbar_share_anim_fade_out</item>
+    </style>
+
+    <style name="PopupAnimation" mce_bogus="1" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/activity_translate_in</item>
+        <item name="android:windowExitAnimation">@anim/activity_translate_out</item>
+    </style>
+
+    <style name="PopupAnimation1" mce_bogus="1" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/popup_enter</item>
+        <item name="android:windowExitAnimation">@anim/popup_exit</item>
+    </style>
+     
+    <!-- 服务人员标签样式 -->
+    <style name="TagGroup">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="atg_isAppendMode">false</item>
+        <item name="atg_inputHint">@string/add_tag</item>
+        <item name="atg_borderColor">#F1F1F1</item>
+ <!-- #49C120 -->
+        <item name="atg_textColor">@color/simi_color_dark_gray</item>
+        <item name="atg_backgroundColor">#F1F1F1</item>
+ <!-- #FFFFFF -->
+        <item name="atg_dashBorderColor">#AAAAAA</item>
+        <item name="atg_inputHintColor">#80000000</item>
+        <item name="atg_inputTextColor">#DE000000</item>
+        <item name="atg_checkedBorderColor">#49C120</item>
+        <item name="atg_checkedTextColor">#FFFFFF</item>
+        <item name="atg_checkedMarkerColor">#FFFFFF</item>
+        <item name="atg_checkedBackgroundColor">#F1F1F1</item>
+        <item name="atg_pressedBackgroundColor">#F1F1F1</item>
+        <item name="atg_borderStrokeWidth">0.5dp</item>
+        <item name="atg_textSize">11sp</item>
+        <item name="atg_horizontalSpacing">4dp</item>
+        <item name="atg_verticalSpacing">4dp</item>
+        <item name="atg_horizontalPadding">3dp</item>
+        <item name="atg_verticalPadding">3dp</item>
+    </style>
+
+    <style name="TagGroups">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="atg_isAppendMode">false</item>
+        <item name="atg_inputHint">@string/add_tag</item>
+        <item name="atg_borderColor">#F1F1F1</item>
+        <item name="atg_textColor">@color/simi_color_dark_gray</item>
+        <item name="atg_backgroundColor">#FFFFFF</item>
+        <item name="atg_dashBorderColor">#AAAAAA</item>
+        <item name="atg_inputHintColor">#80000000</item>
+        <item name="atg_inputTextColor">#DE000000</item>
+        <item name="atg_checkedBorderColor">#49C120</item>
+        <item name="atg_checkedTextColor">#FFFFFF</item>
+        <item name="atg_checkedMarkerColor">#FFFFFF</item>
+        <item name="atg_checkedBackgroundColor">#F1F1F1</item>
+        <item name="atg_pressedBackgroundColor">#F1F1F1</item>
+        <item name="atg_borderStrokeWidth">0.5dp</item>
+        <item name="atg_textSize">15sp</item>
+        <item name="atg_horizontalSpacing">4dp</item>
+        <item name="atg_verticalSpacing">4dp</item>
+        <item name="atg_horizontalPadding">5dp</item>
+        <item name="atg_verticalPadding">5dp</item>
+    </style>
+
+</resources>

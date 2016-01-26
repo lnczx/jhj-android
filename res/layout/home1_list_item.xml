@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/activity_bg_color"
+    android:orientation="vertical" >
+
+   <LinearLayout
+        android:id="@+id/ll_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+         <com.meijialife.dingdang.ui.MyGallery
+            android:id="@+id/gallery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="9" />
+
+        <LinearLayout
+            android:id="@+id/ll_bottomNavPoint"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="top|center"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+             >
+
+            <LinearLayout
+                android:id="@+id/ll_focus_indicator_container"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
