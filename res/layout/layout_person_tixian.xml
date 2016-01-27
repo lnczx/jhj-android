@@ -74,7 +74,7 @@
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="10dp"
-                android:text="单笔限额50-10000元，本日还可以提现1次"
+                android:text="单笔限额1-10000元，提现次数不限"
                 android:textColor="@color/simi_color_gray"
                 android:textSize="@dimen/font_size_15" />
 
@@ -123,7 +123,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:text="为保障安全，请使用与本人姓名一致的支付宝账号"
+                        android:text="办理提现的支付宝账户必须是本人切实名认证过的"
                         android:textColor="@color/simi_color_gray"
                         android:textSize="@dimen/font_size_12" />
                 </LinearLayout>
@@ -144,7 +144,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:text="为保障安全，请使用与本人姓名一致的支付宝账号"
+                        android:text="申请体现后会由总部财务人员进行审核，审核成功后会在3个工作日内打入申请者的支付宝账户"
                         android:textColor="@color/simi_color_gray"
                         android:textSize="@dimen/font_size_12" />
                 </LinearLayout>
@@ -165,7 +165,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:text="为保障安全，请使用与本人姓名一致的支付宝账号"
+                        android:text="如果申请者在公司挂有欠款，需要先结清欠款才能申请体现"
                         android:textColor="@color/simi_color_gray"
                         android:textSize="@dimen/font_size_12" />
                 </LinearLayout>
@@ -186,7 +186,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:text="为保障安全，请使用与本人姓名一致的支付宝账号"
+                        android:text="如果申请者被放入黑名单中，需要先解除黑名单状态才能申请体现"
                         android:textColor="@color/simi_color_gray"
                         android:textSize="@dimen/font_size_12" />
                 </LinearLayout>

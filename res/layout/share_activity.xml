@@ -119,7 +119,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:text="1.活动时间：2016年1月1号至2016年12月3日"
+                        android:text="1.活动时间：2016年1月1日至2016年12月31日"
                         android:textColor="@color/simi_color_gray"
                         android:textSize="@dimen/font_size_12" />
                 </LinearLayout>
@@ -141,7 +141,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:text="2.奖励金额：成功推荐奖励20元/人，上不封顶"
+                        android:text="2.成功推荐奖励20元/人，可累加，上不封顶"
                         android:textColor="@color/simi_color_gray"
                         android:textSize="@dimen/font_size_12" />
                 </LinearLayout>
@@ -163,7 +163,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:text="3.成功推荐条件：被推荐的服务人员在活动期间内成功注册激活，并于激活起xx天完成xx单，即成功推荐一人"
+                        android:text="3.成功推荐条件：成功推荐条件：被推荐的服务人员在活动期间内成功注册激活，并于激活期30日内完成1单，即算成功推荐1人"
                         android:textColor="@color/simi_color_gray"
                         android:textSize="@dimen/font_size_12" />
                 </LinearLayout>

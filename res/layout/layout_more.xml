@@ -214,7 +214,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginRight="44dp"
                         android:text="1.8.0000"
-                        android:textColor="#E8374A" />
+                        android:textColor="@color/simi_color_orange" />
                 </RelativeLayout>
 
                 <View
@@ -256,7 +256,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="44dp"
-                        android:text="010-1234565"
+                        android:text="010-58734880"
                         android:textColor="@color/simi_color_orange" />
                 </RelativeLayout>
 

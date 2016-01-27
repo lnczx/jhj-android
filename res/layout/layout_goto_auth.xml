@@ -127,7 +127,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/tv_name1"
                         android:layout_marginTop="5dp"
-                        android:text="按小时为用户打扫家庭卫生30元/小时"
+                        android:text="按小时计费的标准化家政服务工作"
                         android:textColor="#999999"
                         android:textSize="@dimen/font_size_12" />
 
@@ -166,7 +166,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/tv_name2"
                         android:layout_marginTop="5dp"
-                        android:text="按小时为用户打扫家庭卫生30元/小时"
+                        android:text="按小时计费的非标准化家庭服务工作"
                         android:textColor="#999999"
                         android:textSize="@dimen/font_size_12" />
 
@@ -205,7 +205,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/tv_name3"
                         android:layout_marginTop="5dp"
-                        android:text="按小时为用户打扫家庭卫生30元/小时"
+                        android:text="按次计费的标准化配送工作"
                         android:textColor="#999999"
                         android:textSize="@dimen/font_size_12" />
 
