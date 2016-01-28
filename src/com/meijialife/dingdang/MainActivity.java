@@ -416,8 +416,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 								String msg = obj.getString("msg");
 								String data = obj.getString("data");
 								if (status == Constants.STATUS_SUCCESS) { // 正确
-									UIUtils.showToast(MainActivity.this,
-											"发送位置成功");
+									/*UIUtils.showToast(MainActivity.this,
+											"发送位置成功");*/
 								} else if (status == Constants.STATUS_SERVER_ERROR) { // 服务器错误
 									errorMsg = getString(R.string.servers_error);
 								} else if (status == Constants.STATUS_PARAM_MISS) { // 缺失必选参数
@@ -486,8 +486,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 								String msg = obj.getString("msg");
 								String data = obj.getString("data");
 								if (status == Constants.STATUS_SUCCESS) { // 正确
-									UIUtils.showToast(MainActivity.this,
-											"推送绑定成功");
+									/*UIUtils.showToast(MainActivity.this,
+											"推送绑定成功");*/
 								} else if (status == Constants.STATUS_SERVER_ERROR) { // 服务器错误
 									errorMsg = MainActivity.this
 											.getString(R.string.servers_error);

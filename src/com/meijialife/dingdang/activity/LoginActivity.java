@@ -366,7 +366,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
         // SpFileUtil.saveInt(LoginActivity.this, SpFileUtil.FILE_UI_PARAMETER, SpFileUtil.KEY_USER_AUTH_STATUS, auth_status);
 
         // 登录成功
-        Toast.makeText(getApplicationContext(), "登录成功！", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), "登录成功！", Toast.LENGTH_SHORT).show();
         getUserData();
     }
 

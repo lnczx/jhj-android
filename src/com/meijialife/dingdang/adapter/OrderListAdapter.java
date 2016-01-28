@@ -167,7 +167,7 @@ public class OrderListAdapter extends BaseAdapter {
             holder.tv_order_type.setText(orderListVo.getOrder_type_name());
             holder.tv_order_incoming.setText(orderListVo.getOrder_incoming() + "元");
             holder.tv_service_addr.setText(orderListVo.getService_addr());
-            holder.tv_service_addr_distance.setText(orderListVo.getService_addr_distance() + "千米");
+            holder.tv_service_addr_distance.setText(orderListVo.getService_addr_distance());
            
           
             holder.tv_service_content.setText(orderListVo.getService_content());
