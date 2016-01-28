@@ -58,7 +58,7 @@ public class Constants {
     public static final String URL_GET_TO_SHARE = ROOT_URL1 + "staff/invite.json";
     
     //叮当大学
-    public static final String URL_GET_UNIVERSITY = HOST1 + "/am-h5/#!/university/university-first.html";
+    public static final String URL_GET_UNIVERSITY = HOST1 + "/am-h5/university/university-first.html";
     
     //*********************************
       //如果是环信的， 用户为  simi-user-1
