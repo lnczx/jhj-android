@@ -249,12 +249,12 @@ public class Home1Fra extends BaseFragment {
                         } else if (status == Constants.STATUS_OTHER_ERROR) { // 999其他错误
                             errorMsg = msg;
                         } else {
-                            errorMsg = getString(R.string.servers_error);
+                            errorMsg = "网络繁忙，请稍后再试";
                         }
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    errorMsg = getString(R.string.servers_error);
+                    errorMsg = "网络繁忙，请稍后再试";
 
                 }
                 // 操作失败，显示错误信息|

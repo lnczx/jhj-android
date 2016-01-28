@@ -10,6 +10,9 @@ import net.tsz.afinal.http.AjaxParams;
 
 import org.json.JSONObject;
 
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,11 +28,10 @@ import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.utils.poi.BaiduMapPoiSearch;
 import com.baidu.mapapi.utils.poi.PoiParaOption;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.meijialife.dingdang.BaseActivity;
 import com.meijialife.dingdang.Constants;
+import com.meijialife.dingdang.MainActivity;
 import com.meijialife.dingdang.R;
-import com.meijialife.dingdang.adapter.OrderListAdapter;
 import com.meijialife.dingdang.bean.OrderListVo;
 import com.meijialife.dingdang.bean.UserIndexData;
 import com.meijialife.dingdang.utils.LogOut;
@@ -96,7 +98,7 @@ public class OrderDetailActivity extends BaseActivity {
         order_id = getIntent().getStringExtra("order_id");
 
         initView();
-        
+
         getOrderListDetail(order_id);
 
     }
@@ -173,6 +175,57 @@ public class OrderDetailActivity extends BaseActivity {
             order_status = orderBean.getOrder_status();
             order_type = orderBean.getOrder_type();
 
+            btn_order_start_work.setOnClickListener(new OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+
+                    Builder dialog = new AlertDialog.Builder(getApplicationContext());
+                    dialog.setTitle("提示");
+                    dialog.setIcon(R.drawable.ic_launcher);
+                    dialog.setMessage("确认操作吗？");
+                    dialog.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            if (order_type == 0) {// 钟点工
+                                if (order_status == 3) {
+                                    change_work(START);
+                                } else if (order_status == 5) {
+                                    change_work(OVER);
+                                }
+                            } else if (order_type == 2) {// 助理单
+                                if (order_status == 2) {// 已派工
+                                    // 调整订单
+                                    change_order();
+                                } else if (order_status == 4) {// 已支付
+                                    change_work(START);
+                                } else if (order_status == 5) {
+                                    change_work(OVER);
+                                }
+                            }
+                        }
+                    });
+                    dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    }).create();
+                    dialog.show();
+
+                }
+            });
+            tv_goto_address.setOnClickListener(new OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    String service_addrLat = orderBean.getService_addr_lat();
+                    String service_addrLng = orderBean.getService_addr_lng();
+                    String service_addr = orderBean.getService_addr();
+                    startPoiNearbySearch(service_addrLat, service_addrLng, service_addr);
+
+                }
+            });
+            
             if (order_type == 0) {
                 if (order_status < 3 || order_status >= 7) {
                     // 不可点
@@ -192,41 +245,6 @@ public class OrderDetailActivity extends BaseActivity {
                     // btn_order_start_work.setPressed(false);
                 }
             }
-
-            btn_order_start_work.setOnClickListener(new OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-
-                    if (order_type == 0) {// 钟点工
-                        if (order_status == 3) {
-                            change_work(START);
-                        } else if (order_status == 5) {
-                            change_work(OVER);
-                        }
-                    } else if (order_type == 2) {// 助理单
-                        if (order_status == 2) {// 已派工
-                            // 调整订单
-                            change_order();
-                        } else if (order_status == 4) {// 已支付
-                            change_work(START);
-                        } else if (order_status == 5) {
-                            change_work(OVER);
-                        }
-                    }
-                }
-            });
-            tv_goto_address.setOnClickListener(new OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    String service_addrLat = orderBean.getService_addr_lat();
-                    String service_addrLng = orderBean.getService_addr_lng();
-                    String service_addr = orderBean.getService_addr();
-                    startPoiNearbySearch(service_addrLat, service_addrLng, service_addr);
-
-                }
-            });
 
             tv_order_remarks.setText(orderBean.getRemarks());
             tv_order_no.setText(orderBean.getOrder_no());
@@ -283,7 +301,7 @@ public class OrderDetailActivity extends BaseActivity {
     /**
      * 获取订单详情
      */
-    public void getOrderListDetail(final String  id) {
+    public void getOrderListDetail(final String id) {
         if (!NetworkUtils.isNetworkConnected(OrderDetailActivity.this)) {
             Toast.makeText(OrderDetailActivity.this, getString(R.string.net_not_open), 0).show();
             return;
@@ -292,7 +310,7 @@ public class OrderDetailActivity extends BaseActivity {
         String staffid = SpFileUtil.getString(OrderDetailActivity.this, SpFileUtil.FILE_UI_PARAMETER, SpFileUtil.KEY_STAFF_ID, "");
         Map<String, String> map = new HashMap<String, String>();
         map.put("staff_id", staffid);
-        map.put("order_id",  id + "");
+        map.put("order_id", id + "");
         AjaxParams param = new AjaxParams(map);
 
         showDialog();
@@ -432,7 +450,7 @@ public class OrderDetailActivity extends BaseActivity {
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
                 UIUtils.showTestToastLong(getApplicationContext(), "errorMsg:" + strMsg);
-                 dismissDialog();
+                dismissDialog();
                 Toast.makeText(getApplicationContext(), getApplicationContext().getString(R.string.network_failure), Toast.LENGTH_SHORT).show();
             }
 
@@ -440,7 +458,7 @@ public class OrderDetailActivity extends BaseActivity {
             public void onSuccess(Object t) {
                 super.onSuccess(t);
                 String errorMsg = "";
-                 dismissDialog();
+                dismissDialog();
                 LogOut.i("========", "onSuccess：" + t);
                 // UIUtils.showTestToastLong(getApplicationContext(),
                 // "开始服务返回："+t.toString());

@@ -192,7 +192,7 @@ public class Home2Fra extends Fragment implements OnClickListener {
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    errorMsg = getString(R.string.servers_error);
+                    errorMsg = "网络繁忙，请稍后再试";
 
                 }
                 // 操作失败，显示错误信息|
