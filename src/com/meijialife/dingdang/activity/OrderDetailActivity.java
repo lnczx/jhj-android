@@ -229,19 +229,19 @@ public class OrderDetailActivity extends BaseActivity {
             if (order_type == 0) {
                 if (order_status < 3 || order_status >= 7) {
                     // 不可点
-                    btn_order_start_work.setClickable(false);
+                    btn_order_start_work.setEnabled(false);
                     // btn_order_start_work.setPressed(true);
                 } else {
-                    btn_order_start_work.setClickable(true);
+                    btn_order_start_work.setEnabled(true);
                     // btn_order_start_work.setPressed(false);
                 }
             } else if (order_type == 2) {
                 if (order_status == 0 || order_status == 1 || order_status == 3 || order_status == 7) {
                     // 不可点
-                    btn_order_start_work.setClickable(false);
+                    btn_order_start_work.setEnabled(false);
                     // btn_order_start_work.setPressed(true);
                 } else {
-                    btn_order_start_work.setClickable(true);
+                    btn_order_start_work.setEnabled(true);
                     // btn_order_start_work.setPressed(false);
                 }
             }

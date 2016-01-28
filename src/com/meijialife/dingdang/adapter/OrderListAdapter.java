@@ -166,19 +166,19 @@ public class OrderListAdapter extends BaseAdapter {
             if (order_type == 0) {
                 if (order_status < 3 || order_status >= 7) {
                     // 不可点
-                    holder.iv_start_server.setClickable(false);
+                    holder.iv_start_server.setEnabled(false);
                     // holder.iv_start_server.setPressed(true);
                 } else {
-                    holder.iv_start_server.setClickable(true);
+                    holder.iv_start_server.setEnabled(true);
                     // holder.iv_start_server.setPressed(false);
                 }
             } else if (order_type == 2) {
                 if (order_status == 0 || order_status == 1 || order_status == 3 || order_status == 7) {
                     // 不可点
-                    holder.iv_start_server.setClickable(false);
+                    holder.iv_start_server.setEnabled(false);
                     // holder.iv_start_server.setPressed(true);
                 } else {
-                    holder.iv_start_server.setClickable(true);
+                    holder.iv_start_server.setEnabled(true);
                     // holder.iv_start_server.setPressed(false);
                 }
             }
