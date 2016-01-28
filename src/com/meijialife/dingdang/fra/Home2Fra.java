@@ -81,16 +81,16 @@ public class Home2Fra extends Fragment implements OnClickListener {
         });
         
 
-        layout_order_list.setOnItemClickListener(new OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getActivity(), OrderDetailActivity.class);
-                intent.putExtra("orderBean", secData.get(position));
-                startActivity(intent);
-
-            }
-        });
+//        layout_order_list.setOnItemClickListener(new OnItemClickListener() {
+//
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Intent intent = new Intent(getActivity(), OrderDetailActivity.class);
+//                intent.putExtra("order_id", secData.get(position).getOrder_id()+"");
+//                startActivity(intent);
+//
+//            }
+//        });
 
     }
     /**

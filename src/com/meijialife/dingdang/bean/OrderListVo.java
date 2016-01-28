@@ -38,14 +38,16 @@ public class OrderListVo implements Serializable {
 	private String button_word;
 
 	private Short order_status;
+	
+	private String order_status_str;
 
-	private String service_addrLat;
+	private String service_addr_lat;
 
-	private String service_addrLng;
+	private String service_addr_lng;
 
-	private String pick_addrLat;
+	private String pick_addr_lat;
 
-	private String pick_addrLng;
+	private String pick_addr_lng;
 
 	private Short service_hour;
 
@@ -189,40 +191,49 @@ public class OrderListVo implements Serializable {
 	public void setOrder_status(Short order_status) {
 		this.order_status = order_status;
 	}
+ 
 
-	public String getService_addrLat() {
-		return service_addrLat;
-	}
+	public String getOrder_status_str() {
+        return order_status_str;
+    }
 
-	public void setService_addrLat(String service_addrLat) {
-		this.service_addrLat = service_addrLat;
-	}
+    public void setOrder_status_str(String order_status_str) {
+        this.order_status_str = order_status_str;
+    }
 
-	public String getService_addrLng() {
-		return service_addrLng;
-	}
+    public String getService_addr_lat() {
+        return service_addr_lat;
+    }
 
-	public void setService_addrLng(String service_addrLng) {
-		this.service_addrLng = service_addrLng;
-	}
+    public void setService_addr_lat(String service_addr_lat) {
+        this.service_addr_lat = service_addr_lat;
+    }
 
-	public String getPick_addrLat() {
-		return pick_addrLat;
-	}
+    public String getService_addr_lng() {
+        return service_addr_lng;
+    }
 
-	public void setPick_addrLat(String pick_addrLat) {
-		this.pick_addrLat = pick_addrLat;
-	}
+    public void setService_addr_lng(String service_addr_lng) {
+        this.service_addr_lng = service_addr_lng;
+    }
 
-	public String getPick_addrLng() {
-		return pick_addrLng;
-	}
+    public String getPick_addr_lat() {
+        return pick_addr_lat;
+    }
 
-	public void setPick_addrLng(String pick_addrLng) {
-		this.pick_addrLng = pick_addrLng;
-	}
+    public void setPick_addr_lat(String pick_addr_lat) {
+        this.pick_addr_lat = pick_addr_lat;
+    }
 
-	public Short getService_hour() {
+    public String getPick_addr_lng() {
+        return pick_addr_lng;
+    }
+
+    public void setPick_addr_lng(String pick_addr_lng) {
+        this.pick_addr_lng = pick_addr_lng;
+    }
+
+    public Short getService_hour() {
 		return service_hour;
 	}
 

@@ -18,6 +18,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -96,6 +97,7 @@ public class OrderListAdapter extends BaseAdapter {
             holder.tv_fuwu_time = (TextView) convertView.findViewById(R.id.tv_fuwu_time);
             holder.tv_shichang = (TextView) convertView.findViewById(R.id.tv_shichang);
             holder.iv_order_type = (ImageView) convertView.findViewById(R.id.iv_order_type);
+            holder.layout_order_item = (LinearLayout) convertView.findViewById(R.id.layout_order_item);
             convertView.setTag(holder);
         } else {
             holder = (Holder) convertView.getTag();
@@ -186,6 +188,17 @@ public class OrderListAdapter extends BaseAdapter {
             	 holder.tv_fuwu_time.setText("下单时间：");
             }
 
+            holder.layout_order_item.setOnClickListener(new OnClickListener() {
+                
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, OrderDetailActivity.class);
+                    intent.putExtra("order_id", orderListVo.getOrder_id()+"");
+                    context.startActivity(intent);
+                }
+            });
+            
+            
         }
         return convertView;
     }
@@ -203,6 +216,7 @@ public class OrderListAdapter extends BaseAdapter {
         TextView tv_shichang;
         TextView tv_fuwu_time;
         ImageView iv_order_type;
+        LinearLayout layout_order_item;
 
     }
 

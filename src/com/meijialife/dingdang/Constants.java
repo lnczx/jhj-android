@@ -56,6 +56,8 @@ public class Constants {
     public static final String URL_GET_AUTH = ROOT_URL1 + "staff/auth.json";
     //分享
     public static final String URL_GET_TO_SHARE = ROOT_URL1 + "staff/invite.json";
+    //订单详情
+    public static final String URL_GET_ORDER_DETAIL = ROOT_URL1 + "staff/order/get_detail.json";
     
     //叮当大学
     public static final String URL_GET_UNIVERSITY = HOST1 + "/am-h5/university/university-first.html";
