@@ -53,7 +53,7 @@ public class OrderListAdapter extends BaseAdapter {
     private String urlString;
     private Short order_type;
     private Short order_status;
-    private Long order_id;
+    private long order_id=0;
 
     public OrderListAdapter(Context context) {
         this.context = context;
@@ -163,7 +163,9 @@ public class OrderListAdapter extends BaseAdapter {
                 holder.tv_service_hours.setVisibility(View.GONE);
                 holder.tv_fuwu_time.setText("下单时间：");
             }
-            holder.layout_order_item.setOnClickListener(new ItemAdapterListener(order_id + ""));
+             if(order_id!=0){
+                 holder.layout_order_item.setOnClickListener(new ItemAdapterListener(order_id + ""));
+             }
 
         }
         return convertView;

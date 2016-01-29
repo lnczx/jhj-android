@@ -98,6 +98,8 @@ public class OrderDetailActivity extends BaseActivity {
 
         order_id = getIntent().getStringExtra("order_id");
 
+         
+        
         initView();
 
         getOrderListDetail(order_id);
