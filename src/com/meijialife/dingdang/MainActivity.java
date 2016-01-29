@@ -32,8 +32,6 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.map.MyLocationData;
-import com.meijialife.dingdang.activity.LoginActivity;
-import com.meijialife.dingdang.activity.SplashActivity;
 import com.meijialife.dingdang.fra.Home1Fra;
 import com.meijialife.dingdang.fra.Home2Fra;
 import com.meijialife.dingdang.fra.PersonalPageFragment;
@@ -43,6 +41,7 @@ import com.meijialife.dingdang.utils.NetworkUtils;
 import com.meijialife.dingdang.utils.SpFileUtil;
 import com.meijialife.dingdang.utils.StringUtils;
 import com.meijialife.dingdang.utils.UIUtils;
+import com.umeng.update.UmengUpdateAgent;
 
 /**
  * fragment 的切换类
@@ -103,6 +102,13 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		} catch (Exception e) {
 			mBt1.performClick();
 		}
+		
+		 try {//友盟更新
+		     UmengUpdateAgent.setUpdateOnlyWifi(false);
+		     UmengUpdateAgent.update(this);// 友盟自动更新接口
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 	}
 

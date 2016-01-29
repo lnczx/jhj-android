@@ -25,6 +25,10 @@ import com.meijialife.dingdang.bean.UpdateInfo;
 import com.meijialife.dingdang.utils.SpFileUtil;
 import com.meijialife.dingdang.utils.UpdateInfoProvider;
 import com.meijialife.dingdang.utils.Utils;
+import com.umeng.update.UmengUpdateAgent;
+import com.umeng.update.UmengUpdateListener;
+import com.umeng.update.UpdateResponse;
+import com.umeng.update.UpdateStatus;
 
 /**
  * 更多
@@ -105,7 +109,27 @@ public class MoreActivity extends BaseActivity implements OnClickListener {
 			intent.putExtra("title", "关于我们");
 			break;
 		case R.id.index_4_rl_update: // 检查更新
-			checkVersion(true);
+		    UmengUpdateAgent.setUpdateAutoPopup(false);
+            UmengUpdateAgent.setUpdateListener(new UmengUpdateListener() {
+                @Override
+                public void onUpdateReturned(int updateStatus,UpdateResponse updateInfo) {
+                    switch (updateStatus) {
+                    case UpdateStatus.Yes: // has update
+                        UmengUpdateAgent.showUpdateDialog(MoreActivity.this, updateInfo);
+                        break;
+                    case UpdateStatus.No: // has no update
+                        Toast.makeText(MoreActivity.this, "当前是最新版本哦！", Toast.LENGTH_SHORT).show();
+                        break;
+                    case UpdateStatus.NoneWifi: // none wifi
+                        Toast.makeText(MoreActivity.this, "没有wifi连接， 只在wifi下更新", Toast.LENGTH_SHORT).show();
+                        break;
+                    case UpdateStatus.Timeout: // time out
+                        Toast.makeText(MoreActivity.this, "检测超时，请稍后再试", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+                }
+            });
+            UmengUpdateAgent.forceUpdate(this);
 			break;
 		case R.id.index_4_rl_service: // 联系客服
 			intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "010-58734880"));
