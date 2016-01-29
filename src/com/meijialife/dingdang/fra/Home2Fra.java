@@ -66,6 +66,8 @@ public class Home2Fra extends Fragment implements OnClickListener {
         layout_order_list = (ListView) v.findViewById(R.id.layout_order_list);
         layout_no_order = (LinearLayout) v.findViewById(R.id.layout_no_order);
         
+        listadapter = new OrderListAdapter(getActivity());
+        layout_order_list.setAdapter(listadapter);
         
         loadMoreView = getActivity().getLayoutInflater().inflate(R.layout.load_more, null);  
         loadMoreButton = (Button) loadMoreView.findViewById(R.id.loadMoreButton);
@@ -85,12 +87,15 @@ public class Home2Fra extends Fragment implements OnClickListener {
 //
 //            @Override
 //            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent intent = new Intent(getActivity(), OrderDetailActivity.class);
-//                intent.putExtra("order_id", secData.get(position).getOrder_id()+"");
-//                startActivity(intent);
-//
+//                if(null!=secData&&secData.size()>0){
+//                    Intent intent = new Intent(getActivity(), OrderDetailActivity.class);
+//                    intent.putExtra("order_id", secData.get(position).getOrder_id()+"");
+//                    startActivity(intent);
+//                }
 //            }
 //        });
+        
+        getOrderList(order_from_main, pageIndex);
 
     }
     /**
@@ -156,13 +161,13 @@ public class Home2Fra extends Fragment implements OnClickListener {
                                 Gson gson = new Gson();
                                 secData = gson.fromJson(data, new TypeToken<ArrayList<OrderListVo>>() {
                                 }.getType());
-                                OrderListAdapter adapter = new OrderListAdapter(getActivity());
+                                
                                 if(null!=secData&&secData.size()>0){
                                     pageIndex += 1;
                                 	layout_no_order.setVisibility(View.GONE);
                                     layout_order_list.setVisibility(View.VISIBLE);
-                                    adapter.setData(secData,order_from);
-                                    layout_order_list.setAdapter(adapter);
+                                    listadapter.setData(secData,order_from);
+                                    
                                 }else{
                                     if(pageIndex == 1){
                                         layout_no_order.setVisibility(View.VISIBLE);
@@ -222,16 +227,19 @@ public class Home2Fra extends Fragment implements OnClickListener {
                     line_1.setVisibility(View.VISIBLE);
                     getOrderList(0, 1);
                     order_from_main=0;
+                    pageIndex=1;
                 }
                 if (checkedId == grop.getChildAt(1).getId()) {
                     line_2.setVisibility(View.VISIBLE);
                     getOrderList(1, 1);
                     order_from_main=1;
+                    pageIndex=1;
                 }
                 if (checkedId == grop.getChildAt(2).getId()) {
                     line_3.setVisibility(View.VISIBLE);
                     getOrderList(2, 1);
                     order_from_main=2;
+                    pageIndex=1;
                 }
 
             }
@@ -250,6 +258,7 @@ public class Home2Fra extends Fragment implements OnClickListener {
 
     private ListView layout_order_list;
     private LinearLayout layout_order_detail;
+    private OrderListAdapter listadapter;
 
     public void showDialog() {
         if (m_pDialog == null) {
@@ -272,7 +281,7 @@ public class Home2Fra extends Fragment implements OnClickListener {
     public void onResume() {
         // TODO Auto-generated method stub
         super.onResume();
-    
+        pageIndex=1;
         getOrderList(order_from_main, pageIndex);
     }
 }

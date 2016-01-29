@@ -119,50 +119,10 @@ public class OrderListAdapter extends BaseAdapter {
             order_status = orderListVo.getOrder_status();
             order_id = orderListVo.getOrder_id();
 
-            //判断开始服务或者调整订单
-            holder.iv_start_server.setOnClickListener(new OnClickListener() {
+            // 判断开始服务或者调整订单
+            holder.iv_start_server.setOnClickListener(new MyAdapterListener(orderListVo));
 
-                @Override
-                public void onClick(View v) {
-                    
-                    Builder dialog = new AlertDialog.Builder(context);
-                    dialog.setTitle("提示");
-                    dialog.setIcon(R.drawable.ic_launcher);
-                    dialog.setMessage("确认操作吗？");
-                    dialog.setPositiveButton("确认", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-
-                            if (order_type == 0) {// 钟点工
-                                if (order_status == 3) {
-                                    change_work(order_id + "", START);
-                                } else if (order_status == 5) {
-                                    change_work(order_id + "", OVER);
-                                }
-                            } else if (order_type == 2) {// 助理单
-                                if (order_status == 2) {// 已派工
-                                    // 调整订单
-                                    // change_order();
-                                    Intent intent = new Intent(context, OrderDetailActivity.class);
-                                    intent.putExtra("orderBean", orderListVo);
-                                    context.startActivity(intent);
-                                } else if (order_status == 4) {// 已支付
-                                    change_work(order_id + "", START);
-                                } else if (order_status == 5) {
-                                    change_work(order_id + "", OVER);
-                                }
-                            }
-                        }
-                    });
-                    dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    }).create();
-                    dialog.show();
-                }
-            });
-            
-            //判断点击事件
+            // 判断点击事件
             if (order_type == 0) {
                 if (order_status < 3 || order_status >= 7) {
                     // 不可点
@@ -182,40 +142,29 @@ public class OrderListAdapter extends BaseAdapter {
                     // holder.iv_start_server.setPressed(false);
                 }
             }
-            
+
             holder.tv_order_type.setText(orderListVo.getOrder_type_name());
             holder.tv_order_incoming.setText(orderListVo.getOrder_incoming() + "元");
             holder.tv_service_addr.setText(orderListVo.getService_addr());
             holder.tv_service_addr_distance.setText(orderListVo.getService_addr_distance());
-           
-          
+
             holder.tv_service_content.setText(orderListVo.getService_content());
             holder.tv_order_money.setText(orderListVo.getOrder_money() + "元");
             holder.iv_start_server.setText(orderListVo.getButton_word());
             holder.tv_service_date.setText(orderListVo.getService_date());
-            
-            if (order_type == 0) {// 钟点工
-            	 holder.tv_shichang.setVisibility(View.VISIBLE);
-            	 holder.tv_service_hours.setVisibility(View.VISIBLE);
-            	  holder.tv_service_hours.setText(orderListVo.getService_hour() + "小时");
-            	  holder.tv_fuwu_time.setText("服务时间：");
-            } else if (order_type == 2) {// 助理单
-            	 holder.tv_shichang.setVisibility(View.GONE); 
-            	 holder.tv_service_hours.setVisibility(View.GONE);
-            	 holder.tv_fuwu_time.setText("下单时间：");
-            }
 
-            holder.layout_order_item.setOnClickListener(new OnClickListener() {
-                
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(context, OrderDetailActivity.class);
-                    intent.putExtra("order_id", orderListVo.getOrder_id()+"");
-                    context.startActivity(intent);
-                }
-            });
-            
-            
+            if (order_type == 0) {// 钟点工
+                holder.tv_shichang.setVisibility(View.VISIBLE);
+                holder.tv_service_hours.setVisibility(View.VISIBLE);
+                holder.tv_service_hours.setText(orderListVo.getService_hour() + "小时");
+                holder.tv_fuwu_time.setText("服务时间：");
+            } else if (order_type == 2) {// 助理单
+                holder.tv_shichang.setVisibility(View.GONE);
+                holder.tv_service_hours.setVisibility(View.GONE);
+                holder.tv_fuwu_time.setText("下单时间：");
+            }
+            holder.layout_order_item.setOnClickListener(new ItemAdapterListener(order_id + ""));
+
         }
         return convertView;
     }
@@ -235,6 +184,77 @@ public class OrderListAdapter extends BaseAdapter {
         ImageView iv_order_type;
         LinearLayout layout_order_item;
 
+    }
+
+    class ItemAdapterListener implements OnClickListener {
+
+        private String order_id;
+
+        public ItemAdapterListener(String id) {
+            order_id = id;
+        }
+
+        @Override
+        public void onClick(View v) {
+
+            Intent intent = new Intent(context, OrderDetailActivity.class);
+            intent.putExtra("order_id", order_id);
+            context.startActivity(intent);
+
+        }
+    }
+
+    class MyAdapterListener implements OnClickListener {
+
+        private OrderListVo order;
+        private int type;
+        private int status;
+
+        public MyAdapterListener(OrderListVo orderListVo) {
+            order = orderListVo;
+        }
+
+        @Override
+        public void onClick(View v) {
+            type = order.getOrder_type();
+            status = order.getOrder_status();
+
+            Builder dialog = new AlertDialog.Builder(context);
+            dialog.setTitle("提示");
+            dialog.setIcon(R.drawable.ic_launcher);
+            dialog.setMessage("确认操作吗？");
+            dialog.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+
+                    if (type == 0) {// 钟点工
+                        if (status == 3) {
+                            change_work(order_id + "", START);
+                        } else if (order_status == 5) {
+                            change_work(order_id + "", OVER);
+                        }
+                    } else if (type == 2) {// 助理单
+                        if (status == 2) {// 已派工
+                            // 调整订单
+                            // change_order();
+                            Intent intent = new Intent(context, OrderDetailActivity.class);
+                            intent.putExtra("orderBean", orderListVo);
+                            context.startActivity(intent);
+                        } else if (status == 4) {// 已支付
+                            change_work(order_id + "", START);
+                        } else if (status == 5) {
+                            change_work(order_id + "", OVER);
+                        }
+                    }
+                }
+            });
+            dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            }).create();
+            dialog.show();
+
+        }
     }
 
     /**

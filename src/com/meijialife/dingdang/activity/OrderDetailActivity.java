@@ -180,7 +180,7 @@ public class OrderDetailActivity extends BaseActivity {
                 @Override
                 public void onClick(View v) {
 
-                    Builder dialog = new AlertDialog.Builder(getApplicationContext());
+                    Builder dialog = new AlertDialog.Builder(OrderDetailActivity.this);
                     dialog.setTitle("提示");
                     dialog.setIcon(R.drawable.ic_launcher);
                     dialog.setMessage("确认操作吗？");
