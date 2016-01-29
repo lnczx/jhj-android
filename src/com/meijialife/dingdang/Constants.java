@@ -62,6 +62,9 @@ public class Constants {
     //叮当大学
     public static final String URL_GET_UNIVERSITY = HOST1 + "/am-h5/university/university-first.html";
     
+    // 用户协议
+    public final static String URL_WEB_AGREE = HOST1 + "/am-h5/jhj-agreement.html";
+    
     //*********************************
       //如果是环信的， 用户为  simi-user-1
     public static final String SERVICE_ID = "1";
@@ -121,8 +124,7 @@ public class Constants {
     /** 获取用户接口 **/
     public static final String URL_GET_SEC_USER = ROOT_URL + "sec/get_users.json";
 
-    // 用户协议
-    public final static String URL_WEB_AGREE = HOST + "/html/simi-inapp/agreement.htm";
+   
     public final static String URL_USER_HELP = HOST + "/html/simi-inapp/help.htm";
     public final static String URL_ABOUT_US = HOST + "/html/simi-inapp/about-us.htm";
     public final static String URL_MORE_INFO = HOST + "/html/simi-inapp/app-faxian-list.htm";

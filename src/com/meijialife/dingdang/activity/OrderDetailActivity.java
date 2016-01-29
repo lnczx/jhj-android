@@ -89,6 +89,7 @@ public class OrderDetailActivity extends BaseActivity {
     private TextView tv_input_money;
     private TextView tv_input_content;
     private String order_id;
+    private LinearLayout layout_goutong_des;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,6 +130,7 @@ public class OrderDetailActivity extends BaseActivity {
 
         layout_order_tiaozheng = (LinearLayout) findViewById(R.id.layout_order_tiaozheng);
         layout_fuwu_shichang = (LinearLayout) findViewById(R.id.layout_fuwu_shichang);
+        layout_goutong_des = (LinearLayout) findViewById(R.id.layout_goutong_des);
         layout_order_tiaozheng_line = (View) findViewById(R.id.layout_order_tiaozheng_line);
 
         tv_order_remarks = (TextView) findViewById(R.id.tv_order_remarks);
@@ -377,6 +379,7 @@ public class OrderDetailActivity extends BaseActivity {
     public void showOrderModify() {
         layout_order_tiaozheng.setVisibility(View.VISIBLE);
         layout_order_tiaozheng_line.setVisibility(View.VISIBLE);
+        layout_goutong_des.setVisibility(View.VISIBLE);
 
     }
 
@@ -384,6 +387,7 @@ public class OrderDetailActivity extends BaseActivity {
     public void dissmisOrderModify() {
         layout_order_tiaozheng.setVisibility(View.GONE);
         layout_order_tiaozheng_line.setVisibility(View.GONE);
+        layout_goutong_des.setVisibility(View.GONE);
     }
 
     // 调整订单点亮
