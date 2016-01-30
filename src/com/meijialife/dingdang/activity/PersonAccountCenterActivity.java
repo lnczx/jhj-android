@@ -32,8 +32,9 @@ import com.meijialife.dingdang.utils.UIUtils;
 public class PersonAccountCenterActivity extends BaseActivity implements
 		OnClickListener {
 
-	private TextView tv_det_money;
-	private String det_money="";
+	private TextView tv_det_money,tv_total_incoming;
+	private String det_money="0";
+	private String total_money="0";
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,7 @@ public class PersonAccountCenterActivity extends BaseActivity implements
 		findViewById(R.id.layout_tixian).setOnClickListener(this);
 		findViewById(R.id.layout_mingxi).setOnClickListener(this);
 		tv_det_money = (TextView) findViewById(R.id.tv_det_money);
+		tv_total_incoming = (TextView) findViewById(R.id.tv_total_incoming);
 		
 		get_total_dept();
 	}
@@ -66,6 +68,7 @@ public class PersonAccountCenterActivity extends BaseActivity implements
 			break;
 		case R.id.layout_tixian://提现
 			intent = new Intent(this,PersonTixianActivity.class);
+			intent.putExtra("totalMoney", total_money);
 			break;
 		case R.id.layout_mingxi://提现明细
 			intent = new Intent(this,PersonPayDetailActivity.class);
@@ -120,8 +123,15 @@ public class PersonAccountCenterActivity extends BaseActivity implements
 //                                Gson gson = new Gson();
 //                                userIndexData = gson.fromJson(data, UserIndexData.class);
 //                                showData();
-                                det_money=data;
-                                tv_det_money.setText(data+"元");
+                                
+                                JSONObject jsonObject=new JSONObject(data);
+                                String dept = jsonObject.optString("total_dept");
+                                String incoming = jsonObject.optString("total_cash");
+                                
+                                det_money=dept;
+                                total_money=incoming;
+                                tv_total_incoming.setText("可提现资金"+total_money+"元");
+                                tv_det_money.setText(det_money+"元");
                             } else {
                                 UIUtils.showToast(getApplicationContext(), "数据错误");
                             }

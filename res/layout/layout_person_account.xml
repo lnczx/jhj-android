@@ -30,9 +30,9 @@
                 android:padding="20dp" >
 
                 <TextView
+                    android:id="@+id/tv_total_incoming"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="可提现资金 1元"
                     android:textColor="@color/simi_color_orange"
                     android:textSize="@dimen/font_size_18" />
             </LinearLayout>
