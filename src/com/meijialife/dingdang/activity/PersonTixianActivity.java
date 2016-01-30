@@ -38,7 +38,7 @@ public class PersonTixianActivity extends BaseActivity implements OnClickListene
 
     private EditText et_input_account;
     private EditText et_input_money;
-    private String toalMoney="0";
+    private String toalMoney = "0";
     private TextView tv_t_money;
 
     @Override
@@ -52,7 +52,7 @@ public class PersonTixianActivity extends BaseActivity implements OnClickListene
     }
 
     private void initView() {
-        setTitleName("申请提现");  
+        setTitleName("申请提现");
         requestBackBtn();
 
         et_input_account = (EditText) findViewById(R.id.et_input_account);
@@ -67,25 +67,33 @@ public class PersonTixianActivity extends BaseActivity implements OnClickListene
 
     @Override
     public void onClick(View v) {
-        Intent intent = null;
         switch (v.getId()) {
         case R.id.btn_tixian:
             String account = et_input_account.getText().toString().trim();
             String money = et_input_money.getText().toString().trim();
 
+            long toMoney = 0;
+            long inputMoney = 0;
+            try {
+                toMoney = Long.valueOf(toalMoney);
+                inputMoney = Long.valueOf(money);
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+
             if (StringUtils.isEmpty(account) || StringUtils.isEmpty(money)) {
                 UIUtils.showToast(getApplicationContext(), "帐户名或者金额不能为空");
 
+            } else if (inputMoney > toMoney) {
+                UIUtils.showToast(getApplicationContext(), "您申请的提现金额超出可提现余额");
             } else {
                 getData(money, account);
+
             }
 
             break;
         default:
             break;
-        }
-        if (intent != null) {
-            startActivity(intent);
         }
     }
 
@@ -126,13 +134,8 @@ public class PersonTixianActivity extends BaseActivity implements OnClickListene
                         String msg = obj.getString("msg");
                         String data = obj.getString("data");
                         if (status == Constants.STATUS_SUCCESS) { // 正确
-                            if (StringUtils.isNotEmpty(data)) {
-                                // Gson gson = new Gson();
-                                // userIndexData = gson.fromJson(data, UserIndexData.class);
-                                // showData();
-                            } else {
-                                UIUtils.showToast(PersonTixianActivity.this, "数据错误");
-                            }
+                            UIUtils.showToast(PersonTixianActivity.this, "申请提现成功");
+                            PersonTixianActivity.this.finish();
                         } else if (status == Constants.STATUS_SERVER_ERROR) { // 服务器错误
                             errorMsg = getString(R.string.servers_error);
                         } else if (status == Constants.STATUS_PARAM_MISS) { // 缺失必选参数
