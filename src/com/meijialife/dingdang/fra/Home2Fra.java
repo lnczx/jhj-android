@@ -11,15 +11,12 @@ import net.tsz.afinal.http.AjaxParams;
 import org.json.JSONObject;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -31,7 +28,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.meijialife.dingdang.Constants;
 import com.meijialife.dingdang.R;
-import com.meijialife.dingdang.activity.OrderDetailActivity;
 import com.meijialife.dingdang.adapter.OrderListAdapter;
 import com.meijialife.dingdang.bean.OrderListVo;
 import com.meijialife.dingdang.utils.LogOut;
@@ -53,6 +49,7 @@ public class Home2Fra extends Fragment implements OnClickListener {
     private View loadMoreView;
     private Button loadMoreButton;
     private int pageIndex = 1;//页码
+    private ArrayList<OrderListVo> orderList;
     
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -133,6 +130,8 @@ public class Home2Fra extends Fragment implements OnClickListener {
         showDialog();
         new FinalHttp().get(Constants.URL_GET_ORDER_LIST, param, new AjaxCallBack<Object>() {
 
+           
+
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
@@ -157,6 +156,10 @@ public class Home2Fra extends Fragment implements OnClickListener {
                         String msg = obj.getString("msg");
                         String data = obj.getString("data");
                         if (status == Constants.STATUS_SUCCESS) { // 正确
+                            if(pageIndex == 1 || orderList == null){
+                                orderList = new ArrayList<OrderListVo>();
+                            }
+                            
                             if (StringUtils.isNotEmpty(data)) {
                                 Gson gson = new Gson();
                                 secData = gson.fromJson(data, new TypeToken<ArrayList<OrderListVo>>() {
@@ -166,7 +169,14 @@ public class Home2Fra extends Fragment implements OnClickListener {
                                     pageIndex += 1;
                                 	layout_no_order.setVisibility(View.GONE);
                                     layout_order_list.setVisibility(View.VISIBLE);
-                                    listadapter.setData(secData,order_from);
+                                    for(int i = 0; i < secData.size(); i++){
+                                        orderList.add(secData.get(i));
+                                    }
+                                    if(orderList.size()>=10){
+                                        loadMoreButton.setVisibility(View.VISIBLE);
+                                    }else{
+                                        loadMoreButton.setVisibility(View.GONE);
+                                    }
                                     
                                 }else{
                                     if(pageIndex == 1){
@@ -178,7 +188,7 @@ public class Home2Fra extends Fragment implements OnClickListener {
                                         Toast.makeText(getActivity(), "没有更多数据了", Toast.LENGTH_SHORT).show();
                                     }
                                 }
-                                
+                                listadapter.setData(orderList,order_from);
                             } else {
                                 layout_no_order.setVisibility(View.VISIBLE);
                                 layout_order_list.setVisibility(View.GONE);
