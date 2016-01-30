@@ -55,6 +55,8 @@ public class OrderListVo implements Serializable {
 	private String remarks_confirm;
 	private String pay_type_name;
 	private String mobile;
+	private String order_ratio;//精度
+	private String tel_staff;//客服电话
 
 	public Long getStaff_id() {
 		return staff_id;
@@ -272,5 +274,23 @@ public class OrderListVo implements Serializable {
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
+
+    public String getOrder_ratio() {
+        return order_ratio;
+    }
+
+    public void setOrder_ratio(String order_ratio) {
+        this.order_ratio = order_ratio;
+    }
+
+    public String getTel_staff() {
+        return tel_staff;
+    }
+
+    public void setTel_staff(String tel_staff) {
+        this.tel_staff = tel_staff;
+    }
+	
+	
 
 }

@@ -16,6 +16,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
@@ -97,8 +99,6 @@ public class OrderDetailActivity extends BaseActivity {
 
         order_id = getIntent().getExtras().getString("order_id");
 
-         
-        
         initView();
 
         getOrderListDetail(order_id);
@@ -109,17 +109,6 @@ public class OrderDetailActivity extends BaseActivity {
         setTitleName("订单详情");
         requestBackBtn();
         title_btn_right = (ImageView) findViewById(R.id.title_btn_right);
-
-        title_btn_right.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "010-58734880"));
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-
-            }
-        });
 
         // 3个图标状态
         tv_order_over = (TextView) findViewById(R.id.tv_order_over);
@@ -161,6 +150,50 @@ public class OrderDetailActivity extends BaseActivity {
     private void ShowData(final OrderListVo orderBean) {
 
         if (null != orderBean) {
+
+            et_input_money.addTextChangedListener(new TextWatcher() {
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                }
+
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    String money = et_input_money.getText().toString().trim();
+                    String order_ratio = orderBean.getOrder_ratio();
+
+                    if (StringUtils.isNotEmpty(money) && money.length() > 0) {
+                        Double input_money = Double.valueOf(money);
+                        Double ratio = Double.valueOf(order_ratio);
+
+                        double result = input_money * ratio;
+
+                        String res = String.valueOf(result);
+
+                        tv_order_incoming.setText(res + "元");
+                    } else {
+                        tv_order_incoming.setText("0元");
+                    }
+
+                }
+            });
+
+            title_btn_right.setOnClickListener(new OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + orderBean.getTel_staff()));
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+
+                }
+            });
 
             tv_call_phone.setOnClickListener(new OnClickListener() {
 
@@ -228,7 +261,7 @@ public class OrderDetailActivity extends BaseActivity {
 
                 }
             });
-            
+
             if (order_type == 0) {
                 if (order_status < 3 || order_status >= 7) {
                     // 不可点
@@ -435,11 +468,11 @@ public class OrderDetailActivity extends BaseActivity {
             Toast.makeText(getApplicationContext(), getApplicationContext().getString(R.string.net_not_open), 0).show();
             return;
         }
-        
+
         String staffid = SpFileUtil.getString(getApplicationContext(), SpFileUtil.FILE_UI_PARAMETER, SpFileUtil.KEY_STAFF_ID, "");
         Map<String, String> map = new HashMap<String, String>();
         map.put("staff_id", staffid);
-        map.put("order_id", order_id );
+        map.put("order_id", order_id);
         AjaxParams param = new AjaxParams(map);
 
         if (StringUtils.isEquals(type, START)) {
@@ -512,9 +545,9 @@ public class OrderDetailActivity extends BaseActivity {
             Toast.makeText(getApplicationContext(), getApplicationContext().getString(R.string.net_not_open), 0).show();
             return;
         }
-//        if (null != orderBean) {
-//            orderid = orderBean.getOrder_id();
-//        }
+        // if (null != orderBean) {
+        // orderid = orderBean.getOrder_id();
+        // }
 
         String content = et_input_content.getText().toString().trim();
         String money = et_input_money.getText().toString().trim();

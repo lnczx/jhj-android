@@ -44,9 +44,6 @@ public class SplashActivity extends  Activity    {
 
         getUserData();
         
-        AlphaAnimation aa = new AlphaAnimation(0.8f, 1.0f);
-        aa.setDuration(2000);
-        findViewById(R.id.iv_welcome).startAnimation(aa);
         Timer timer = new Timer();
         TimerTask MyTask = new TimerTask() {
             @Override
