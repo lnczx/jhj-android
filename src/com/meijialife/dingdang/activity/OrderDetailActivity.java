@@ -66,7 +66,6 @@ public class OrderDetailActivity extends BaseActivity {
     private ImageView iv_order_start;
     private LinearLayout layout_order_tiaozheng;
     private View layout_order_tiaozheng_line;
-    private long orderid = 0;
     private String urlString;
     private Short order_type;
     private EditText et_input_content;
@@ -96,7 +95,7 @@ public class OrderDetailActivity extends BaseActivity {
         setContentView(R.layout.layout_order_detail);
         super.onCreate(savedInstanceState);
 
-        order_id = getIntent().getStringExtra("order_id");
+        order_id = getIntent().getExtras().getString("order_id");
 
          
         
@@ -436,13 +435,11 @@ public class OrderDetailActivity extends BaseActivity {
             Toast.makeText(getApplicationContext(), getApplicationContext().getString(R.string.net_not_open), 0).show();
             return;
         }
-        if (null != orderBean) {
-            orderid = orderBean.getOrder_id();
-        }
+        
         String staffid = SpFileUtil.getString(getApplicationContext(), SpFileUtil.FILE_UI_PARAMETER, SpFileUtil.KEY_STAFF_ID, "");
         Map<String, String> map = new HashMap<String, String>();
         map.put("staff_id", staffid);
-        map.put("order_id", orderid + "");
+        map.put("order_id", order_id );
         AjaxParams param = new AjaxParams(map);
 
         if (StringUtils.isEquals(type, START)) {
@@ -515,9 +512,9 @@ public class OrderDetailActivity extends BaseActivity {
             Toast.makeText(getApplicationContext(), getApplicationContext().getString(R.string.net_not_open), 0).show();
             return;
         }
-        if (null != orderBean) {
-            orderid = orderBean.getOrder_id();
-        }
+//        if (null != orderBean) {
+//            orderid = orderBean.getOrder_id();
+//        }
 
         String content = et_input_content.getText().toString().trim();
         String money = et_input_money.getText().toString().trim();
@@ -534,7 +531,7 @@ public class OrderDetailActivity extends BaseActivity {
         String staffid = SpFileUtil.getString(getApplicationContext(), SpFileUtil.FILE_UI_PARAMETER, SpFileUtil.KEY_STAFF_ID, "");
         Map<String, String> map = new HashMap<String, String>();
         map.put("staff_id", staffid);
-        map.put("order_id", orderid + "");
+        map.put("order_id", order_id);
         map.put("service_content", content);
         map.put("order_money", money);
         AjaxParams param = new AjaxParams(map);

@@ -221,6 +221,17 @@ public class OrderListAdapter extends BaseAdapter {
             type = order.getOrder_type();
             status = order.getOrder_status();
 
+            if (type == 2) {// 助理单
+                if (status == 2) {// 已派工
+                    // 调整订单
+                    // change_order();
+                    Intent intent = new Intent(context, OrderDetailActivity.class);
+                    intent.putExtra("order_id", order.getOrder_id()+"");
+                    context.startActivity(intent);
+                    return;
+                } 
+            }
+            
             Builder dialog = new AlertDialog.Builder(context);
             dialog.setTitle("提示");
             dialog.setIcon(R.drawable.ic_launcher);
@@ -235,13 +246,14 @@ public class OrderListAdapter extends BaseAdapter {
                             change_work(order_id + "", OVER);
                         }
                     } else if (type == 2) {// 助理单
-                        if (status == 2) {// 已派工
-                            // 调整订单
-                            // change_order();
-                            Intent intent = new Intent(context, OrderDetailActivity.class);
-                            intent.putExtra("orderBean", orderListVo);
-                            context.startActivity(intent);
-                        } else if (status == 4) {// 已支付
+//                        if (status == 2) {// 已派工
+//                            // 调整订单
+//                            // change_order();
+//                            Intent intent = new Intent(context, OrderDetailActivity.class);
+//                            intent.putExtra("orderBean", orderListVo);
+//                            context.startActivity(intent);
+//                        } else
+                        if (status == 4) {// 已支付
                             change_work(order_id + "", START);
                         } else if (status == 5) {
                             change_work(order_id + "", OVER);
