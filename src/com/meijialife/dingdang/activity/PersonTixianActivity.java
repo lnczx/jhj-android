@@ -72,11 +72,11 @@ public class PersonTixianActivity extends BaseActivity implements OnClickListene
             String account = et_input_account.getText().toString().trim();
             String money = et_input_money.getText().toString().trim();
 
-            long toMoney = 0;
-            long inputMoney = 0;
+            Double toMoney = null ;
+            Double inputMoney = null ;
             try {
-                toMoney = Long.valueOf(toalMoney);
-                inputMoney = Long.valueOf(money);
+                toMoney = Double.valueOf(toalMoney);
+                inputMoney = Double.valueOf(money);
             } catch (NumberFormatException e) {
                 e.printStackTrace();
             }

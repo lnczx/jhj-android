@@ -1,6 +1,7 @@
 package com.meijialife.dingdang.activity;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -69,6 +70,11 @@ public class PersonPayDetailActivity extends BaseActivity implements OnClickList
         ImageView iv_pre_month = (ImageView) findViewById(R.id.iv_pre_month);
         ImageView iv_next_month = (ImageView) findViewById(R.id.iv_next_month);
         tv_year = (TextView) findViewById(R.id.tv_year);
+
+        Calendar cal = Calendar.getInstance();
+        month = cal.get(Calendar.MONTH) + 1;
+        year = cal.get(Calendar.YEAR);
+
         tv_year.setText(year + "年" + month + "月");
 
         loadMoreView = getLayoutInflater().inflate(R.layout.load_more, null);
@@ -81,7 +87,7 @@ public class PersonPayDetailActivity extends BaseActivity implements OnClickList
             @Override
             public void onClick(View v) {
                 pageIndex = 1;
-                
+
                 if (month > 1) {
                     month -= 1;
                 } else {
@@ -169,7 +175,7 @@ public class PersonPayDetailActivity extends BaseActivity implements OnClickList
         map.put("page", page + "");
         AjaxParams param = new AjaxParams(map);
 
-         showDialog();
+        showDialog();
         new FinalHttp().get(Constants.URL_GET_DETAIL_CASH, param, new AjaxCallBack<Object>() {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
@@ -185,7 +191,7 @@ public class PersonPayDetailActivity extends BaseActivity implements OnClickList
                 super.onSuccess(t);
                 String errorMsg = "";
                 setLoadMoreStatus(false);
-                 dismissDialog();
+                dismissDialog();
                 LogOut.i("========", "onSuccess：" + t);
                 // UIUtils.showTestToastLong(getApplicationContext(), "交易明细返回："+t.toString());
                 try {
@@ -205,15 +211,15 @@ public class PersonPayDetailActivity extends BaseActivity implements OnClickList
                                     pageIndex += 1;
                                     adapter.setData(secData);
                                     layout_paydetail_list.setAdapter(adapter);
-                                    
+
                                     layout_paydetail_list.setVisibility(View.VISIBLE);
                                     tv_no_data.setVisibility(View.GONE);
-                                    
+
                                 } else {
                                     if (pageIndex == 1) {
                                         layout_paydetail_list.setVisibility(View.GONE);
                                         tv_no_data.setVisibility(View.VISIBLE);
-                                    }else{
+                                    } else {
                                         layout_paydetail_list.setVisibility(View.VISIBLE);
                                         tv_no_data.setVisibility(View.GONE);
                                         Toast.makeText(getApplicationContext(), "没有更多数据了", Toast.LENGTH_SHORT).show();
