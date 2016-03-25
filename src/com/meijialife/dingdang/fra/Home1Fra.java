@@ -74,11 +74,11 @@ public class Home1Fra extends BaseFragment {
 
     private TextView tv_total_order_money;
 
-    private TextView tv_total_online;
+//    private TextView tv_total_online;
 
     private TextView tv_total_order, tv_now_time;
 
-    private Button bt_work_state;
+//    private Button bt_work_state;
 
     private FinalBitmap finalBitmap;
 
@@ -107,24 +107,24 @@ public class Home1Fra extends BaseFragment {
 
         tv_total_order_incoming = (TextView) v.findViewById(R.id.tv_total_order_incoming);
         tv_total_order_money = (TextView) v.findViewById(R.id.tv_total_order_money);
-        tv_total_online = (TextView) v.findViewById(R.id.tv_total_online);
+//        tv_total_online = (TextView) v.findViewById(R.id.tv_total_online);
         tv_total_order = (TextView) v.findViewById(R.id.tv_total_order);
         tv_now_time = (TextView) v.findViewById(R.id.tv_now_time);
         tv_no_msg = (TextView) v.findViewById(R.id.tv_no_msg);
         layout_msg_list = (ListView) v.findViewById(R.id.layout_msg_list);
 
-        bt_work_state = (Button) v.findViewById(R.id.bt_work_state);
-        bt_work_state.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (WORK_STATE == START_WORK) {
-                    getStartWork(STOP_WORK);
-                } else if (WORK_STATE == STOP_WORK) {
-                    getStartWork(START_WORK);
-                }
-
-            }
-        });
+//        bt_work_state = (Button) v.findViewById(R.id.bt_work_state);
+//        bt_work_state.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (WORK_STATE == START_WORK) {
+//                    getStartWork(STOP_WORK);
+//                } else if (WORK_STATE == STOP_WORK) {
+//                    getStartWork(START_WORK);
+//                }
+//
+//            }
+//        });
 
 //        layout_msg_list.setOnItemClickListener(new OnItemClickListener() {
 //
@@ -351,14 +351,14 @@ public class Home1Fra extends BaseFragment {
 
             tv_total_order_incoming.setText(total_incoming);
             tv_total_order_money.setText(total_order_money);
-            tv_total_online.setText(total_online);
+//            tv_total_online.setText(total_online);
             tv_total_order.setText(total_order);
 
-            if (WORK_STATE == START_WORK) {
-                bt_work_state.setText("收工");
-            } else if (WORK_STATE == STOP_WORK) {
-                bt_work_state.setText("开工");
-            }
+//            if (WORK_STATE == START_WORK) {
+//                bt_work_state.setText("收工");
+//            } else if (WORK_STATE == STOP_WORK) {
+//                bt_work_state.setText("开工");
+//            }
 
         } catch (JSONException e) {
             // TODO Auto-generated catch block

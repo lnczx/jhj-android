@@ -7,7 +7,7 @@ import android.os.Environment;
 public class Constants {
     //*******************************
     // 主机地址
-    public static final String HOST1 = "http://101.201.197.18";
+    public static final String HOST1 = "http://123.57.209.81";
     // 基础接口
     public static final String ROOT_URL1 = HOST1 + "/jhj-app/app/";
 

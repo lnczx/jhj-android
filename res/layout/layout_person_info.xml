@@ -22,10 +22,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:gravity="center_vertical"
                 android:layout_marginLeft="15dp"
-                android:textSize="@dimen/font_size_12"
-                android:text="以下信息如需修改请联系客服" />
+                android:gravity="center_vertical"
+                android:text="以下信息如需修改请联系客服"
+                android:textSize="@dimen/font_size_12" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -91,7 +91,6 @@
                 android:orientation="horizontal" >
 
                 <TextView
-                   
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
@@ -99,7 +98,7 @@
                     android:textSize="@dimen/font_size_15" />
 
                 <TextView
-                       android:id="@+id/tv_mobile"
+                    android:id="@+id/tv_mobile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
@@ -125,12 +124,20 @@
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:text="技能："
                     android:textSize="@dimen/font_size_15" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_list_item_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
 
                 <TextView
-                       android:id="@+id/tv_jineng"
+                    android:id="@+id/tv_jineng"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginLeft="40dp"
                     android:textColor="@color/simi_color_gray"
                     android:textSize="@dimen/font_size_15" />
             </LinearLayout>

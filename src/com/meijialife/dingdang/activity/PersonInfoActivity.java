@@ -1,5 +1,7 @@
 package com.meijialife.dingdang.activity;
 
+import java.util.ArrayList;
+
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -41,9 +43,14 @@ public class PersonInfoActivity extends BaseActivity   {
         TextView tv_jineng = (TextView) findViewById(R.id.tv_jineng);
         
         if(null!=userIndexData){
+            String skillString="";
+            ArrayList<String> skills = userIndexData.getSkills();
+            for (String str : skills) {
+                skillString += str +"\n"+"\n";
+            }
             tv_mobile.setText(userIndexData.getMobile());
             tv_name.setText(userIndexData.getName());
-            tv_jineng.setText("null");
+            tv_jineng.setText(skillString);
             int sex = userIndexData.getSex();
             if(sex==0){
                 tv_sex.setText("男");

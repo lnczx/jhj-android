@@ -1,6 +1,7 @@
 package com.meijialife.dingdang.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * 用户数据（个人主页接口）
@@ -18,6 +19,7 @@ public class UserIndexData implements Serializable {
 	private int auth_status; //身份认证 0 = 未认证 1 = 认证
 	private int total_order; //本月订单
 	private double total_incoming;// 本月收入
+	private ArrayList<String> skills;//技能
     public int getStaff_id() {
         return staff_id;
     }
@@ -79,14 +81,16 @@ public class UserIndexData implements Serializable {
 	public void setTotal_incoming(double total_incoming) {
 		this.total_incoming = total_incoming;
 	}
-	@Override
+    public ArrayList<String> getSkills() {
+        return skills;
+    }
+    public void setSkills(ArrayList<String> skills) {
+        this.skills = skills;
+    }
+    @Override
     public String toString() {
         return "UserIndexData [staff_id=" + staff_id + ", staff_type=" + staff_type + ", status=" + status + ", name=" + name + ", sex=" + sex
                 + ", mobile=" + mobile + ", head_img=" + head_img + ", auth_status=" + auth_status + ", total_order=" + total_order
-                + ", total_incoming=" + total_incoming + "]";
+                + ", total_incoming=" + total_incoming + ", skills=" + skills + "]";
     }
-	
-	 
-	
-
 }
