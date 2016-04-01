@@ -32,10 +32,11 @@ import com.baidu.mapapi.utils.poi.PoiParaOption;
 import com.google.gson.Gson;
 import com.meijialife.dingdang.BaseActivity;
 import com.meijialife.dingdang.Constants;
-import com.meijialife.dingdang.MainActivity;
 import com.meijialife.dingdang.R;
 import com.meijialife.dingdang.bean.OrderListVo;
 import com.meijialife.dingdang.bean.UserIndexData;
+import com.meijialife.dingdang.ui.ToggleButton;
+import com.meijialife.dingdang.ui.ToggleButton.OnToggleChanged;
 import com.meijialife.dingdang.utils.LogOut;
 import com.meijialife.dingdang.utils.NetworkUtils;
 import com.meijialife.dingdang.utils.SpFileUtil;
@@ -89,8 +90,11 @@ public class OrderDetailActivity extends BaseActivity {
     private TextView tv_goto_address;
     private TextView tv_input_money;
     private TextView tv_input_content;
+    private TextView tv_order_addr;
     private String order_id;
     private LinearLayout layout_goutong_des;
+    private ToggleButton slipBtn;
+    private boolean isSelect;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,6 +141,19 @@ public class OrderDetailActivity extends BaseActivity {
         iv_order_type = (ImageView) findViewById(R.id.iv_order_type);
         tv_order_shichang = (TextView) findViewById(R.id.tv_order_shichang);
         tv_service_time_type = (TextView) findViewById(R.id.tv_service_time_type);
+        tv_order_addr = (TextView) findViewById(R.id.tv_order_addr);
+        slipBtn = (ToggleButton) findViewById(R.id.slipBtn_fatongzhi);
+
+        slipBtn.setOnToggleChanged(new OnToggleChanged() {
+            @Override
+            public void onToggle(boolean on) {
+                if (on) {
+                    isSelect = true;
+                } else {
+                    isSelect = false;
+                }
+            }
+        });
 
         // 调整订单
 
@@ -148,7 +165,6 @@ public class OrderDetailActivity extends BaseActivity {
     }
 
     private void ShowData(final OrderListVo orderBean) {
-
         if (null != orderBean) {
 
             et_input_money.addTextChangedListener(new TextWatcher() {
@@ -227,7 +243,12 @@ public class OrderDetailActivity extends BaseActivity {
                                 if (order_status == 3) {
                                     change_work(START);
                                 } else if (order_status == 5) {
-                                    change_work(OVER);
+                                    int pay_type = orderBean.getPay_type();
+                                    if (pay_type == 6 && !isSelect) {
+                                        UIUtils.showToast(OrderDetailActivity.this, "请线下收款后再完成服务");
+                                    } else {
+                                        change_work(OVER);
+                                    }
                                 }
                             } else if (order_type == 2) {// 助理单
                                 if (order_status == 2) {// 已派工
@@ -236,7 +257,12 @@ public class OrderDetailActivity extends BaseActivity {
                                 } else if (order_status == 4) {// 已支付
                                     change_work(START);
                                 } else if (order_status == 5) {
-                                    change_work(OVER);
+                                    int pay_type = orderBean.getPay_type();
+                                    if (pay_type == 6 && !isSelect) {
+                                        UIUtils.showToast(OrderDetailActivity.this, "请线下收款后再完成服务");
+                                    } else {
+                                        change_work(OVER);
+                                    }
                                 }
                             }
                         }
@@ -281,6 +307,12 @@ public class OrderDetailActivity extends BaseActivity {
                     // btn_order_start_work.setPressed(false);
                 }
             }
+            
+            if(order_status == 5){
+                slipBtn.setVisibility(View.VISIBLE);
+            }else{
+                slipBtn.setVisibility(View.GONE);
+            }
 
             tv_order_remarks.setText(orderBean.getRemarks());
             tv_order_no.setText(orderBean.getOrder_no());
@@ -292,7 +324,7 @@ public class OrderDetailActivity extends BaseActivity {
             tv_service_type_name.setText(orderBean.getService_type_name());
             btn_order_start_work.setText(orderBean.getButton_word());
             tv_input_content.setText(orderBean.getRemarks_confirm());
-
+            tv_order_addr.setText(orderBean.getService_addr());
             // 判断哪些展示
             if (order_type == 0) {// 钟点工
                 ORDERTYPE = ORDERZDG;

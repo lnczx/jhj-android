@@ -185,7 +185,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:text="2323333444"
                     android:textColor="@color/simi_color_gray"
                     android:textSize="@dimen/font_size_12" />
             </LinearLayout>
@@ -210,7 +209,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:text="2323333444"
                     android:textColor="@color/simi_color_gray"
                     android:textSize="@dimen/font_size_12" />
             </LinearLayout>
@@ -235,7 +233,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:text="2323333444"
                     android:textColor="@color/simi_color_gray"
                     android:textSize="@dimen/font_size_12" />
             </LinearLayout>
@@ -259,7 +256,29 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:text="2323333444"
+                    android:textColor="@color/simi_color_gray"
+                    android:textSize="@dimen/font_size_12" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/btn_list_item_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:text="服务地址："
+                    android:textSize="@dimen/font_size_12" />
+
+                <TextView
+                    android:id="@+id/tv_order_addr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:textColor="@color/simi_color_gray"
                     android:textSize="@dimen/font_size_12" />
             </LinearLayout>
@@ -283,7 +302,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:text="30分钟到达"
                     android:textColor="@color/simi_color_gray"
                     android:textSize="@dimen/font_size_12" />
             </LinearLayout>
@@ -500,29 +518,45 @@
                     android:textSize="@dimen/font_size_15" />
             </LinearLayout>
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/btn_list_item_bg"
                 android:gravity="center_vertical"
                 android:orientation="horizontal" >
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:text="支付状态:"
-                    android:textSize="@dimen/font_size_15" />
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
 
-                <TextView
-                    android:id="@+id/tv_order_status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:text="线下未支付"
-                    android:textColor="@color/simi_color_orange"
-                    android:textSize="@dimen/font_size_15" />
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:text="支付状态:"
+                        android:textSize="@dimen/font_size_15" />
+
+                    <TextView
+                        android:id="@+id/tv_order_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:text="线下未支付"
+                        android:textColor="@color/simi_color_orange"
+                        android:textSize="@dimen/font_size_15" />
+                </LinearLayout>
+
+                <com.meijialife.dingdang.ui.ToggleButton
+                    android:id="@+id/slipBtn_fatongzhi"
+                    android:layout_width="50dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin" />
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/btn_order_start_work"

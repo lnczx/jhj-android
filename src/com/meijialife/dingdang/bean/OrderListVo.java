@@ -53,6 +53,7 @@ public class OrderListVo implements Serializable {
 
 	private String remarks;
 	private String remarks_confirm;
+	private int pay_type;
 	private String pay_type_name;
 	private String mobile;
 	private String order_ratio;//精度
@@ -289,6 +290,14 @@ public class OrderListVo implements Serializable {
 
     public void setTel_staff(String tel_staff) {
         this.tel_staff = tel_staff;
+    }
+
+    public int getPay_type() {
+        return pay_type;
+    }
+
+    public void setPay_type(int pay_type) {
+        this.pay_type = pay_type;
     }
 	
 	
