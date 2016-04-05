@@ -308,12 +308,25 @@ public class OrderDetailActivity extends BaseActivity {
                 }
             }
             
-            if(order_status == 5){
+            if(order_status == 5 && orderBean.getPay_type()==6  ){
                 slipBtn.setVisibility(View.VISIBLE);
             }else{
                 slipBtn.setVisibility(View.GONE);
             }
 
+            slipBtn.setOnToggleChanged(new OnToggleChanged() {
+				@Override
+				public void onToggle(boolean on) {
+					if(on){
+						tv_order_status.setText("线下已支付");
+					}else {
+						tv_order_status.setText(orderBean.getPay_type_name());
+					}
+				}
+			});
+            
+            
+            
             tv_order_remarks.setText(orderBean.getRemarks());
             tv_order_no.setText(orderBean.getOrder_no());
             tv_order_time.setText(orderBean.getService_date());
