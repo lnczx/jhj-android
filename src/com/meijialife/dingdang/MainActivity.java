@@ -1,5 +1,11 @@
 package com.meijialife.dingdang;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
@@ -12,9 +18,16 @@ import net.tsz.afinal.http.AjaxParams;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -32,6 +45,8 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.map.MyLocationData;
+import com.meijialife.dingdang.bean.UpdateInfo;
+import com.meijialife.dingdang.broadcastReceiver.PostTrailService;
 import com.meijialife.dingdang.fra.Home1Fra;
 import com.meijialife.dingdang.fra.Home2Fra;
 import com.meijialife.dingdang.fra.PersonalPageFragment;
@@ -41,7 +56,8 @@ import com.meijialife.dingdang.utils.NetworkUtils;
 import com.meijialife.dingdang.utils.SpFileUtil;
 import com.meijialife.dingdang.utils.StringUtils;
 import com.meijialife.dingdang.utils.UIUtils;
-import com.umeng.update.UmengUpdateAgent;
+import com.meijialife.dingdang.utils.UpdateInfoProvider;
+import com.meijialife.dingdang.utils.Utils;
 
 /**
  * fragment 的切换类
@@ -103,13 +119,17 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			mBt1.performClick();
 		}
 		
-		 try {//友盟更新
+		/* try {//友盟更新
 		     UmengUpdateAgent.setUpdateOnlyWifi(false);
 		     UmengUpdateAgent.update(this);// 友盟自动更新接口
         } catch (Exception e) {
             e.printStackTrace();
-        }
-
+        }*/
+		 
+		 checkVersion(true);//版本更新检测
+		 //启动服务发送地理位置
+		 Intent intent = new Intent(MainActivity.this,PostTrailService.class);
+		 startService(intent);
 	}
 
 	/**
@@ -522,7 +542,269 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 						}
 					}
 				});
-
 	}
+	
+	private UpdateInfo updateInfo; // APP版本更新数据
+	private ProgressDialog progDlg;
+	// 当前应用版本号
+	private String curVersion;
+	private static final int CODE_VERSION_MANUAL_OK = 100; // 用户主动检测版本成功
+	private static final int CODE_VERSION_AUTO_OK = 101; // 系统自动检测版本
+	private static final int CODE_VERSION_ERROR = 102; // 检测版本数据解析失败
+	private static final int DOWN_ERROR = 103; // 下载失败
+
+	Handler mHandler = new Handler() {
+		public void handleMessage(android.os.Message msg) {
+			switch (msg.what) {
+			case CODE_VERSION_MANUAL_OK:
+				if (progDlg != null) {
+					dismissDialog();
+				}
+				compareVersion(true);
+				break;
+			case CODE_VERSION_AUTO_OK:
+				compareVersion(false);
+				break;
+			case CODE_VERSION_ERROR:
+				if (progDlg != null) {
+					dismissDialog();
+				}
+				break;
+			case DOWN_ERROR:
+				 Toast.makeText(getApplicationContext(), "下载新版本失败", 1).show();
+				break;
+			default:
+				break;
+			}
+		};
+	};
+
+	/**
+	 * 检查更新
+	 *
+	 * @param isManual
+	 *            是否人工点击
+	 */
+	public void checkVersion(final boolean isManual) {
+		/*if (isManual) {
+			showDialog();
+		}*/
+		new Thread(new Runnable() {
+			public void run() {
+				try {
+					URL url = new URL(Constants.URL_GET_VERSION);
+					HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+					conn.setRequestMethod("GET");
+					// 连接超时时间
+					conn.setConnectTimeout(5000);
+					int code = conn.getResponseCode();
+					if (code == 200) {
+						InputStream is = conn.getInputStream();
+						updateInfo = new UpdateInfo();
+						updateInfo = UpdateInfoProvider.getUpdateInfo(is);
+						if (updateInfo != null) {
+							// 解析成功
+							if (isManual) {
+								mHandler.sendEmptyMessage(CODE_VERSION_MANUAL_OK);
+							} else {
+								mHandler.sendEmptyMessage(CODE_VERSION_AUTO_OK);
+							}
+						} else {
+							// 解析失败
+							mHandler.sendEmptyMessage(CODE_VERSION_ERROR);
+						}
+					} else {
+						mHandler.sendEmptyMessage(CODE_VERSION_ERROR);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+					mHandler.sendEmptyMessage(CODE_VERSION_ERROR);
+				}
+			}
+		}).start();
+	}
+	
+	/**
+	 * 对比APP版本号
+	 *
+	 * @param isManual
+	 *            是否用户主动对比的
+	 */
+	private void compareVersion(boolean isManual) {
+		String newVersion = updateInfo.getVersion();
+		curVersion = getCurVersion();
+		int visibility;
+		if (!newVersion.equals(curVersion)
+				&& diffVersion(newVersion, curVersion) > 0) { // 有更新
+			visibility = View.VISIBLE;
+			if (isManual) {
+				showVersionDlg();
+			}
+		} else {
+			visibility = View.INVISIBLE;
+			if (isManual) {
+				Toast.makeText(this, "已是最新版本！", 0).show();
+			}
+		}
+	}
+
+	public int diffVersion(String s1, String s2) {
+		if (s1 == null && s2 == null)
+			return 0;
+		else if (s1 == null)
+			return -1;
+		else if (s2 == null)
+			return 1;
+		String[] arr1 = s1.split("[^a-zA-Z0-9]+"), arr2 = s2
+				.split("[^a-zA-Z0-9]+");
+		int i1, i2, i3;
+		for (int ii = 0, max = Math.min(arr1.length, arr2.length); ii <= max; ii++) {
+			if (ii == arr1.length)
+				return ii == arr2.length ? 0 : -1;
+			else if (ii == arr2.length)
+				return 1;
+			try {
+				i1 = Integer.parseInt(arr1[ii]);
+			} catch (Exception x) {
+				i1 = Integer.MAX_VALUE;
+			}
+			try {
+				i2 = Integer.parseInt(arr2[ii]);
+			} catch (Exception x) {
+				i2 = Integer.MAX_VALUE;
+			}
+
+			if (i1 != i2) {
+				return i1 - i2;
+			}
+			i3 = arr1[ii].compareTo(arr2[ii]);
+
+			if (i3 != 0)
+				return i3;
+		}
+		return 0;
+	}
+
+	/**
+	 * 更新提示
+	 */
+	private void showVersionDlg() {
+		String msg = "版本：" + updateInfo.getVersion() + "\n" + updateInfo.getDescription();
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("发现新版本");
+		builder.setMessage(msg);
+		builder.setPositiveButton("立即升级",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+						downLoadApk();
+					}
+				});
+		builder.setNegativeButton("以后再说",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+					}
+				});
+		AlertDialog dlg = builder.create();
+		dlg.show();
+	}
+	
+	
+	/* 
+	 * 从服务器中下载APK 
+	 */  
+	protected void downLoadApk() {  
+	    final ProgressDialog pd;    //进度条对话框  
+	    pd = new  ProgressDialog(this);  
+	    pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);  
+	    pd.setMessage("正在下载更新");  
+	    pd.show();  
+	    new Thread(){  
+	        @Override  
+	        public void run() {  
+	            try {  
+	                File file = getFileFromServer(updateInfo.getPath(), pd);  
+	                sleep(3000);  
+	                installApk(file);  
+	                pd.dismiss(); //结束掉进度条对话框  
+	            } catch (Exception e) {  
+	                Message msg = new Message();  
+	                msg.what = DOWN_ERROR;  
+	                mHandler.sendMessage(msg);  
+	                e.printStackTrace();  
+	            }  
+	        }}.start();  
+	}  
+	  
+	//安装apk   
+	protected void installApk(File file) {  
+	    Intent intent = new Intent();  
+	    //执行动作  
+	    intent.setAction(Intent.ACTION_VIEW);  
+	    //执行的数据类型  
+	    intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");  
+	    startActivity(intent);  
+	}
+
+	/**
+	 * 获取当前版本号
+	 *
+	 */
+	private String getCurVersion() {
+		if (null == curVersion) {
+			curVersion = String.valueOf(Utils.getCurVerName(this));
+		}
+
+		return curVersion;
+	}
+	private ProgressDialog m_pDialog;
+	public void dismissDialog() {
+        if (m_pDialog != null && m_pDialog.isShowing()) {
+            // m_pDialog.hide();
+            m_pDialog.dismiss();
+            m_pDialog = null;
+        }
+    }
+
+    public void showDialog() {
+        if (m_pDialog == null) {
+            m_pDialog = new ProgressDialog(this);
+            m_pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            m_pDialog.setMessage("请稍等...");
+            m_pDialog.setIndeterminate(false);
+            m_pDialog.setCancelable(false);
+        }
+        m_pDialog.show();
+    }
+    
+    public static File getFileFromServer(String path, ProgressDialog pd) throws Exception{  
+        //如果相等的话表示当前的sdcard挂载在手机上并且是可用的  
+        if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){  
+            URL url = new URL(path);  
+            HttpURLConnection conn =  (HttpURLConnection) url.openConnection();  
+            conn.setConnectTimeout(5000);  
+            //获取到文件的大小   
+            pd.setMax(conn.getContentLength());  
+            InputStream is = conn.getInputStream();  
+            File file = new File(Environment.getExternalStorageDirectory(), "updata.apk");  
+            FileOutputStream fos = new FileOutputStream(file);  
+            BufferedInputStream bis = new BufferedInputStream(is);  
+            byte[] buffer = new byte[1024];  
+            int len ;  
+            int total=0;  
+            while((len =bis.read(buffer))!=-1){  
+                fos.write(buffer, 0, len);  
+                total+= len;  
+                //获取当前下载量  
+                pd.setProgress(total);  
+            }  
+            fos.close();  
+            bis.close();  
+            is.close();  
+            return file;  
+        }  
+        else{  
+            return null;  
+        }  
+    }  
 
 }

@@ -387,7 +387,6 @@ public class OrderListAdapter extends BaseAdapter {
                                 }.getType());
                                 setData(secData, order_from);
                                 notifyDataSetChanged();
-
                             }
                         } else if (status == Constants.STATUS_SERVER_ERROR) { // 服务器错误
                             errorMsg = context.getString(R.string.servers_error);

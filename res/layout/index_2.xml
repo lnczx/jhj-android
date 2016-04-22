@@ -32,7 +32,7 @@
                 android:layout_weight="1"
                 android:button="@null"
                 android:gravity="center"
-                android:text="待服务（取货）"
+                android:text="待服务"
                 android:textColor="@color/index2_radiobutton_color"
                 android:textSize="@dimen/font_size_14" />
 
@@ -43,7 +43,7 @@
                 android:layout_weight="1"
                 android:button="@null"
                 android:gravity="center"
-                android:text="服务（配送）中"
+                android:text="服务中"
                 android:textColor="@color/index2_radiobutton_color"
                 android:textSize="@dimen/font_size_14" />
 

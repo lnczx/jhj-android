@@ -8,6 +8,7 @@ public class Constants {
     //*******************************
     // 主机地址
     public static final String HOST1 = "http://123.57.209.81";
+//    public static final String HOST1 = "http://www.jia-he-jia.com";
     // 基础接口
     public static final String ROOT_URL1 = HOST1 + "/jhj-app/app/";
 
@@ -22,11 +23,18 @@ public class Constants {
     public static final String URL_POST_PUSH_BIND = ROOT_URL1 + "user/post_push_bind.json";
     
     public static final String URL_GET_ORDER_LIST = ROOT_URL1 + "staff/order/get_list.json";
+    //获取用户信息列表接口
+    public static final String URL_GET_USER_LIST = ROOT_URL1 + "user/get_user_list.json";
+    //获取助理信息列表接口
+    public static final String URL_GET_SEC_LIST = ROOT_URL1 + "user/user_get_org.json";
     
     /** 用户详情接口 **/
     public static final String URL_GET_USER_INFO = ROOT_URL1 + "staff/get_info.json";
     //申请提现
     public static final String URL_GET_TIXIAN = ROOT_URL1 + "staff/post_cash.json";
+ 
+    //获得用户身份验证状态接口
+    public static final String URL_GET_STAFF_AUTH = ROOT_URL1 + "staff/get_auth.json";
     
     //提现记录
     public static final String URL_GET_TIXIAN_CASH = ROOT_URL1 + "staff/get_cash.json";
@@ -96,7 +104,7 @@ public class Constants {
     
     
     /** app更新接口 **/
-    public static final String URL_GET_VERSION = "http://182.92.160.194/" + "d/version.xml";// 测试用，需更换
+    public static final String URL_GET_VERSION = "http://www.jia-he-jia.com/d/version.xml";// 测试用，需更换
     /** 城市列表接口 **/
     public static final String URL_GET_CITY_LIST = ROOT_URL + "city/get_list.json";
     /** 意见反馈接口 **/

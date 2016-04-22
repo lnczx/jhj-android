@@ -52,7 +52,7 @@
                             android:background="@null"
                             android:hint="请输入您的手机号"
                             android:inputType="number"
-                            android:text="13701187136"
+                            android:text=""
                             android:maxLength="11"
                             android:singleLine="true"
                             android:textColor="@android:color/black"

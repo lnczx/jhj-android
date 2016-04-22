@@ -19,7 +19,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,13 +27,11 @@ import com.meijialife.dingdang.Constants;
 import com.meijialife.dingdang.R;
 import com.meijialife.dingdang.activity.MoreActivity;
 import com.meijialife.dingdang.activity.PersonAccountCenterActivity;
-import com.meijialife.dingdang.activity.PersonCollageActivity;
 import com.meijialife.dingdang.activity.PersonInfoActivity;
 import com.meijialife.dingdang.activity.ShareActivity;
+import com.meijialife.dingdang.activity.UserListActivity;
 import com.meijialife.dingdang.activity.WebViewActivity;
 import com.meijialife.dingdang.bean.UserIndexData;
-import com.meijialife.dingdang.bean.UserInfo;
-import com.meijialife.dingdang.database.DBHelper;
 import com.meijialife.dingdang.ui.RoundImageView;
 import com.meijialife.dingdang.utils.LogOut;
 import com.meijialife.dingdang.utils.NetworkUtils;
@@ -73,13 +70,14 @@ public class PersonalPageFragment extends Fragment implements OnClickListener {
     }
 
     private void init(View view) {
-        finalBitmap.create(getActivity());
+        finalBitmap = FinalBitmap.create(getActivity());
 
         view.findViewById(R.id.layout_info).setOnClickListener(this);
         view.findViewById(R.id.layout_account_center).setOnClickListener(this);
         view.findViewById(R.id.layout_college).setOnClickListener(this);
         view.findViewById(R.id.layout_share_friend).setOnClickListener(this);
         view.findViewById(R.id.layout_more).setOnClickListener(this);
+        view.findViewById(R.id.layout_user_list).setOnClickListener(this);
 
         tv_mobile = (TextView) view.findViewById(R.id.tv_mobile);
         tv_auth_status = (TextView) view.findViewById(R.id.tv_auth_status);
@@ -118,6 +116,9 @@ public class PersonalPageFragment extends Fragment implements OnClickListener {
         case R.id.layout_more:
             intent = new Intent(getActivity(), MoreActivity.class);
             break;
+        case R.id.layout_user_list://跳转到用户列表
+        	intent = new Intent(getActivity(), UserListActivity.class);
+        	break;
         default:
             break;
         }
@@ -168,10 +169,10 @@ public class PersonalPageFragment extends Fragment implements OnClickListener {
                             if (StringUtils.isNotEmpty(data)) {
                                 Gson gson = new Gson();
                                 userIndexData = gson.fromJson(data, UserIndexData.class);
-                                showData();
-                            } else {
+                                showData(userIndexData);
+                            } /*else {
                                 UIUtils.showToast(getActivity(), "数据错误");
-                            }
+                            }*/
                         } else if (status == Constants.STATUS_SERVER_ERROR) { // 服务器错误
                             errorMsg = getString(R.string.servers_error);
                         } else if (status == Constants.STATUS_PARAM_MISS) { // 缺失必选参数
@@ -198,7 +199,7 @@ public class PersonalPageFragment extends Fragment implements OnClickListener {
 
     }
 
-    private void showData() {
+    private void showData(UserIndexData userIndexData) {
         if (null == userIndexData) {
             return;
         }

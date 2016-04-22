@@ -116,7 +116,9 @@
                 android:layout_height="50dp"
                 android:background="@drawable/btn_list_item_bg"
                 android:gravity="center_vertical"
-                android:orientation="horizontal" >
+                android:orientation="horizontal"
+                android:visibility="gone"
+                 >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -131,7 +133,9 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_list_item_bg"
                 android:gravity="center_vertical"
-                android:orientation="horizontal" >
+                android:orientation="horizontal" 
+                android:visibility="gone"
+                >
 
                 <TextView
                     android:id="@+id/tv_jineng"

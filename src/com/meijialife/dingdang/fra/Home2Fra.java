@@ -63,6 +63,7 @@ public class Home2Fra extends Fragment implements OnClickListener {
         layout_order_list = (ListView) v.findViewById(R.id.layout_order_list);
         layout_no_order = (LinearLayout) v.findViewById(R.id.layout_no_order);
         
+        orderList = new ArrayList<OrderListVo>();
         listadapter = new OrderListAdapter(getActivity());
         layout_order_list.setAdapter(listadapter);
         
@@ -92,7 +93,7 @@ public class Home2Fra extends Fragment implements OnClickListener {
 //            }
 //        });
         
-        getOrderList(order_from_main, pageIndex);
+//        getOrderList(order_from_main, pageIndex);
 
     }
     /**
@@ -156,17 +157,16 @@ public class Home2Fra extends Fragment implements OnClickListener {
                         String msg = obj.getString("msg");
                         String data = obj.getString("data");
                         if (status == Constants.STATUS_SUCCESS) { // 正确
-                            if(pageIndex == 1 || orderList == null){
-                                orderList = new ArrayList<OrderListVo>();
+                            if(pageIndex == 1){
+                                orderList.clear();
                             }
-                            
                             if (StringUtils.isNotEmpty(data)) {
                                 Gson gson = new Gson();
                                 secData = gson.fromJson(data, new TypeToken<ArrayList<OrderListVo>>() {
                                 }.getType());
                                 
                                 if(null!=secData&&secData.size()>0){
-                                    pageIndex += 1;
+                                	pageIndex += 1;
                                 	layout_no_order.setVisibility(View.GONE);
                                     layout_order_list.setVisibility(View.VISIBLE);
                                     for(int i = 0; i < secData.size(); i++){
@@ -287,11 +287,19 @@ public class Home2Fra extends Fragment implements OnClickListener {
         }
     }
     
-    @Override
+ /*   @Override
     public void onResume() {
-        // TODO Auto-generated method stub
         super.onResume();
         pageIndex=1;
         getOrderList(order_from_main, pageIndex);
+    }*/
+    
+    @Override
+    public void onDestroy() {
+    	super.onDestroy();
+    	pageIndex = 1;
+    	secData.clear();
+    	orderList.clear();
+    	
     }
 }
