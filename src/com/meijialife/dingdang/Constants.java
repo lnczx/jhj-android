@@ -7,8 +7,8 @@ import android.os.Environment;
 public class Constants {
     //*******************************
     // 主机地址
-    public static final String HOST1 = "http://123.57.209.81";
-//    public static final String HOST1 = "http://www.jia-he-jia.com";
+//    public static final String HOST1 = "http://123.57.209.81";
+    public static final String HOST1 = "http://www.jia-he-jia.com";
     // 基础接口
     public static final String ROOT_URL1 = HOST1 + "/jhj-app/app/";
 
@@ -73,6 +73,8 @@ public class Constants {
     // 用户协议
     public final static String URL_WEB_AGREE = HOST1 + "/am-h5/jhj-agreement.html";
     
+    
+    public final static String URL_ABOUT_US = HOST1 + "/u/#!/user/aboutus.html";
     //*********************************
       //如果是环信的， 用户为  simi-user-1
     public static final String SERVICE_ID = "1";
@@ -134,7 +136,8 @@ public class Constants {
 
    
     public final static String URL_USER_HELP = HOST + "/html/simi-inapp/help.htm";
-    public final static String URL_ABOUT_US = HOST + "/html/simi-inapp/about-us.htm";
+//    public final static String URL_ABOUT_US = HOST + "/html/simi-inapp/about-us.htm";
+  
     public final static String URL_MORE_INFO = HOST + "/html/simi-inapp/app-faxian-list.htm";
    //行政人学院
     public final static String URL_XUEYUAN = "http://mishuzhuli.com";

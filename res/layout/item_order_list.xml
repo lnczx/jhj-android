@@ -194,6 +194,7 @@
             android:layout_marginTop="25dp"
             android:background="@drawable/btn_start_order_selectbg"
             android:padding="5dp"
+            android:visibility="gone"
             android:text="开始服务"
             android:textColor="@android:color/white" />
     </LinearLayout>

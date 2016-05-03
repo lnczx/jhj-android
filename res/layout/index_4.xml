@@ -110,6 +110,7 @@
                     android:background="@color/activity_bg_color" />
 
                 <LinearLayout
+                    android:id="@+id/layout_mingxi_shouru"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"

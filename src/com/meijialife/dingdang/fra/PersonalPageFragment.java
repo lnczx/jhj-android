@@ -28,6 +28,7 @@ import com.meijialife.dingdang.R;
 import com.meijialife.dingdang.activity.MoreActivity;
 import com.meijialife.dingdang.activity.PersonAccountCenterActivity;
 import com.meijialife.dingdang.activity.PersonInfoActivity;
+import com.meijialife.dingdang.activity.PersonPayDetailActivity;
 import com.meijialife.dingdang.activity.ShareActivity;
 import com.meijialife.dingdang.activity.UserListActivity;
 import com.meijialife.dingdang.activity.WebViewActivity;
@@ -63,7 +64,7 @@ public class PersonalPageFragment extends Fragment implements OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.index_4, null);
-
+        
         init(v);
         getUserData();
         return v;
@@ -78,6 +79,7 @@ public class PersonalPageFragment extends Fragment implements OnClickListener {
         view.findViewById(R.id.layout_share_friend).setOnClickListener(this);
         view.findViewById(R.id.layout_more).setOnClickListener(this);
         view.findViewById(R.id.layout_user_list).setOnClickListener(this);
+        view.findViewById(R.id.layout_mingxi_shouru).setOnClickListener(this);
 
         tv_mobile = (TextView) view.findViewById(R.id.tv_mobile);
         tv_auth_status = (TextView) view.findViewById(R.id.tv_auth_status);
@@ -119,6 +121,9 @@ public class PersonalPageFragment extends Fragment implements OnClickListener {
         case R.id.layout_user_list://跳转到用户列表
         	intent = new Intent(getActivity(), UserListActivity.class);
         	break;
+        case R.id.layout_mingxi_shouru://跳转到明细
+            intent = new Intent(getActivity(), PersonPayDetailActivity.class);
+            break;
         default:
             break;
         }
