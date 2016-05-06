@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.meijialife.dingdang.Constants;
 import com.meijialife.dingdang.R;
+import com.meijialife.dingdang.activity.HistoryOrderActivity;
 import com.meijialife.dingdang.activity.MoreActivity;
 import com.meijialife.dingdang.activity.PersonAccountCenterActivity;
 import com.meijialife.dingdang.activity.PersonInfoActivity;
@@ -80,6 +81,7 @@ public class PersonalPageFragment extends Fragment implements OnClickListener {
         view.findViewById(R.id.layout_more).setOnClickListener(this);
         view.findViewById(R.id.layout_user_list).setOnClickListener(this);
         view.findViewById(R.id.layout_mingxi_shouru).setOnClickListener(this);
+        view.findViewById(R.id.layout_history_order).setOnClickListener(this);
 
         tv_mobile = (TextView) view.findViewById(R.id.tv_mobile);
         tv_auth_status = (TextView) view.findViewById(R.id.tv_auth_status);
@@ -123,6 +125,9 @@ public class PersonalPageFragment extends Fragment implements OnClickListener {
         	break;
         case R.id.layout_mingxi_shouru://跳转到明细
             intent = new Intent(getActivity(), PersonPayDetailActivity.class);
+            break;
+        case R.id.layout_history_order://跳转到明细
+            intent = new Intent(getActivity(), HistoryOrderActivity.class);
             break;
         default:
             break;

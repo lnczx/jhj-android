@@ -231,7 +231,7 @@ public class Home2Fra extends Fragment implements OnClickListener {
             public void onCheckedChanged(RadioGroup grop, int checkedId) {
                 line_1.setVisibility(View.INVISIBLE);
                 line_2.setVisibility(View.INVISIBLE);
-                line_3.setVisibility(View.INVISIBLE);
+//                line_3.setVisibility(View.INVISIBLE);
 
                 if (checkedId == grop.getChildAt(0).getId()) {
                     line_1.setVisibility(View.VISIBLE);
@@ -298,8 +298,8 @@ public class Home2Fra extends Fragment implements OnClickListener {
     public void onDestroy() {
     	super.onDestroy();
     	pageIndex = 1;
-    	secData.clear();
-    	orderList.clear();
+//    	secData.clear();
+//    	orderList.clear();
     	
     }
 }

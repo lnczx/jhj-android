@@ -54,6 +54,7 @@
                 android:layout_weight="1"
                 android:button="@null"
                 android:gravity="center"
+                android:visibility="gone"
                 android:text="历史订单"
                 android:textColor="@color/index2_radiobutton_color"
                 android:textSize="@dimen/font_size_14" />
@@ -83,7 +84,7 @@
                 android:id="@+id/line_3"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_weight="1"
+                android:layout_weight="1"   android:visibility="gone"
                 android:background="@color/simi_color_orange" />
         </LinearLayout>
     </RelativeLayout>

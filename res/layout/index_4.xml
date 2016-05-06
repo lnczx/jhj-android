@@ -82,6 +82,7 @@
                         android:background="@drawable/icon_person_order" />
 
                     <LinearLayout
+                             android:id="@+id/layout_history_order"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
