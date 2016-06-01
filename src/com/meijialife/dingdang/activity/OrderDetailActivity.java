@@ -144,7 +144,7 @@ public class OrderDetailActivity extends BaseActivity {
         tv_order_addr = (TextView) findViewById(R.id.tv_order_addr);
         slipBtn = (ToggleButton) findViewById(R.id.slipBtn_fatongzhi);
 
-        slipBtn.setOnToggleChanged(new OnToggleChanged() {
+      /*  slipBtn.setOnToggleChanged(new OnToggleChanged() {
             @Override
             public void onToggle(boolean on) {
                 if (on) {
@@ -153,7 +153,7 @@ public class OrderDetailActivity extends BaseActivity {
                     isSelect = false;
                 }
             }
-        });
+        });*/
 
         // 调整订单
 
@@ -318,8 +318,10 @@ public class OrderDetailActivity extends BaseActivity {
 				@Override
 				public void onToggle(boolean on) {
 					if(on){
+						isSelect = true;
 						tv_order_status.setText("线下已支付");
 					}else {
+						isSelect = false;
 						tv_order_status.setText(orderBean.getPay_type_name());
 					}
 				}
