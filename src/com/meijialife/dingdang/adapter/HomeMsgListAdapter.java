@@ -128,7 +128,7 @@ public class HomeMsgListAdapter extends BaseAdapter {
         AjaxParams param = new AjaxParams(map);
 
         // showDialog();
-        new FinalHttp().post(Constants.URL_GET_TOTAL_TODAY, param, new AjaxCallBack<Object>() {
+        new FinalHttp().post(Constants.URL_POST_TOTAL_TODAY, param, new AjaxCallBack<Object>() {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
@@ -151,12 +151,8 @@ public class HomeMsgListAdapter extends BaseAdapter {
                         String msg = obj.getString("msg");
                         String data = obj.getString("data");
                         if (status == Constants.STATUS_SUCCESS) { // 正确
-                            if (StringUtils.isNotEmpty(data)) {
                                 getMsgList();
                                 UIUtils.showToast(context, "消息已读" );
-                            } else {
-                                UIUtils.showToast(context, "数据错误");
-                            }
                         } else if (status == Constants.STATUS_SERVER_ERROR) { // 服务器错误
                             errorMsg = context.getString(R.string.servers_error);
                         } else if (status == Constants.STATUS_PARAM_MISS) { // 缺失必选参数

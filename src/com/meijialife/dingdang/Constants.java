@@ -44,6 +44,8 @@ public class Constants {
     public static final String URL_GET_UNIVERSITY_STATUS = ROOT_URL1 + "university/get_staff_test_status.json";
     //当日统计数
     public static final String URL_GET_TOTAL_TODAY = ROOT_URL1 + "staff/order/total_today.json";
+    //消息已读接口
+    public static final String URL_POST_TOTAL_TODAY = ROOT_URL1 + "msg/post_read.json";
     //开工按钮
     public static final String URL_GET_START_WORK = ROOT_URL1 + "staff/is_work.json";
     //获取消息列表
