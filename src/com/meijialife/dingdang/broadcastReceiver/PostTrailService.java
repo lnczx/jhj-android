@@ -222,8 +222,13 @@ public class PostTrailService extends Service {
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 //		startService(intent);
-		mLocClient.start();
-		this.myThread.start();
+		if(!mLocClient.isStarted()){
+			mLocClient.start();
+		}
+		
+		if(!this.myThread.isAlive()){
+			this.myThread.start();
+		}
 		return super.onStartCommand(intent, flags, startId);
 	}
 
