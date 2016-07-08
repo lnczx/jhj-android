@@ -216,7 +216,7 @@ public class BasicToolUtil {
             if (fastClickTime == FAST_CLICK_TIME_FOR_TIP) {
                 fastClickTime = 0;
                 if (null != context) {
-                    Toast.makeText(context, R.string.tip_fast_click, 0).show();
+                    Toast.makeText(context, R.string.tip_fast_clicks, 0).show();
                 }
             }
             return true;

@@ -8,6 +8,7 @@
     <string name="network_unreachable_title">网络不可用</string>
     <string name="network_setting_msg">好像网络出了点问题，快去检查一下吧</string>
     <string name="tip_fast_click">少年,慢点戳</string>
+    <string name="tip_fast_clicks">点击太频繁</string>
     <string name="tip_open_gps">打开gps，快速寻找周围的小伙伴</string>
     <string name="tip_open_gps_title">打开定位</string>
     <string name="button_open_gps">打开gps</string>
