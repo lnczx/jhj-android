@@ -17,11 +17,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -188,7 +184,7 @@ public class Home1Fra extends BaseFragment {
         String staffid = SpFileUtil.getString(getActivity(), SpFileUtil.FILE_UI_PARAMETER, SpFileUtil.KEY_STAFF_ID, "");
         Map<String, String> map = new HashMap<String, String>();
         map.put("user_id", staffid);
-        map.put("user_type", "0");
+        map.put("user_type", "1");
         map.put("page", "1");
         AjaxParams param = new AjaxParams(map);
 
