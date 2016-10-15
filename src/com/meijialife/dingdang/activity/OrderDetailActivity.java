@@ -2,6 +2,7 @@ package com.meijialife.dingdang.activity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import net.tsz.afinal.FinalHttp;
@@ -33,8 +34,11 @@ import com.google.gson.Gson;
 import com.meijialife.dingdang.BaseActivity;
 import com.meijialife.dingdang.Constants;
 import com.meijialife.dingdang.R;
+import com.meijialife.dingdang.adapter.OrderListDetailsAdapter;
 import com.meijialife.dingdang.bean.OrderListVo;
+import com.meijialife.dingdang.bean.OrderListVo.ServiceAddonsBean;
 import com.meijialife.dingdang.bean.UserIndexData;
+import com.meijialife.dingdang.ui.ListViewForInner;
 import com.meijialife.dingdang.ui.ToggleButton;
 import com.meijialife.dingdang.ui.ToggleButton.OnToggleChanged;
 import com.meijialife.dingdang.utils.LogOut;
@@ -95,6 +99,9 @@ public class OrderDetailActivity extends BaseActivity {
     private LinearLayout layout_goutong_des;
     private ToggleButton slipBtn;
     private boolean isSelect;
+    private LinearLayout layout_server_details;
+    private ListViewForInner listview_details;
+    private OrderListDetailsAdapter orderListDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -161,6 +168,10 @@ public class OrderDetailActivity extends BaseActivity {
         tv_input_money = (TextView) findViewById(R.id.tv_input_money);
         et_input_content = (EditText) findViewById(R.id.et_input_content);
         et_input_money = (EditText) findViewById(R.id.et_input_order_money);
+        
+        layout_server_details = (LinearLayout) findViewById(R.id.layout_server_details);
+        listview_details = (ListViewForInner) findViewById(R.id.listview_details);
+        
 
     }
 
@@ -376,6 +387,17 @@ public class OrderDetailActivity extends BaseActivity {
                 tv_order_money.setVisibility(View.VISIBLE);
                 et_input_content.setVisibility(View.GONE);
                 et_input_money.setVisibility(View.GONE);
+            }
+            
+            //列表展示
+            List<ServiceAddonsBean>  orderBeans = orderBean.getService_addons();
+            if(null != orderBeans && orderBeans.size()>0){
+                layout_server_details.setVisibility(View.VISIBLE);
+                orderListDetails = new OrderListDetailsAdapter(OrderDetailActivity.this);
+                orderListDetails.setData(orderBeans);
+                listview_details.setAdapter(orderListDetails);
+            }else{
+                layout_server_details.setVisibility(View.GONE);
             }
 
         }

@@ -69,8 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="9dp" 
-            >
+            android:paddingBottom="9dp" >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -262,6 +261,90 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/layout_server_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="14dp"
+                android:background="@drawable/btn_list_item_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:text="服务子项："
+                    android:textSize="@dimen/font_size_12" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_corner"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:gravity="center"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/tv_details_catege"
+                            android:layout_width="60dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="类别"
+                            android:textColor="@color/simi_color_gray"
+                            android:textSize="@dimen/font_size_12" />
+
+                        <View
+                            android:layout_width="0.5dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/simi_color_gray" />
+
+                        <TextView
+                            android:id="@+id/tv_details_price"
+                            android:layout_width="60dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="折扣价"
+                            android:textColor="@color/simi_color_gray"
+                            android:textSize="@dimen/font_size_12" />
+
+                        <View
+                            android:layout_width="0.5dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/simi_color_gray" />
+
+                        <TextView
+                            android:id="@+id/tv_details_num"
+                            android:layout_width="60dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text=" 数量"
+                            android:textColor="@color/simi_color_gray"
+                            android:textSize="@dimen/font_size_12" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="#999999" />
+
+                    <com.meijialife.dingdang.ui.ListViewForInner
+                        android:id="@+id/listview_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:divider="#999999"
+                        android:dividerHeight="0.5dp" >
+                    </com.meijialife.dingdang.ui.ListViewForInner>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:background="@drawable/btn_list_item_bg"
@@ -314,8 +397,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingBottom="10dp"
-                android:paddingTop="25dp"
-                 >
+                android:paddingTop="25dp" >
 
                 <LinearLayout
                     android:id="@+id/layout_order_tiaozheng"
