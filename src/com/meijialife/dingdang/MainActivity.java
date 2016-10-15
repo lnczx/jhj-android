@@ -412,7 +412,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("user_id", staffid);
-		map.put("user_type", "1");
+		map.put("user_type", "0");
 		map.put("lat", lat);// weidu
 		map.put("lng", lng);// jingdu
 		map.put("poi_name", city);

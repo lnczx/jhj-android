@@ -49,7 +49,7 @@ public class OrderListVo implements Serializable {
 
 	private String pick_addr_lng;
 
-	private Short service_hour;
+	private String service_hour;
 
 	private String remarks;
 	private String remarks_confirm;
@@ -236,11 +236,11 @@ public class OrderListVo implements Serializable {
         this.pick_addr_lng = pick_addr_lng;
     }
 
-    public Short getService_hour() {
+    public String getService_hour() {
 		return service_hour;
 	}
 
-	public void setService_hour(Short service_hour) {
+	public void setService_hour(String service_hour) {
 		this.service_hour = service_hour;
 	}
 

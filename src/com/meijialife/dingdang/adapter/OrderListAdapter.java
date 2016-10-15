@@ -123,7 +123,7 @@ public class OrderListAdapter extends BaseAdapter {
             holder.iv_start_server.setOnClickListener(new MyAdapterListener(orderListVo));
 
             // 判断点击事件
-            if (order_type == 0) {
+            if (order_type == 0 || order_type == 1) {
                 if (order_status < 3 || order_status >= 7) {
                     // 不可点
                     holder.iv_start_server.setEnabled(false);
@@ -153,7 +153,7 @@ public class OrderListAdapter extends BaseAdapter {
             holder.iv_start_server.setText(orderListVo.getButton_word());
             holder.tv_service_date.setText(orderListVo.getService_date());
 
-            if (order_type == 0) {// 钟点工
+            if (order_type == 0 || order_type == 1) {// 钟点工
                 holder.tv_shichang.setVisibility(View.VISIBLE);
                 holder.tv_service_hours.setVisibility(View.VISIBLE);
                 holder.tv_service_hours.setText(orderListVo.getService_hour() + "小时");

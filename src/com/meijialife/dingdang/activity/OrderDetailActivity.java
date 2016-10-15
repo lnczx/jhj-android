@@ -239,7 +239,7 @@ public class OrderDetailActivity extends BaseActivity {
                     dialog.setPositiveButton("确认", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
 
-                            if (order_type == 0) {// 钟点工
+                            if (order_type == 0 || order_type == 1) {// 钟点工
                                 if (order_status == 3) {
                                     change_work(START);
                                 } else if (order_status == 5) {
@@ -288,7 +288,7 @@ public class OrderDetailActivity extends BaseActivity {
                 }
             });
 
-            if (order_type == 0) {
+            if (order_type == 0 || order_type == 1) {
                 if (order_status < 3 || order_status >= 7) {
                     // 不可点
                     btn_order_start_work.setEnabled(false);
@@ -341,7 +341,7 @@ public class OrderDetailActivity extends BaseActivity {
             tv_input_content.setText(orderBean.getRemarks_confirm());
             tv_order_addr.setText(orderBean.getService_addr());
             // 判断哪些展示
-            if (order_type == 0) {// 钟点工
+            if (order_type == 0 || order_type == 1) {// 钟点工
                 ORDERTYPE = ORDERZDG;
                 dissmisOrderModify();
                 iv_order_type.setBackgroundResource(R.drawable.icon_zhongdiangong);

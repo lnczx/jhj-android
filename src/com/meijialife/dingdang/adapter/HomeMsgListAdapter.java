@@ -123,7 +123,7 @@ public class HomeMsgListAdapter extends BaseAdapter {
         String staffid = SpFileUtil.getString(context, SpFileUtil.FILE_UI_PARAMETER, SpFileUtil.KEY_STAFF_ID, "");
         Map<String, String> map = new HashMap<String, String>();
         map.put("user_id", staffid);
-        map.put("user_type", "1");
+        map.put("user_type", "0");
         map.put("msg_id", msg_id + "");
         AjaxParams param = new AjaxParams(map);
 
