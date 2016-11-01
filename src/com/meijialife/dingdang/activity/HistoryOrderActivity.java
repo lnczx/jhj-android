@@ -56,7 +56,7 @@ public class HistoryOrderActivity extends BaseActivity implements OnClickListene
 	
     private RadioGroup radiogroup;
     private ArrayList<OrderListVo> secData;
-    private int order_from_main=0;
+    private int order_from_main=2;
 
     private View loadMoreView;
     private Button loadMoreButton;
