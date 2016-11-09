@@ -212,6 +212,9 @@ public class Constants {
      //动态标题
      public static String FEED_TITLE ="";
 
-     
+     //服务接受的广播
+     public static String LOCATION_RECEIVER_ACTION ="com.meijialife.service_destory";
+     //服务接受的闹钟action
+     public static String LOCATION_RECEIVER_CLOCK ="com.meijialife.clock";
      
 }

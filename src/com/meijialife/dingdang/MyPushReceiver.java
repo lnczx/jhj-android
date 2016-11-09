@@ -22,6 +22,7 @@ import com.meijialife.dingdang.Alerm.AlermUtils;
 import com.meijialife.dingdang.activity.LoginActivity;
 import com.meijialife.dingdang.activity.SplashActivity;
 import com.meijialife.dingdang.bean.ReceiverBean;
+import com.meijialife.dingdang.service.LocationReportService;
 import com.meijialife.dingdang.utils.LogOut;
 
 public class MyPushReceiver extends BroadcastReceiver {
@@ -40,6 +41,14 @@ public class MyPushReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         this.mContext = context;
 
+        LogOut.debug("接收到个推推送广播，启动LocationReportService");
+        try {
+            Intent ootStartIntent = new Intent(context, LocationReportService.class);
+            context.startService(ootStartIntent);
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        
         Bundle bundle = intent.getExtras();
         Log.d("GetuiSdkDemo", "onReceive() action=" + bundle.getInt("action"));
 
