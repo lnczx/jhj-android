@@ -52,11 +52,11 @@ public class LocationReportService extends Service implements BDLocationListener
 
     private boolean location_status = false;// 是否成功获去地理置位置
     private boolean start_flag = false;// 是否是7点到22点
-    private String sleep_start_time = "24:00";
-    private String sleep_stop_time = "07:00";
+    private int sleep_start_time = 22;//睡眠开始时间
+    private int sleep_stop_time = 7;//睡眠结束时间
+    static private int SleepCircle = 15 * 60 * 1000;// 15分钟上报一次
 
     static private Thread statThread;
-    static private int SleepCircle = 60 * 1000;// 1分钟上报
     static private boolean alive = true;
 
     Handler handler = new Handler() {
@@ -142,12 +142,12 @@ public class LocationReportService extends Service implements BDLocationListener
     private void reportLocationHttp() {
         LogOut.debug("service request try");
 
-        Calendar c = Calendar.getInstance();
-        int year = c.get(Calendar.YEAR);
-        int month = c.get(Calendar.MARCH) + 1;
-        int day = c.get(Calendar.DATE);
-        String startTime = year + "-" + month + "-" + day + " " + sleep_start_time;
-        String endTime = year + "-" + month + "-" + day + " " + sleep_stop_time;
+//        Calendar c = Calendar.getInstance();
+//        int year = c.get(Calendar.YEAR);
+//        int month = c.get(Calendar.MARCH) + 1;
+//        int day = c.get(Calendar.DATE);
+//        String startTime = year + "-" + month + "-" + day + " " + sleep_start_time;
+//        String endTime = year + "-" + month + "-" + day + " " + sleep_stop_time;
 
         // Long startLong = DateUtils.getDateByPattern(startTime, "yyyy-MM-dd HH:mm").getTime();
         // Long endLong = DateUtils.getDateByPattern(endTime, "yyyy-MM-dd HH:mm").getTime();
@@ -159,7 +159,7 @@ public class LocationReportService extends Service implements BDLocationListener
         // }
 
         int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-        if (hour >= 2 && hour < 7) {
+        if (hour >= sleep_start_time && hour < sleep_stop_time) {
             start_flag = false;
         } else {
             start_flag = true;
