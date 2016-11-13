@@ -38,6 +38,7 @@ import com.meijialife.dingdang.adapter.OrderListDetailsAdapter;
 import com.meijialife.dingdang.bean.OrderListVo;
 import com.meijialife.dingdang.bean.OrderListVo.ServiceAddonsBean;
 import com.meijialife.dingdang.bean.UserIndexData;
+import com.meijialife.dingdang.service.LocationReportAgain;
 import com.meijialife.dingdang.ui.ListViewForInner;
 import com.meijialife.dingdang.ui.ToggleButton;
 import com.meijialife.dingdang.ui.ToggleButton.OnToggleChanged;
@@ -449,6 +450,12 @@ public class OrderDetailActivity extends BaseActivity {
                                 Gson gson = new Gson();
                                 orderBean = gson.fromJson(data, OrderListVo.class);
                                 ShowData(orderBean);
+                                
+                                try {
+                                    new LocationReportAgain(OrderDetailActivity.this).reportLocationHttp();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
                             }
                         } else if (status == Constants.STATUS_SERVER_ERROR) { // 服务器错误
                             errorMsg = getString(R.string.servers_error);
@@ -475,6 +482,7 @@ public class OrderDetailActivity extends BaseActivity {
         });
 
     }
+    
 
     /**
      * 显示调整订单
@@ -600,6 +608,13 @@ public class OrderDetailActivity extends BaseActivity {
                 // 操作失败，显示错误信息|
                 if (!StringUtils.isEmpty(errorMsg.trim())) {
                     UIUtils.showToast(getApplicationContext(), errorMsg);
+                }
+                
+                
+                try {
+                    new LocationReportAgain(OrderDetailActivity.this).reportLocationHttp();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
         });

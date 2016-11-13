@@ -30,6 +30,7 @@ import com.meijialife.dingdang.Constants;
 import com.meijialife.dingdang.R;
 import com.meijialife.dingdang.adapter.OrderListAdapter;
 import com.meijialife.dingdang.bean.OrderListVo;
+import com.meijialife.dingdang.service.LocationReportAgain;
 import com.meijialife.dingdang.utils.LogOut;
 import com.meijialife.dingdang.utils.NetworkUtils;
 import com.meijialife.dingdang.utils.SpFileUtil;
@@ -213,6 +214,12 @@ public class Home2Fra extends Fragment implements OnClickListener {
                 // 操作失败，显示错误信息|
                 if (!StringUtils.isEmpty(errorMsg.trim())) {
                     UIUtils.showToast(getActivity(), errorMsg);
+                }
+                
+                try {
+                    new LocationReportAgain(getActivity()).reportLocationHttp();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
         });

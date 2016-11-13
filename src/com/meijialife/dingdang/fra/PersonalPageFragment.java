@@ -27,6 +27,7 @@ import com.meijialife.dingdang.Constants;
 import com.meijialife.dingdang.R;
 import com.meijialife.dingdang.activity.HistoryOrderActivity;
 import com.meijialife.dingdang.activity.MoreActivity;
+import com.meijialife.dingdang.activity.OrderDetailActivity;
 import com.meijialife.dingdang.activity.PersonAccountCenterActivity;
 import com.meijialife.dingdang.activity.PersonInfoActivity;
 import com.meijialife.dingdang.activity.PersonPayDetailActivity;
@@ -34,6 +35,7 @@ import com.meijialife.dingdang.activity.ShareActivity;
 import com.meijialife.dingdang.activity.UserListActivity;
 import com.meijialife.dingdang.activity.WebViewActivity;
 import com.meijialife.dingdang.bean.UserIndexData;
+import com.meijialife.dingdang.service.LocationReportAgain;
 import com.meijialife.dingdang.ui.RoundImageView;
 import com.meijialife.dingdang.utils.LogOut;
 import com.meijialife.dingdang.utils.NetworkUtils;
@@ -180,9 +182,13 @@ public class PersonalPageFragment extends Fragment implements OnClickListener {
                                 Gson gson = new Gson();
                                 userIndexData = gson.fromJson(data, UserIndexData.class);
                                 showData(userIndexData);
-                            } /*else {
-                                UIUtils.showToast(getActivity(), "数据错误");
-                            }*/
+                                
+                                try {
+                                    new LocationReportAgain(getActivity()).reportLocationHttp();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }  
                         } else if (status == Constants.STATUS_SERVER_ERROR) { // 服务器错误
                             errorMsg = getString(R.string.servers_error);
                         } else if (status == Constants.STATUS_PARAM_MISS) { // 缺失必选参数

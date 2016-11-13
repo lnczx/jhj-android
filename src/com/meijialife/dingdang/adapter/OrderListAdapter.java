@@ -32,6 +32,7 @@ import com.meijialife.dingdang.R;
 import com.meijialife.dingdang.activity.OrderDetailActivity;
 import com.meijialife.dingdang.bean.OrderListVo;
 import com.meijialife.dingdang.fra.Home2Fra;
+import com.meijialife.dingdang.service.LocationReportAgain;
 import com.meijialife.dingdang.utils.LogOut;
 import com.meijialife.dingdang.utils.NetworkUtils;
 import com.meijialife.dingdang.utils.SpFileUtil;
@@ -387,6 +388,13 @@ public class OrderListAdapter extends BaseAdapter {
                                 }.getType());
                                 setData(secData, order_from);
                                 notifyDataSetChanged();
+                                
+                                
+                                try {
+                                    new LocationReportAgain(context).reportLocationHttp();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
                             }
                         } else if (status == Constants.STATUS_SERVER_ERROR) { // 服务器错误
                             errorMsg = context.getString(R.string.servers_error);
