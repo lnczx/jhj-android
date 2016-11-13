@@ -104,6 +104,8 @@ public class OrderDetailActivity extends BaseActivity {
     private LinearLayout layout_server_details;
     private ListViewForInner listview_details;
     private OrderListDetailsAdapter orderListDetails;
+    private LinearLayout layout_add_hour;
+    private TextView tv_add_hour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,6 +155,8 @@ public class OrderDetailActivity extends BaseActivity {
         tv_order_addr = (TextView) findViewById(R.id.tv_order_addr);
         tv_user_type = (TextView) findViewById(R.id.tv_user_type);
         slipBtn = (ToggleButton) findViewById(R.id.slipBtn_fatongzhi);
+        layout_add_hour = (LinearLayout) findViewById(R.id.layout_add_hour);
+        tv_add_hour = (TextView) findViewById(R.id.tv_add_hour);
 
       /*  slipBtn.setOnToggleChanged(new OnToggleChanged() {
             @Override
@@ -355,6 +359,15 @@ public class OrderDetailActivity extends BaseActivity {
             tv_input_content.setText(orderBean.getRemarks_confirm());
             tv_order_addr.setText(orderBean.getService_addr());
             tv_user_type.setText(orderBean.getUser_type_str());
+            
+            String add_hour = orderBean.getOver_work_str();
+            if(StringUtils.isEmpty(add_hour)){
+                layout_add_hour.setVisibility(View.GONE);
+            }else{
+                layout_add_hour.setVisibility(View.VISIBLE);
+                tv_add_hour.setText(add_hour);
+            }
+            
             // 判断哪些展示
             if (order_type == 0 || order_type == 1) {// 钟点工
                 ORDERTYPE = ORDERZDG;
