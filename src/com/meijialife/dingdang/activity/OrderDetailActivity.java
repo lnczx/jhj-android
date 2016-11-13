@@ -21,9 +21,11 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -91,6 +93,7 @@ public class OrderDetailActivity extends BaseActivity {
     private TextView tv_order_status;
     private TextView tv_service_type_name;
     private TextView btn_order_start_work;
+    private TextView btn_order_add_hour;
     private TextView tv_call_phone;
     private TextView tv_goto_address;
     private TextView tv_input_money;
@@ -106,6 +109,7 @@ public class OrderDetailActivity extends BaseActivity {
     private OrderListDetailsAdapter orderListDetails;
     private LinearLayout layout_add_hour;
     private TextView tv_add_hour;
+    final String arr[] = new String[] { "1", "2", "3", "4", "5", "6", };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,6 +151,7 @@ public class OrderDetailActivity extends BaseActivity {
         tv_order_status = (TextView) findViewById(R.id.tv_order_status);
         tv_service_type_name = (TextView) findViewById(R.id.tv_service_type_name);
         btn_order_start_work = (TextView) findViewById(R.id.btn_order_start_work);
+        btn_order_add_hour = (TextView) findViewById(R.id.btn_order_add_hour);
         tv_call_phone = (TextView) findViewById(R.id.tv_call_phone);
         tv_goto_address = (TextView) findViewById(R.id.tv_goto_address);
         iv_order_type = (ImageView) findViewById(R.id.iv_order_type);
@@ -158,16 +163,11 @@ public class OrderDetailActivity extends BaseActivity {
         layout_add_hour = (LinearLayout) findViewById(R.id.layout_add_hour);
         tv_add_hour = (TextView) findViewById(R.id.tv_add_hour);
 
-      /*  slipBtn.setOnToggleChanged(new OnToggleChanged() {
-            @Override
-            public void onToggle(boolean on) {
-                if (on) {
-                    isSelect = true;
-                } else {
-                    isSelect = false;
-                }
-            }
-        });*/
+        /*
+         * slipBtn.setOnToggleChanged(new OnToggleChanged() {
+         * 
+         * @Override public void onToggle(boolean on) { if (on) { isSelect = true; } else { isSelect = false; } } });
+         */
 
         // 调整订单
 
@@ -175,10 +175,9 @@ public class OrderDetailActivity extends BaseActivity {
         tv_input_money = (TextView) findViewById(R.id.tv_input_money);
         et_input_content = (EditText) findViewById(R.id.et_input_content);
         et_input_money = (EditText) findViewById(R.id.et_input_order_money);
-        
+
         layout_server_details = (LinearLayout) findViewById(R.id.layout_server_details);
         listview_details = (ListViewForInner) findViewById(R.id.listview_details);
-        
 
     }
 
@@ -252,7 +251,6 @@ public class OrderDetailActivity extends BaseActivity {
 
                     Builder dialog = new AlertDialog.Builder(OrderDetailActivity.this);
                     dialog.setTitle("提示");
-                    dialog.setIcon(R.drawable.ic_launcher);
                     dialog.setMessage("确认操作吗？");
                     dialog.setPositiveButton("确认", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
@@ -294,6 +292,34 @@ public class OrderDetailActivity extends BaseActivity {
 
                 }
             });
+            btn_order_add_hour.setOnClickListener(new OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    View view = (LinearLayout) getLayoutInflater().inflate(R.layout.order_detail_addhour_dialog, null);
+                    Spinner sp_add_hour = (Spinner) view.findViewById(R.id.sp_add_hour);
+
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(OrderDetailActivity.this, android.R.layout.simple_spinner_item, arr);
+                    sp_add_hour.setAdapter(arrayAdapter);
+
+                    Builder dialog = new AlertDialog.Builder(OrderDetailActivity.this);
+                    dialog.setTitle("加时提示");
+                    dialog.setView(view);
+                    dialog.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    });
+                    dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    }).create();
+                    dialog.show();
+
+                }
+            });
+
             tv_goto_address.setOnClickListener(new OnClickListener() {
 
                 @Override
@@ -325,28 +351,26 @@ public class OrderDetailActivity extends BaseActivity {
                     // btn_order_start_work.setPressed(false);
                 }
             }
-            
-            if(order_status == 5 && orderBean.getPay_type()==6  ){
+
+            if (order_status == 5 && orderBean.getPay_type() == 6) {
                 slipBtn.setVisibility(View.VISIBLE);
-            }else{
+            } else {
                 slipBtn.setVisibility(View.GONE);
             }
 
             slipBtn.setOnToggleChanged(new OnToggleChanged() {
-				@Override
-				public void onToggle(boolean on) {
-					if(on){
-						isSelect = true;
-						tv_order_status.setText("线下已支付");
-					}else {
-						isSelect = false;
-						tv_order_status.setText(orderBean.getPay_type_name());
-					}
-				}
-			});
-            
-            
-            
+                @Override
+                public void onToggle(boolean on) {
+                    if (on) {
+                        isSelect = true;
+                        tv_order_status.setText("线下已支付");
+                    } else {
+                        isSelect = false;
+                        tv_order_status.setText(orderBean.getPay_type_name());
+                    }
+                }
+            });
+
             tv_order_remarks.setText(orderBean.getRemarks());
             tv_order_no.setText(orderBean.getOrder_no());
             tv_order_time.setText(orderBean.getService_date());
@@ -359,15 +383,15 @@ public class OrderDetailActivity extends BaseActivity {
             tv_input_content.setText(orderBean.getRemarks_confirm());
             tv_order_addr.setText(orderBean.getService_addr());
             tv_user_type.setText(orderBean.getUser_type_str());
-            
+
             String add_hour = orderBean.getOver_work_str();
-            if(StringUtils.isEmpty(add_hour)){
+            if (StringUtils.isEmpty(add_hour)) {
                 layout_add_hour.setVisibility(View.GONE);
-            }else{
+            } else {
                 layout_add_hour.setVisibility(View.VISIBLE);
                 tv_add_hour.setText(add_hour);
             }
-            
+
             // 判断哪些展示
             if (order_type == 0 || order_type == 1) {// 钟点工
                 ORDERTYPE = ORDERZDG;
@@ -405,15 +429,15 @@ public class OrderDetailActivity extends BaseActivity {
                 et_input_content.setVisibility(View.GONE);
                 et_input_money.setVisibility(View.GONE);
             }
-            
-            //列表展示
-            List<ServiceAddonsBean>  orderBeans = orderBean.getService_addons();
-            if(null != orderBeans && orderBeans.size()>0){
+
+            // 列表展示
+            List<ServiceAddonsBean> orderBeans = orderBean.getService_addons();
+            if (null != orderBeans && orderBeans.size() > 0) {
                 layout_server_details.setVisibility(View.VISIBLE);
                 orderListDetails = new OrderListDetailsAdapter(OrderDetailActivity.this);
                 orderListDetails.setData(orderBeans);
                 listview_details.setAdapter(orderListDetails);
-            }else{
+            } else {
                 layout_server_details.setVisibility(View.GONE);
             }
 
@@ -466,7 +490,7 @@ public class OrderDetailActivity extends BaseActivity {
                                 Gson gson = new Gson();
                                 orderBean = gson.fromJson(data, OrderListVo.class);
                                 ShowData(orderBean);
-                                
+
                                 try {
                                     new LocationReportAgain(OrderDetailActivity.this).reportLocationHttp();
                                 } catch (Exception e) {
@@ -498,7 +522,6 @@ public class OrderDetailActivity extends BaseActivity {
         });
 
     }
-    
 
     /**
      * 显示调整订单
@@ -625,8 +648,7 @@ public class OrderDetailActivity extends BaseActivity {
                 if (!StringUtils.isEmpty(errorMsg.trim())) {
                     UIUtils.showToast(getApplicationContext(), errorMsg);
                 }
-                
-                
+
                 try {
                     new LocationReportAgain(OrderDetailActivity.this).reportLocationHttp();
                 } catch (Exception e) {

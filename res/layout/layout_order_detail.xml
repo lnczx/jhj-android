@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/activity_bg_color"
@@ -63,11 +64,12 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:scrollbars="none" >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:paddingBottom="9dp" >
 
@@ -139,7 +141,7 @@
 
                 <TextView
                     android:id="@+id/tv_goto_address"
-                      android:layout_width="80dp"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
@@ -184,7 +186,6 @@
                     android:id="@+id/tv_order_no"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:textColor="@color/simi_color_gray"
                     android:textSize="@dimen/font_size_12" />
             </LinearLayout>
@@ -207,7 +208,6 @@
                     android:id="@+id/tv_user_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:textColor="@color/simi_color_gray"
                     android:textSize="@dimen/font_size_12" />
             </LinearLayout>
@@ -231,7 +231,6 @@
                     android:id="@+id/tv_order_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:textColor="@color/simi_color_gray"
                     android:textSize="@dimen/font_size_12" />
             </LinearLayout>
@@ -255,7 +254,6 @@
                     android:id="@+id/tv_order_shichang"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:textColor="@color/simi_color_gray"
                     android:textSize="@dimen/font_size_12" />
             </LinearLayout>
@@ -278,7 +276,6 @@
                     android:id="@+id/tv_order_xiangmu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:textColor="@color/simi_color_gray"
                     android:textSize="@dimen/font_size_12" />
             </LinearLayout>
@@ -370,12 +367,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
                 android:background="@drawable/btn_list_item_bg"
                 android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp"
                 android:paddingRight="14dp"
-                android:orientation="horizontal" >
+                android:paddingTop="5dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -388,7 +385,6 @@
                     android:id="@+id/tv_order_addr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:textColor="@color/simi_color_gray"
                     android:textSize="@dimen/font_size_12" />
             </LinearLayout>
@@ -411,7 +407,6 @@
                     android:id="@+id/tv_order_remarks"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:textColor="@color/simi_color_gray"
                     android:textSize="@dimen/font_size_12" />
             </LinearLayout>
@@ -435,11 +430,10 @@
                     android:id="@+id/tv_add_hour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:textColor="@color/simi_color_gray"
                     android:textSize="@dimen/font_size_12" />
             </LinearLayout>
-            
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -622,7 +616,7 @@
                     android:id="@+id/tv_order_money"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginLeft="5dp"
                     android:text="100元"
                     android:textColor="@color/simi_color_orange"
                     android:textSize="@dimen/font_size_15" />
@@ -646,7 +640,7 @@
                     android:id="@+id/tv_order_incoming"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginLeft="5dp"
                     android:text="85元"
                     android:textColor="@color/simi_color_orange"
                     android:textSize="@dimen/font_size_15" />
@@ -677,7 +671,7 @@
                         android:id="@+id/tv_order_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:layout_marginLeft="5dp"
                         android:text="线下未支付"
                         android:textColor="@color/simi_color_orange"
                         android:textSize="@dimen/font_size_15" />
@@ -692,18 +686,36 @@
                     android:layout_marginRight="@dimen/activity_horizontal_margin" />
             </RelativeLayout>
 
-            <TextView
-                android:id="@+id/btn_order_start_work"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/btn_long"
-                android:gravity="center"
-                android:text="开始服务"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp" />
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp" >
+
+                <TextView
+                    android:id="@+id/btn_order_add_hour"
+                    android:layout_width="150dp"
+                    android:layout_height="44dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/btn_blue_long"
+                    android:gravity="center"
+                    android:text="加时"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/btn_order_start_work"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_long"
+                    android:gravity="center"
+                    android:text="开始服务"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
