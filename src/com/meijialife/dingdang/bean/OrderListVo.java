@@ -88,7 +88,7 @@ public class OrderListVo implements Serializable {
         private int add_time;
         private String service_addon_name;
         private int default_num;
-        private int service_hour;
+        private double service_hour;
 
         public int getId() {
             return id;
@@ -178,11 +178,11 @@ public class OrderListVo implements Serializable {
             this.default_num = default_num;
         }
 
-        public int getService_hour() {
+        public double getService_hour() {
             return service_hour;
         }
 
-        public void setService_hour(int service_hour) {
+        public void setService_hour(double service_hour) {
             this.service_hour = service_hour;
         }
     }

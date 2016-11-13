@@ -3,6 +3,7 @@
     package="com.meijialife.dingdang"
     android:versionCode="12"
     android:versionName="1.1.2" >
+ 
 
     <uses-sdk
         android:minSdkVersion="11"
