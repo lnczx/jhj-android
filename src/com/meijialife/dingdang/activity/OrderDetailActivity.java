@@ -44,6 +44,7 @@ import com.meijialife.dingdang.service.LocationReportAgain;
 import com.meijialife.dingdang.ui.ListViewForInner;
 import com.meijialife.dingdang.ui.ToggleButton;
 import com.meijialife.dingdang.ui.ToggleButton.OnToggleChanged;
+import com.meijialife.dingdang.utils.InputMethodUtils;
 import com.meijialife.dingdang.utils.KeyBoardUtils;
 import com.meijialife.dingdang.utils.LogOut;
 import com.meijialife.dingdang.utils.NetworkUtils;
@@ -255,9 +256,6 @@ public class OrderDetailActivity extends BaseActivity {
                     dialog.setMessage("确认操作吗？");
                     dialog.setPositiveButton("确认", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-
-                            KeyBoardUtils.closeKeybord(btn_order_start_work, OrderDetailActivity.this);
-
                             if (order_type == 0 || order_type == 1) {// 钟点工
                                 if (order_status == 3) {
                                     change_work(START);
@@ -318,8 +316,9 @@ public class OrderDetailActivity extends BaseActivity {
                             String hour = sp_add_hour.getSelectedItem().toString();
 
                             addHour(order_id, hour, moneyString);
-
-                            KeyBoardUtils.closeKeybord(btn_order_add_hour, OrderDetailActivity.this);
+                            
+                            KeyBoardUtils.closeKeybord(et_add_hour_money, OrderDetailActivity.this);
+                          
                         }
                     });
                     dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -468,6 +467,7 @@ public class OrderDetailActivity extends BaseActivity {
      * 加时接口
      */
     public void addHour(final String id, String hour, String money) {
+       
         if (!NetworkUtils.isNetworkConnected(OrderDetailActivity.this)) {
             Toast.makeText(OrderDetailActivity.this, getString(R.string.net_not_open), 0).show();
             return;
@@ -544,6 +544,13 @@ public class OrderDetailActivity extends BaseActivity {
             return;
         }
 
+        try {
+            InputMethodUtils.closeSoftKeyboard(OrderDetailActivity.this);
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }        
+        
+        
         String staffid = SpFileUtil.getString(OrderDetailActivity.this, SpFileUtil.FILE_UI_PARAMETER, SpFileUtil.KEY_STAFF_ID, "");
         Map<String, String> map = new HashMap<String, String>();
         map.put("staff_id", staffid);
