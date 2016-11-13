@@ -44,6 +44,7 @@ import com.meijialife.dingdang.service.LocationReportAgain;
 import com.meijialife.dingdang.ui.ListViewForInner;
 import com.meijialife.dingdang.ui.ToggleButton;
 import com.meijialife.dingdang.ui.ToggleButton.OnToggleChanged;
+import com.meijialife.dingdang.utils.KeyBoardUtils;
 import com.meijialife.dingdang.utils.LogOut;
 import com.meijialife.dingdang.utils.NetworkUtils;
 import com.meijialife.dingdang.utils.SpFileUtil;
@@ -255,6 +256,8 @@ public class OrderDetailActivity extends BaseActivity {
                     dialog.setPositiveButton("确认", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
 
+                            KeyBoardUtils.closeKeybord(btn_order_start_work, OrderDetailActivity.this);
+
                             if (order_type == 0 || order_type == 1) {// 钟点工
                                 if (order_status == 3) {
                                     change_work(START);
@@ -294,10 +297,14 @@ public class OrderDetailActivity extends BaseActivity {
             });
             btn_order_add_hour.setOnClickListener(new OnClickListener() {
 
+                private EditText et_add_hour_money;
+                private Spinner sp_add_hour;
+
                 @Override
                 public void onClick(View v) {
                     View view = (LinearLayout) getLayoutInflater().inflate(R.layout.order_detail_addhour_dialog, null);
-                    Spinner sp_add_hour = (Spinner) view.findViewById(R.id.sp_add_hour);
+                    sp_add_hour = (Spinner) view.findViewById(R.id.sp_add_hour);
+                    et_add_hour_money = (EditText) view.findViewById(R.id.et_add_hour_money);
 
                     ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(OrderDetailActivity.this, android.R.layout.simple_spinner_item, arr);
                     sp_add_hour.setAdapter(arrayAdapter);
@@ -307,7 +314,12 @@ public class OrderDetailActivity extends BaseActivity {
                     dialog.setView(view);
                     dialog.setPositiveButton("确认", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
+                            String moneyString = et_add_hour_money.getText().toString().trim();
+                            String hour = sp_add_hour.getSelectedItem().toString();
 
+                            addHour(order_id, hour, moneyString);
+
+                            KeyBoardUtils.closeKeybord(btn_order_add_hour, OrderDetailActivity.this);
                         }
                     });
                     dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -352,6 +364,14 @@ public class OrderDetailActivity extends BaseActivity {
                 }
             }
 
+            if(order_status >=3 && order_status < 7){
+                btn_order_add_hour.setVisibility(View.VISIBLE);
+            }else{
+                btn_order_add_hour.setVisibility(View.GONE);
+            }
+          
+            
+            
             if (order_status == 5 && orderBean.getPay_type() == 6) {
                 slipBtn.setVisibility(View.VISIBLE);
             } else {
@@ -442,6 +462,77 @@ public class OrderDetailActivity extends BaseActivity {
             }
 
         }
+    }
+
+    /**
+     * 加时接口
+     */
+    public void addHour(final String id, String hour, String money) {
+        if (!NetworkUtils.isNetworkConnected(OrderDetailActivity.this)) {
+            Toast.makeText(OrderDetailActivity.this, getString(R.string.net_not_open), 0).show();
+            return;
+        }
+
+        String staffid = SpFileUtil.getString(OrderDetailActivity.this, SpFileUtil.FILE_UI_PARAMETER, SpFileUtil.KEY_STAFF_ID, "");
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("staff_id", staffid);
+        map.put("order_id", id + "");
+        map.put("service_hour", hour);
+        map.put("order_pay", money);
+        AjaxParams param = new AjaxParams(map);
+
+        showDialog();
+        new FinalHttp().post(Constants.URL_ADD_HOUR, param, new AjaxCallBack<Object>() {
+
+            private ArrayList<OrderListVo> secData;
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                super.onFailure(t, errorNo, strMsg);
+                dismissDialog();
+                Toast.makeText(OrderDetailActivity.this, getString(R.string.network_failure), Toast.LENGTH_SHORT).show();
+                UIUtils.showTestToast(OrderDetailActivity.this, "errorMsg:" + strMsg);
+            }
+
+            @Override
+            public void onSuccess(Object t) {
+                super.onSuccess(t);
+                String errorMsg = "";
+                dismissDialog();
+                LogOut.i("========", "onSuccess：" + t);
+                // UIUtils.showTestToast(OrderDetailActivity.this, "order_from："+t.toString());
+                try {
+                    if (StringUtils.isNotEmpty(t.toString())) {
+                        JSONObject obj = new JSONObject(t.toString());
+                        int status = obj.getInt("status");
+                        String msg = obj.getString("msg");
+                        String data = obj.getString("data");
+                        if (status == Constants.STATUS_SUCCESS) { // 正确
+                            getOrderListDetail(order_id);
+                        } else if (status == Constants.STATUS_SERVER_ERROR) { // 服务器错误
+                            errorMsg = getString(R.string.servers_error);
+                        } else if (status == Constants.STATUS_PARAM_MISS) { // 缺失必选参数
+                            errorMsg = getString(R.string.param_missing);
+                        } else if (status == Constants.STATUS_PARAM_ILLEGA) { // 参数值非法
+                            errorMsg = getString(R.string.param_illegal);
+                        } else if (status == Constants.STATUS_OTHER_ERROR) { // 999其他错误
+                            errorMsg = msg;
+                        } else {
+                            errorMsg = getString(R.string.servers_error);
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    errorMsg = getString(R.string.servers_error);
+
+                }
+                // 操作失败，显示错误信息|
+                if (!StringUtils.isEmpty(errorMsg.trim())) {
+                    UIUtils.showToast(OrderDetailActivity.this, errorMsg);
+                }
+            }
+        });
+
     }
 
     /**

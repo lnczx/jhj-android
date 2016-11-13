@@ -699,6 +699,7 @@
                     android:layout_width="150dp"
                     android:layout_height="44dp"
                     android:layout_marginRight="10dp"
+                    android:visibility="gone"
                     android:background="@drawable/btn_blue_long"
                     android:gravity="center"
                     android:text="加时"

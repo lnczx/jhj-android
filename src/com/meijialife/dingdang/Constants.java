@@ -64,6 +64,8 @@ public class Constants {
     public static final String URL_GET_CHANGE_ORDER_WORK = ROOT_URL1 + "staff/order/post_am.json";
     //调整订单
     public static final String URL_GET_AUTH = ROOT_URL1 + "staff/auth.json";
+    //加时
+    public static final String URL_ADD_HOUR = ROOT_URL1 + "staff/order/post_overwork.json";
     //分享
     public static final String URL_GET_TO_SHARE = ROOT_URL1 + "staff/invite.json";
     //订单详情

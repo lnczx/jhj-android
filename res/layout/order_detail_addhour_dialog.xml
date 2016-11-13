@@ -36,10 +36,12 @@
             android:text="加时价格:" />
 
         <EditText
+            android:id="@+id/et_add_hour_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="请输入加时价格"
+            android:inputType="number"
             android:textSize="13sp" />
     </LinearLayout>
 
