@@ -54,7 +54,7 @@ public class OrderListAdapter extends BaseAdapter {
     private String urlString;
     private Short order_type;
     private Short order_status;
-    private long order_id=0;
+    private long order_id = 0;
 
     public OrderListAdapter(Context context) {
         this.context = context;
@@ -102,6 +102,7 @@ public class OrderListAdapter extends BaseAdapter {
             holder.tv_shichang = (TextView) convertView.findViewById(R.id.tv_shichang);
             holder.iv_order_type = (ImageView) convertView.findViewById(R.id.iv_order_type);
             holder.layout_order_item = (LinearLayout) convertView.findViewById(R.id.layout_order_item);
+            holder.tv_user_type_content = (TextView) convertView.findViewById(R.id.tv_user_type_content);
             convertView.setTag(holder);
         } else {
             holder = (Holder) convertView.getTag();
@@ -153,6 +154,7 @@ public class OrderListAdapter extends BaseAdapter {
             holder.tv_order_money.setText(orderListVo.getOrder_money() + "元");
             holder.iv_start_server.setText(orderListVo.getButton_word());
             holder.tv_service_date.setText(orderListVo.getService_date());
+            holder.tv_user_type_content.setText(orderListVo.getUser_type_str());
 
             if (order_type == 0 || order_type == 1) {// 钟点工
                 holder.tv_shichang.setVisibility(View.VISIBLE);
@@ -164,9 +166,9 @@ public class OrderListAdapter extends BaseAdapter {
                 holder.tv_service_hours.setVisibility(View.GONE);
                 holder.tv_fuwu_time.setText("下单时间：");
             }
-             if(order_id!=0){
-                 holder.layout_order_item.setOnClickListener(new ItemAdapterListener(order_id + ""));
-             }
+            if (order_id != 0) {
+                holder.layout_order_item.setOnClickListener(new ItemAdapterListener(order_id + ""));
+            }
 
         }
         return convertView;
@@ -184,6 +186,7 @@ public class OrderListAdapter extends BaseAdapter {
         TextView iv_start_server;
         TextView tv_shichang;
         TextView tv_fuwu_time;
+        TextView tv_user_type_content;
         ImageView iv_order_type;
         LinearLayout layout_order_item;
 
@@ -227,12 +230,12 @@ public class OrderListAdapter extends BaseAdapter {
                     // 调整订单
                     // change_order();
                     Intent intent = new Intent(context, OrderDetailActivity.class);
-                    intent.putExtra("order_id", order.getOrder_id()+"");
+                    intent.putExtra("order_id", order.getOrder_id() + "");
                     context.startActivity(intent);
                     return;
-                } 
+                }
             }
-            
+
             Builder dialog = new AlertDialog.Builder(context);
             dialog.setTitle("提示");
             dialog.setIcon(R.drawable.ic_launcher);
@@ -247,13 +250,13 @@ public class OrderListAdapter extends BaseAdapter {
                             change_work(order_id + "", OVER);
                         }
                     } else if (type == 2) {// 助理单
-//                        if (status == 2) {// 已派工
-//                            // 调整订单
-//                            // change_order();
-//                            Intent intent = new Intent(context, OrderDetailActivity.class);
-//                            intent.putExtra("orderBean", orderListVo);
-//                            context.startActivity(intent);
-//                        } else
+                    // if (status == 2) {// 已派工
+                    // // 调整订单
+                    // // change_order();
+                    // Intent intent = new Intent(context, OrderDetailActivity.class);
+                    // intent.putExtra("orderBean", orderListVo);
+                    // context.startActivity(intent);
+                    // } else
                         if (status == 4) {// 已支付
                             change_work(order_id + "", START);
                         } else if (status == 5) {
@@ -388,8 +391,7 @@ public class OrderListAdapter extends BaseAdapter {
                                 }.getType());
                                 setData(secData, order_from);
                                 notifyDataSetChanged();
-                                
-                                
+
                                 try {
                                     new LocationReportAgain(context).reportLocationHttp();
                                 } catch (Exception e) {

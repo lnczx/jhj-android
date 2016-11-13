@@ -53,22 +53,71 @@ public class OrderListVo implements Serializable {
     private String service_hour;
 
     private String remarks;
+
     private String remarks_confirm;
+
     private int pay_type;
+
     private String pay_type_name;
+
     private String mobile;
+
     private String order_ratio;// 精度
+
     private String tel_staff;// 客服电话
+
+    private int user_id;
+
+    private int is_vip;
+
+    private String user_type_str;
+
+    private String over_work_str;
+    
+    
+    
+    
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
+    public int getIs_vip() {
+        return is_vip;
+    }
+
+    public void setIs_vip(int is_vip) {
+        this.is_vip = is_vip;
+    }
+
+    public String getUser_type_str() {
+        return user_type_str;
+    }
+
+    public void setUser_type_str(String user_type_str) {
+        this.user_type_str = user_type_str;
+    }
+
+    public String getOver_work_str() {
+        return over_work_str;
+    }
+
+    public void setOver_work_str(String over_work_str) {
+        this.over_work_str = over_work_str;
+    }
 
     /**
      * id : 47 order_id : 0 order_no : 787274115097559040 user_id : 3 service_addon_id : 34 price : 199 item_unit : 元/小时 item_num : 1 add_time :
      * 1476535750 service_addon_name : 金牌保洁 default_num : 0 service_hour : 3
      */
 
-    private  List<ServiceAddonsBean> service_addons;
+    private List<ServiceAddonsBean> service_addons;
 
-    
-    public  List<ServiceAddonsBean> getService_addons() {
+    public List<ServiceAddonsBean> getService_addons() {
         return service_addons;
     }
 

@@ -96,6 +96,7 @@ public class OrderDetailActivity extends BaseActivity {
     private TextView tv_input_money;
     private TextView tv_input_content;
     private TextView tv_order_addr;
+    private TextView tv_user_type;
     private String order_id;
     private LinearLayout layout_goutong_des;
     private ToggleButton slipBtn;
@@ -150,6 +151,7 @@ public class OrderDetailActivity extends BaseActivity {
         tv_order_shichang = (TextView) findViewById(R.id.tv_order_shichang);
         tv_service_time_type = (TextView) findViewById(R.id.tv_service_time_type);
         tv_order_addr = (TextView) findViewById(R.id.tv_order_addr);
+        tv_user_type = (TextView) findViewById(R.id.tv_user_type);
         slipBtn = (ToggleButton) findViewById(R.id.slipBtn_fatongzhi);
 
       /*  slipBtn.setOnToggleChanged(new OnToggleChanged() {
@@ -352,6 +354,7 @@ public class OrderDetailActivity extends BaseActivity {
             btn_order_start_work.setText(orderBean.getButton_word());
             tv_input_content.setText(orderBean.getRemarks_confirm());
             tv_order_addr.setText(orderBean.getService_addr());
+            tv_user_type.setText(orderBean.getUser_type_str());
             // 判断哪些展示
             if (order_type == 0 || order_type == 1) {// 钟点工
                 ORDERTYPE = ORDERZDG;
