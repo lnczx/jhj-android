@@ -72,8 +72,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:gravity="center"
                     android:layout_marginLeft="10dp"
+                    android:gravity="center"
                     android:orientation="horizontal" >
 
                     <ImageView
@@ -82,7 +82,7 @@
                         android:background="@drawable/icon_person_order" />
 
                     <LinearLayout
-                             android:id="@+id/layout_history_order"
+                        android:id="@+id/layout_history_order"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -135,7 +135,7 @@
                             android:id="@+id/tv_total_incoming"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                               android:text="0元"
+                            android:text="0元"
                             android:textColor="@color/simi_color_orange" />
 
                         <TextView
@@ -236,7 +236,7 @@
                     android:background="@drawable/arrow_right" />
             </RelativeLayout>
 
-             <RelativeLayout
+            <RelativeLayout
                 android:id="@+id/layout_user_list"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -254,8 +254,8 @@
                     android:drawableLeft="@drawable/icon_shenfen"
                     android:drawablePadding="10dp"
                     android:gravity="center_vertical"
-                    android:text="用户列表"
-                    android:textColor="#454545"
+                    android:text="用户评价 "
+                   android:textColor="#454545"
                     android:textSize="@dimen/font_size_16" />
 
                 <ImageView
@@ -265,8 +265,7 @@
                     android:layout_centerVertical="true"
                     android:background="@drawable/arrow_right" />
             </RelativeLayout>
-            
-            
+
             <RelativeLayout
                 android:id="@+id/layout_more"
                 android:layout_width="match_parent"

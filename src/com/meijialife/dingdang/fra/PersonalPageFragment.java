@@ -27,12 +27,11 @@ import com.meijialife.dingdang.Constants;
 import com.meijialife.dingdang.R;
 import com.meijialife.dingdang.activity.HistoryOrderActivity;
 import com.meijialife.dingdang.activity.MoreActivity;
-import com.meijialife.dingdang.activity.OrderDetailActivity;
 import com.meijialife.dingdang.activity.PersonAccountCenterActivity;
 import com.meijialife.dingdang.activity.PersonInfoActivity;
 import com.meijialife.dingdang.activity.PersonPayDetailActivity;
 import com.meijialife.dingdang.activity.ShareActivity;
-import com.meijialife.dingdang.activity.UserListActivity;
+import com.meijialife.dingdang.activity.UserRateListActivity;
 import com.meijialife.dingdang.activity.WebViewActivity;
 import com.meijialife.dingdang.bean.UserIndexData;
 import com.meijialife.dingdang.service.LocationReportAgain;
@@ -123,7 +122,7 @@ public class PersonalPageFragment extends Fragment implements OnClickListener {
             intent = new Intent(getActivity(), MoreActivity.class);
             break;
         case R.id.layout_user_list://跳转到用户列表
-        	intent = new Intent(getActivity(), UserListActivity.class);
+        	intent = new Intent(getActivity(), UserRateListActivity.class);
         	break;
         case R.id.layout_mingxi_shouru://跳转到明细
             intent = new Intent(getActivity(), PersonPayDetailActivity.class);

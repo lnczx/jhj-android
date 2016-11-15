@@ -75,7 +75,7 @@
         <item name="android:windowEnterAnimation">@anim/popup_enter</item>
         <item name="android:windowExitAnimation">@anim/popup_exit</item>
     </style>
-     
+
     <!-- 服务人员标签样式 -->
     <style name="TagGroup">
         <item name="android:layout_width">match_parent</item>
@@ -83,10 +83,10 @@
         <item name="atg_isAppendMode">false</item>
         <item name="atg_inputHint">@string/add_tag</item>
         <item name="atg_borderColor">#F1F1F1</item>
- <!-- #49C120 -->
+        <!-- #49C120 -->
         <item name="atg_textColor">@color/simi_color_dark_gray</item>
         <item name="atg_backgroundColor">#F1F1F1</item>
- <!-- #FFFFFF -->
+        <!-- #FFFFFF -->
         <item name="atg_dashBorderColor">#AAAAAA</item>
         <item name="atg_inputHintColor">#80000000</item>
         <item name="atg_inputTextColor">#DE000000</item>
@@ -125,6 +125,13 @@
         <item name="atg_verticalSpacing">4dp</item>
         <item name="atg_horizontalPadding">5dp</item>
         <item name="atg_verticalPadding">5dp</item>
+    </style>
+
+    <style name="roomRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/room_rating_bar</item>
+        <item name="android:minHeight">30dp</item>
+        <item name="android:maxHeight">30dp</item>
+        <item name="android:isIndicator">true</item>
     </style>
 
 </resources>
