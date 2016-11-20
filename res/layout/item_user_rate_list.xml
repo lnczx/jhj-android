@@ -113,6 +113,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="5dp"
+                android:layout_marginTop="6dp"
                 android:clickable="false"
                 android:numStars="5"
                 android:rating="4" />
@@ -139,6 +140,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="5dp"
+             android:layout_marginTop="6dp"
                 android:clickable="false"
                 android:numStars="5"
                 android:rating="4" />
