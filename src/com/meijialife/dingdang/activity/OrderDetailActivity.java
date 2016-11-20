@@ -304,7 +304,7 @@ public class OrderDetailActivity extends BaseActivity {
                     sp_add_hour = (Spinner) view.findViewById(R.id.sp_add_hour);
                     et_add_hour_money = (EditText) view.findViewById(R.id.et_add_hour_money);
 
-                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(OrderDetailActivity.this, android.R.layout.simple_spinner_item, arr);
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(OrderDetailActivity.this, R.layout.spinner_list_item, arr);
                     sp_add_hour.setAdapter(arrayAdapter);
 
                     Builder dialog = new AlertDialog.Builder(OrderDetailActivity.this);

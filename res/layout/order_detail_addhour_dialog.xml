@@ -14,7 +14,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="加时时长:" />
+            android:text="加时时长:"
+            android:textSize="16sp" />
 
         <Spinner
             android:id="@+id/sp_add_hour"
@@ -22,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="请输入加时数"
-            android:textSize="13sp" />
+            android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -33,7 +34,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="加时价格:" />
+            android:text="加时价格:"
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/et_add_hour_money"
@@ -41,8 +43,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="请输入加时价格"
-            android:inputType="number"
-            android:textSize="13sp" />
+            android:inputType="numberDecimal"
+            android:textSize="16sp" />
     </LinearLayout>
 
 </LinearLayout>
