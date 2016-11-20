@@ -40,7 +40,7 @@
                     android:textSize="@dimen/font_size_15" />
             </RelativeLayout>
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
@@ -52,12 +52,13 @@
 
                 <EditText
                     android:id="@+id/et_input_money"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:background="@null"
                     android:hint="请输入提现金额"
-                    android:inputType="number"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/font_size_15" />
 
                 <TextView
@@ -65,9 +66,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:text="2323"
                     android:textColor="@color/simi_color_orange"
                     android:textSize="@dimen/font_size_15" />
-            </RelativeLayout>
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
