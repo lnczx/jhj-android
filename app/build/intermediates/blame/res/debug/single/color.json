@@ -1,0 +1,62 @@
+[
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/color/find2_fra_bg_gv.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/color/find2_fra_bg_gv.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/color/search_view_activity.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/color/search_view_activity.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/color/tab_text_color_selector.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/color/tab_text_color_selector.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/color/text_calendar_chinaday.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/color/text_calendar_chinaday.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/color/points_tab_text_color.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/color/points_tab_text_color.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/color/mm_btn_text.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/color/mm_btn_text.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/color/mm_style_two_btn_text.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/color/mm_style_two_btn_text.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/color/index2_radiobutton_color.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/color/index2_radiobutton_color.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/color/em_main_botton_text_color.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/color/em_main_botton_text_color.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/color/bg_radiobutton_select.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/color/bg_radiobutton_select.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/color/mm_style_one_btn_text.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/color/mm_style_one_btn_text.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/color/text_calendar_today.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/color/text_calendar_today.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/color/bg_gv.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/color/bg_gv.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/color/mm_hyper_text.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/color/mm_hyper_text.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/color/text_calendar.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/color/text_calendar.xml"
+    }
+]

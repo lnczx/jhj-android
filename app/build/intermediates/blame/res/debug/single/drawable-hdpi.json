@@ -1,0 +1,582 @@
+[
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_left_dingdan.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_left_dingdan.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/splash_img_1.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/splash_img_1.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_share.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_share.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_more.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_more.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_start_fuwu.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_start_fuwu.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_sec_fav.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_sec_fav.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_sec_time.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_sec_time.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/btn.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/btn.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_new.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_new.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/friend_level.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/friend_level.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/splash_img_2.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/splash_img_2.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/umeng_update_btn_check_off_pressed_holo_light.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/umeng_update_btn_check_off_pressed_holo_light.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/iconfont31wode.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/iconfont31wode.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/iconfont_yunbaodan.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/iconfont_yunbaodan.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/my_rq_code.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/my_rq_code.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/ashcan_02_2x.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/ashcan_02_2x.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/friend_sex_female.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/friend_sex_female.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/index3_press.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/index3_press.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_main_item_doing_rightarrow.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_main_item_doing_rightarrow.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_left_tuijian.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_left_tuijian.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_main_item_rightarrow.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_main_item_rightarrow.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_main_item_doing_line.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_main_item_doing_line.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_left_jifen.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_left_jifen.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/btn_style_one_focused.9.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/btn_style_one_focused.9.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_main_plus_switch.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_main_plus_switch.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_left_qianbao.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_left_qianbao.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/arrow_right.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/arrow_right.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_call_kefu.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_call_kefu.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/btn_f.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/btn_f.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/umeng_update_btn_check_on_focused_holo_light.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/umeng_update_btn_check_on_focused_holo_light.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/iconfont_youhuiquan.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/iconfont_youhuiquan.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/ic_launcher_logo_alerm.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/ic_launcher_logo_alerm.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_rili.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_rili.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/youhuiquan_bg_2.9.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/youhuiquan_bg_2.9.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/youhuiquan_bg_3.9.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/youhuiquan_bg_3.9.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_gcoding.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_gcoding.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_no_order.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_no_order.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/bg_person_page.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/bg_person_page.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_main_item_share.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_main_item_share.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_order_over_selected.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_order_over_selected.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/iconfont_saoma.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/iconfont_saoma.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/btn_blue.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/btn_blue.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/iconfont31guanzhu.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/iconfont31guanzhu.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/pay_wx_img.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/pay_wx_img.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/umeng_update_close_bg_normal.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/umeng_update_close_bg_normal.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/iconfont31haoyou.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/iconfont31haoyou.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_left_kaquan.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_left_kaquan.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/ic_focus_select.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/ic_focus_select.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_zhongdiangong.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_zhongdiangong.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/iconfont_rq_code.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/iconfont_rq_code.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_daohang_bg.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_daohang_bg.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/login_pass_word_img.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/login_pass_word_img.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/back.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/back.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_main_item_zan.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_main_item_zan.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_left_doudou.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_left_doudou.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_person_money.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_person_money.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/tab_bg_transparent.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/tab_bg_transparent.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_main_item_pinglun.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_main_item_pinglun.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/umeng_update_btn_check_off_focused_holo_light.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/umeng_update_btn_check_off_focused_holo_light.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/selection.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/selection.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/umeng_update_btn_check_off_holo_light.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/umeng_update_btn_check_off_holo_light.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/btn_style_one_pressed.9.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/btn_style_one_pressed.9.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/qq_login_pressed.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/qq_login_pressed.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/sina_login_pressed.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/sina_login_pressed.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_account.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_account.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/divider.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/divider.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/qq_login_normal.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/qq_login_normal.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/ic_focus.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/ic_focus.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/alipay.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/alipay.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/umeng_update_btn_check_on_pressed_holo_light.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/umeng_update_btn_check_on_pressed_holo_light.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_arrow_right.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_arrow_right.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/order_btn.9.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/order_btn.9.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/index3_normal.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/index3_normal.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/index2_normal.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/index2_normal.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_order_tiaozheng.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_order_tiaozheng.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/iconfont31haoyou1.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/iconfont31haoyou1.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/rili_arrow_up.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/rili_arrow_up.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_msg_close.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_msg_close.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/iconfont31shouye.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/iconfont31shouye.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_msg_tip.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_msg_tip.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_order_start.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_order_start.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/sina_login_normal.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/sina_login_normal.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/login_user_name_img.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/login_user_name_img.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_call_bg.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_call_bg.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/index1_normal.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/index1_normal.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/common_icon_share.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/common_icon_share.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_shenfen.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_shenfen.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/ic_launcher_logo.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/ic_launcher_logo.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/umeng_update_close_bg_tap.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/umeng_update_close_bg_tap.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/title_left_back.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/title_left_back.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_left_more.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_left_more.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/iconfont31guanzhu1.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/iconfont31guanzhu1.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/no_card_tip.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/no_card_tip.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/iconfont_zhishiku.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/iconfont_zhishiku.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_order_tiaozheng_selected.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_order_tiaozheng_selected.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_sec_addr.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_sec_addr.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/iconfont_yuyin.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/iconfont_yuyin.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/button_back_inverse_focused.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/button_back_inverse_focused.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/page_indicator_focused.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/page_indicator_focused.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_person_order.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_person_order.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/index1_press.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/index1_press.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/share.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/share.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/iconfont_shui.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/iconfont_shui.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_checked.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_checked.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/ic_defult_touxiang.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/ic_defult_touxiang.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/btn_style_one_disabled.9.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/btn_style_one_disabled.9.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/order_icon.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/order_icon.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/ic_select_bg.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/ic_select_bg.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/button_back_inverse_normal.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/button_back_inverse_normal.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/youhuiquan_bg_4.9.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/youhuiquan_bg_4.9.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_shanchu_unfocused.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_shanchu_unfocused.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_left_kapai.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_left_kapai.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/umeng_update_btn_check_on_holo_light.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/umeng_update_btn_check_on_holo_light.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/youhuiquan_bg_1.9.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/youhuiquan_bg_1.9.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/index2_press.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/index2_press.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_zan_red.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_zan_red.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/iconfont_tongxunbu.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/iconfont_tongxunbu.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_order_over.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_order_over.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/selection_checked.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/selection_checked.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/iconfont31wode1.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/iconfont31wode1.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_main_item_chifan.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_main_item_chifan.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_arrow_left.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_arrow_left.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_no_check.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_no_check.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/iconfont31shouye1.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/iconfont31shouye1.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/iconfont_sousuo.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/iconfont_sousuo.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/ashcan_01_2x.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/ashcan_01_2x.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/iconfont_xunzhaomishu.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/iconfont_xunzhaomishu.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_order_star_selected.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_order_star_selected.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_data_select.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_data_select.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/mmtitle_bg_alpha.9.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/mmtitle_bg_alpha.9.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/page_indicator_unfocused.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/page_indicator_unfocused.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/msg_content.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/msg_content.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/common_icon_review.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/common_icon_review.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/btn_blue_f.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/btn_blue_f.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/bg_transparent.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/bg_transparent.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/btn_style_one_normal.9.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/btn_style_one_normal.9.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_left_dizhi.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_left_dizhi.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_shanchu_focused.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_shanchu_focused.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/ic_launcher.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon_collage.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/icon_collage.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/iconfont_shangjia.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/iconfont_shangjia.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/rili_arrow_down.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/rili_arrow_down.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/friend_sex_male.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/friend_sex_male.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/common_icon_like.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/common_icon_like.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-hdpi/splash_img_3.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-hdpi/splash_img_3.png"
+    }
+]

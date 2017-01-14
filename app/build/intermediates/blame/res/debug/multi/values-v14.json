@@ -1,0 +1,28 @@
+[
+    {
+        "outputFile": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v14/values-v14.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 5,
+                    "endColumn": 12,
+                    "endOffset": 256
+                },
+                "from": {
+                    "file": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/values-v14/styles.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 220,
+                        "endLine": 10,
+                        "endColumn": 12,
+                        "endOffset": 421
+                    }
+                }
+            }
+        ]
+    }
+]

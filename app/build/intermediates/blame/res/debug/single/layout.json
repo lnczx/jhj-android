@@ -1,0 +1,230 @@
+[
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/layout_splash.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/layout_splash.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/layout_person_account.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/layout_person_account.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/layout_person_paydetail.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/layout_person_paydetail.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/activity_main.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/layout_staff_list.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/layout_staff_list.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/layout_more.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/layout_more.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/umeng_update_dialog.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/umeng_update_dialog.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/layout_person_collage.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/layout_person_collage.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/order_detail_addhour_dialog.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/order_detail_addhour_dialog.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/list_item_multiple_choice.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/list_item_multiple_choice.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/item_home_msg.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/item_home_msg.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/layout_main.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/layout_main.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/layout_account_info_activity.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/layout_account_info_activity.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/item_user_rate_list.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/item_user_rate_list.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/index_1.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/index_1.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/share_activity.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/share_activity.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/item_order_list.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/item_order_list.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/index_4.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/index_4.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/layout_create_forwho.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/layout_create_forwho.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/load_more.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/load_more.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/layout_account_rechange_activity.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/layout_account_rechange_activity.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/webview_personal_fragment.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/webview_personal_fragment.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/item_sec_list.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/item_sec_list.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/layout_webview_title_bar.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/layout_webview_title_bar.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/layout_person_tixian.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/layout_person_tixian.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/notification_inc.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/notification_inc.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/webview_activity.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/webview_activity.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/layout_goto_auth.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/layout_goto_auth.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/getui_notification.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/getui_notification.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/guide_activity.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/guide_activity.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/item_pay_detail.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/item_pay_detail.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/main.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/main.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/activity_poisearch.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/activity_poisearch.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/index_2.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/index_2.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/activity_user_list.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/activity_user_list.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/item_user_list.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/item_user_list.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/spinner_list_item.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/spinner_list_item.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/search_view_activity.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/search_view_activity.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/layout_choose_title_bar.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/layout_choose_title_bar.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/layout_alerm_dialog.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/layout_alerm_dialog.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/auto_complete_textview_item.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/auto_complete_textview_item.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/layout_city_list.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/layout_city_list.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/layout_auth_status.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/layout_auth_status.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/layout_left_menu.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/layout_left_menu.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/layout_pay_zero_activity.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/layout_pay_zero_activity.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/layout_history.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/layout_history.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/increment_popup_dialog.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/increment_popup_dialog.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/layout_pay_activity.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/layout_pay_activity.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/tb_munion_aditem.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/tb_munion_aditem.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/layout_title_bar.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/layout_title_bar.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/activity_login.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/activity_login.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/item_order_details.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/item_order_details.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/layout_personalpage.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/layout_personalpage.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/layout_order_detail.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/layout_order_detail.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/layout_person_paydebt.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/layout_person_paydebt.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/layout_more_activity.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/layout_more_activity.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout/layout_person_info.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout/layout_person_info.xml"
+    }
+]

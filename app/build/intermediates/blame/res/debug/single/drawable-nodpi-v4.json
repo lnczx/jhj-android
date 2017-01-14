@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-nodpi-v4/bg_btn_calendar_pressed.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-nodpi/bg_btn_calendar_pressed.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-nodpi-v4/bg_btn_calendar_activated.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-nodpi/bg_btn_calendar_activated.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-nodpi-v4/bg_calendar_stroke.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-nodpi/bg_calendar_stroke.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-nodpi-v4/ic_arrow_left.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-nodpi/ic_arrow_left.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-nodpi-v4/bg_calendar_today.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-nodpi/bg_calendar_today.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-nodpi-v4/bg_btn_calendar.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-nodpi/bg_btn_calendar.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-nodpi-v4/ic_arrow_right.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-nodpi/ic_arrow_right.xml"
+    }
+]

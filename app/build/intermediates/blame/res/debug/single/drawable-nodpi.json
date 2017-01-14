@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-nodpi/icon.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-nodpi/icon.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-nodpi/guide.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-nodpi/guide.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-nodpi/login_btn_bg_normal.9.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-nodpi/login_btn_bg_normal.9.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-nodpi/bg_lace_red.9.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-nodpi/bg_lace_red.9.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-nodpi/login_btn_bg_pressed.9.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-nodpi/login_btn_bg_pressed.9.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-nodpi/bg_main_bt_divider.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-nodpi/bg_main_bt_divider.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-nodpi/login_edit_bg.9.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-nodpi/login_edit_bg.9.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-nodpi/splash_bg.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-nodpi/splash_bg.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-nodpi/splash.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-nodpi/splash.png"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/drawable-nodpi/em_empty_photo.png",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/drawable-nodpi/em_empty_photo.png"
+    }
+]

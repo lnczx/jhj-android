@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+   	android:background="@drawable/list_corner"
+    android:orientation="horizontal"
+     >
+     <LinearLayout 
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="vertical"
+		 android:layout_weight="1"
+         >
+         
+         <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手机号:"
+            android:textColor="@color/simi_color_gray" />
+
+        <TextView
+            android:id="@+id/m_user_mobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="30dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="地址:"
+            android:textColor="@color/simi_color_gray" />
+
+        <TextView
+            android:id="@+id/m_user_addr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="30dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="已服务次数:"
+            android:textColor="@color/simi_color_gray" />
+
+        <TextView
+            android:id="@+id/m_user_service_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+     </LinearLayout>
+    <LinearLayout 
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:orientation="vertical"
+         android:layout_weight="2"
+         android:gravity="center"
+         android:layout_gravity="center"
+         android:layout_marginRight="10dp"
+         >
+    		<Button
+    		    android:id="@+id/m_sec_btn"
+    		    android:layout_width="wrap_content"
+    		    android:layout_height="wrap_content"
+    		    android:gravity="center"
+    		    android:text="助理信息"
+    		    android:padding="10dp"
+    		    android:textColor="@color/simi_color_white"
+    		    android:background="@drawable/btn_start_order_selectbg"
+    		    
+    		    />
+        </LinearLayout>
+</LinearLayout>
