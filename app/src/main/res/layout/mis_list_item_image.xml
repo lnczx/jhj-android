@@ -2,14 +2,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.facebook.drawee.view.SimpleDraweeView   xmlns:fresco="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/image"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    fresco:actualImageScaleType="centerCrop"
-    fresco:placeholderImage="@drawable/mis_default_error"
-    fresco:placeholderImageScaleType="fitXY"
-    fresco:viewAspectRatio="1" />
+    <com.meijialife.dingdang.picker.view.SquaredSimpleDraweeView xmlns:fresco="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        fresco:actualImageScaleType="centerCrop"
+        fresco:placeholderImage="@drawable/mis_default_error"
+        fresco:placeholderImageScaleType="fitXY"
+        fresco:viewAspectRatio="1" />
 
     <View
         android:id="@+id/mask"

@@ -21,16 +21,16 @@ import static android.graphics.Color.TRANSPARENT;
 public class LoadingProgressDrawable extends Drawable {
 
     private static int[] Loadings = {
-            R.mipmap.load_progress_1,
-            R.mipmap.load_progress_3,
-            R.mipmap.load_progress_4,
-            R.mipmap.load_progress_6,
-            R.mipmap.load_progress_7,
-            R.mipmap.load_progress_8,
-            R.mipmap.load_progress_9,
-            R.mipmap.load_progress_10,
-            R.mipmap.load_progress_11,
-            R.mipmap.load_progress_12
+            R.drawable.load_progress_1,
+            R.drawable.load_progress_3,
+            R.drawable.load_progress_4,
+            R.drawable.load_progress_6,
+            R.drawable.load_progress_7,
+            R.drawable.load_progress_8,
+            R.drawable.load_progress_9,
+            R.drawable.load_progress_10,
+            R.drawable.load_progress_11,
+            R.drawable.load_progress_12
     };
     private Paint mPaint;
     private int mLevel;

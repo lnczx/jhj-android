@@ -20,7 +20,6 @@ import java.util.ArrayList;
 
 /**
  * 发表动态,图片adapter
- * Created by jiangjianxiong on 16/6/15.
  */
 public class PublishPhotoAdapter extends BaseAdapter {
 
@@ -132,7 +131,7 @@ public class PublishPhotoAdapter extends BaseAdapter {
                 File imageFile = new File(getItem(position));
                 if (imageFile.exists() && null != holder) {
                     ImageLoaderUtil.getInstance().loadImage(mContext, new ImageLoader.Builder()
-                            .path(getItem(position)).widthAndHeight(200).placeHolder(R.mipmap.default_image_bg)
+                            .path(getItem(position)).widthAndHeight(200).placeHolder(R.drawable.default_image_bg)
                             .mImageView(holder.image).build());
                 }
 

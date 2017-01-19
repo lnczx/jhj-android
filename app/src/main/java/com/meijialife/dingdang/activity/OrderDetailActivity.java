@@ -143,7 +143,7 @@ public class OrderDetailActivity extends BaseActivity {
     private NoScrollGridView mGridViewPhoto;
     private PublishPhotoAdapter mPublishPhotoAdapter;
     //hashtag、choose
-    private RelativeLayout mLayoutChoose;
+    private LinearLayout mLayoutChoose;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -221,7 +221,7 @@ public class OrderDetailActivity extends BaseActivity {
         mTvChoosePs = (TextView) findViewById(R.id.tv_choose_ps);
         mIvChooseImg = (ImageView) findViewById(R.id.btn_choose_image);
         mGridViewPhoto = (NoScrollGridView) findViewById(R.id.gridview);
-        mLayoutChoose = (RelativeLayout) findViewById(R.id.layout_choose);
+        mLayoutChoose = (LinearLayout) findViewById(R.id.layout_choose);
 
         mIvChooseImg.setOnClickListener(new OnClickListener() {
             @Override
@@ -288,6 +288,7 @@ public class OrderDetailActivity extends BaseActivity {
             mTvChoosePs.setVisibility(View.VISIBLE);
             mGridViewPhoto.setVisibility(View.VISIBLE);
             mLayoutChoose.setVisibility(View.GONE);
+//            mLayoutChoose.setVisibility(View.VISIBLE);
         } else {
             mTvChoose.setText("添加图片或视频");
             mTvChoosePs.setVisibility(View.GONE);

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@mipmap/community_btn_add_pre" android:state_checked="true"/>
-    <item android:drawable="@mipmap/community_btn_add_pre" android:state_selected="true"/>
-    <item android:drawable="@mipmap/community_btn_add_pre" android:state_pressed="true"/>
-    <!--<item android:drawable="@mipmap/community_btn_add_nor"/>-->
-    <item android:drawable="@mipmap/community_image_blank_nor"/>
+    <item android:drawable="@drawable/community_btn_add_pre" android:state_checked="true"/>
+    <item android:drawable="@drawable/community_btn_add_pre" android:state_selected="true"/>
+    <item android:drawable="@drawable/community_btn_add_pre" android:state_pressed="true"/>
+    <!--<item android:drawable="@drawable/community_btn_add_nor"/>-->
+    <item android:drawable="@drawable/community_image_blank_nor"/>
 </selector>
