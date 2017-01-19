@@ -1,7 +1,0 @@
-#Thu Jan 19 18:10:05 CST 2017
-base.0=/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_919104cc0c88780d8245b803f79c5d280450235a
-renamed.1=classes.dex
-renamed.0=classes2.dex
-file.1=/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_3a920bd8b6b57d026215fec908c5027591bad130/classes.dex
-base.1=/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_3a920bd8b6b57d026215fec908c5027591bad130
-file.0=/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_919104cc0c88780d8245b803f79c5d280450235a/classes.dex
