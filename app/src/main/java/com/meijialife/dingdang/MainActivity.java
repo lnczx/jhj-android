@@ -619,7 +619,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
         } else {
             visibility = View.INVISIBLE;
             if (isManual) {
-                Toast.makeText(this, "已是最新版本！", 0).show();
+//                Toast.makeText(this, "已是最新版本！", 0).show();
             }
         }
     }
