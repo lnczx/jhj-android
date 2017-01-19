@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import android.os.Environment;
 
 public class Constants {
+    //folder path
+    public static String FOLDER_NAME = "/jhj";
+    public static String FOLDER_RECORD = FOLDER_NAME + "/Record";
+    public static String FOLDER_TEMP = FOLDER_NAME + "/Temp";
+
     //*******************************
     // 主机地址
     public static final String HOST1 = "http://123.57.209.81";

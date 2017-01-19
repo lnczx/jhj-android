@@ -57,5 +57,7 @@
     <!--我的（我的发布+我参与）字体大小 -->
     <dimen name="my_publish_text_size">13sp</dimen>
 	<!--上传多张图片大小-->
-	 <dimen name="ui_10_dip">10dip</dimen> 
+	 <dimen name="ui_10_dip">10dip</dimen>
+
+    <dimen name="mis_folder_cover_size">72dp</dimen>
 </resources>

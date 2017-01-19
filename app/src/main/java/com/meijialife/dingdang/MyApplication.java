@@ -9,6 +9,8 @@ import android.os.SystemClock;
 
 import com.baidu.mapapi.BMapManager;
 import com.baidu.mapapi.SDKInitializer;
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.igexin.sdk.PushManager;
 import com.meijialife.dingdang.service.LocationReportService;
 import com.meijialife.dingdang.utils.LogOut;
@@ -40,6 +42,14 @@ public class MyApplication extends Application {
         bindService();
         
         PushManager.getInstance().initialize(this.getApplicationContext());
+
+        //fresco 初始化
+        try {
+            Fresco.initialize(this, ImagePipelineConfig.newBuilder(this)
+                    .setDownsampleEnabled(true).build());//fresco
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void startAlarm() {

@@ -13,7 +13,7 @@
         <item name="android:gravity">center_horizontal</item>
         <item name="android:background">#E82058</item>
     </style>
-
+    <style name="MIS_NO_ACTIONBAR" parent="Theme.AppCompat.Light.NoActionBar"/>
     <!-- 标题文字style -->
     <style name="title_text_style">
         <item name="android:layout_width">wrap_content</item>

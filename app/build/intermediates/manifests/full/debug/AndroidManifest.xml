@@ -5,7 +5,7 @@
     android:versionName="1.1.2" >
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="15"
         android:targetSdkVersion="22" />
 
     <!-- 上传多张照片所需权限 -->
@@ -144,6 +144,14 @@
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name="com.meijialife.dingdang.activity.PersonTixianActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name="com.meijialife.dingdang.activity.PhotoPreviewActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name="com.meijialife.dingdang.picker.MultiImageSelectorActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity

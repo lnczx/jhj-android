@@ -5,33 +5,60 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.2"
-    timestamp="53107780740515"
+    timestamp="96056298935972"
     token="4132024465635816076"
-    verifier="FULL_BUILD_REQUESTED" >
+    verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="9035" />
+        duration="603" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="3201" />
+        duration="19" />
     <task
         name="verifier"
-        duration="433" />
+        duration="1" />
 
     <artifact
-        location="/Users/ye/Documents/git_github/jhj-android/app/build/outputs/apk/app-debug.apk"
-        type="MAIN" />
+        location="/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/instant-run-resources/resources-debug.ir.ap_"
+        type="RESOURCES" />
+    <artifact
+        location="/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_3/classes.dex"
+        type="DEX" />
 
     <build
-        timestamp="53107780740515"
+        timestamp="94181834067940"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/Users/ye/Documents/git_github/jhj-android/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
+    </build>
+    <build
+        timestamp="94888201264865"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_8/classes.dex"
+            type="DEX" />
+    </build>
+    <build
+        timestamp="95319292118998"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_2/classes.dex"
+            type="DEX" />
+    </build>
+    <build
+        timestamp="96056298935972"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/instant-run-resources/resources-debug.ir.ap_"
+            type="RESOURCES" />
+        <artifact
+            location="/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_3/classes.dex"
+            type="DEX" />
     </build>
 
 </instant-run>

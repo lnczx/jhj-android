@@ -6,11 +6,17 @@ import java.util.regex.Pattern;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Environment;
 import android.view.WindowManager;
 
 public class Utils {
+	private static final int OPGL_MAX_TEXTURE = 4000;
+	public static boolean isBigPicture(Bitmap bitmap) {
+		//penGLRenderer: Bitmap too large to be uploaded into a texture (299x7200, max=4096x4096)
+		return bitmap.getHeight() >= OPGL_MAX_TEXTURE || bitmap.getWidth() >= OPGL_MAX_TEXTURE;
+	}
 
 	/**
 	 * @Description: 验证手机号是否合法

@@ -4,8 +4,13 @@
       <color name="color_home1_bg">#104677</color>
       <color name="color_home1_bg2">#2eaf69</color>
       <color name="textcolor_orange">#ef7d00</color>
-    
-    
+
+
+    <color name="black_10_alpha">#1A000000</color>
+    <color name="black_20_alpha">#33000000</color>
+    <color name="black_30_alpha">#4D000000</color>
+    <color name="black_50_alpha">#80000000</color>
+    <color name="black_60_alpha">#99000000</color>
     <!-- ========================[ 公共颜色 ]========================== -->
 
 

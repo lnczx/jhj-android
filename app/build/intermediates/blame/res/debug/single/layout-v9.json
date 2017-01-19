@@ -2,5 +2,17 @@
     {
         "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout-v9/umeng_common_download_notification.xml",
         "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout-v9/umeng_common_download_notification.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_letv/jhj-android/app/build/intermediates/res/merged/debug/layout-v9/activity_photo.xml",
+        "source": "/Users/ye/Documents/git_letv/jhj-android/app/src/main/res/layout-v9/activity_photo.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_letv/jhj-android/app/build/intermediates/res/merged/debug/layout-v9/umeng_common_download_notification.xml",
+        "source": "/Users/ye/Documents/git_letv/jhj-android/app/src/main/res/layout-v9/umeng_common_download_notification.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout-v9/activity_photo.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/src/main/res/layout-v9/activity_photo.xml"
     }
 ]

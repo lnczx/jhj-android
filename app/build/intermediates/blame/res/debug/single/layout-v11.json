@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/res/merged/debug/layout-v11/preference.xml",
+        "source": "/Users/ye/Documents/git_github/jhj-android/app/build/intermediates/exploded-aar/com.android.support/preference-v7/23.4.0/res/layout-v11/preference.xml"
+    },
+    {
+        "merged": "/Users/ye/Documents/git_letv/jhj-android/app/build/intermediates/res/merged/debug/layout-v11/preference.xml",
+        "source": "/Users/ye/Documents/git_letv/jhj-android/app/build/intermediates/exploded-aar/com.android.support/preference-v7/23.4.0/res/layout-v11/preference.xml"
+    }
+]

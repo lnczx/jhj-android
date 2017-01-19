@@ -57,5 +57,28 @@
     <string name="add_tag">Add Tag</string>
      <!--二维码扫描  -->
 	<string name="scan_text">将二维码放入框内, 即可自动扫描</string>
-	
+    <string name="mis_permission_no_camera">无法获取访问照相机和麦克风权限，请在系统设置中开启</string>
+    <string name="confirm">确定</string>
+
+    <!--photo picker-->
+    <string name="permission_refuse">权限拒绝</string>
+    <string name="permission_rationale">浏览图片需要您提供浏览存储的权限</string>
+    <string name="permission_rationale2">浏览视频需要您提供浏览存储的权限</string>
+    <string name="mis_permission_rationale_write_storage">保存拍照图片需要您提供写存储权限</string>
+    <string name="mvs_permission_rationale_write_storage">保存拍摄的视频需要您提供写存储权限</string>
+    <string name="mis_folder_all">所有照片</string>
+    <string name="mvs_folder_all">所有视频</string>
+    <string name="mis_msg_no_camera">没有系统相机</string>
+    <string name="mis_msg_amount_limit">已经达到最高选择数量</string>
+    <string name="mis_photo_unit">张</string>
+    <string name="mvs_video_unit">个</string>
+    <string name="mis_error_image_not_exist">图片错误</string>
+    <string name="mis_error_video_not_exist">视频不存在</string>
+    <string name="mis_error_no_permission">无权限</string>
+    <string name="mis_permission_dialog_title">权限拒绝</string>
+    <string name="mis_permission_dialog_ok">好</string>
+    <string name="mis_permission_dialog_cancel">拒绝</string>
+    <string name="mis_permission_no_record">无法获取访问照相机和麦克风权限，请在系统设置中开启</string>
+    <string name="mis_permission_no_location">无法获取定位权限，请在系统设置中开启</string>
+
 </resources>

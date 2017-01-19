@@ -1,9 +1,12 @@
 package com.meijialife.dingdang.activity;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
@@ -11,12 +14,17 @@ import net.tsz.afinal.http.AjaxParams;
 
 import org.json.JSONObject;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -25,6 +33,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,11 +46,14 @@ import com.meijialife.dingdang.BaseActivity;
 import com.meijialife.dingdang.Constants;
 import com.meijialife.dingdang.R;
 import com.meijialife.dingdang.adapter.OrderListDetailsAdapter;
+import com.meijialife.dingdang.adapter.PublishPhotoAdapter;
 import com.meijialife.dingdang.bean.OrderListVo;
 import com.meijialife.dingdang.bean.OrderListVo.ServiceAddonsBean;
 import com.meijialife.dingdang.bean.UserIndexData;
+import com.meijialife.dingdang.picker.MultiSelector;
 import com.meijialife.dingdang.service.LocationReportAgain;
 import com.meijialife.dingdang.ui.ListViewForInner;
+import com.meijialife.dingdang.ui.NoScrollGridView;
 import com.meijialife.dingdang.ui.ToggleButton;
 import com.meijialife.dingdang.ui.ToggleButton.OnToggleChanged;
 import com.meijialife.dingdang.utils.InputMethodUtils;
@@ -52,11 +64,12 @@ import com.meijialife.dingdang.utils.SpFileUtil;
 import com.meijialife.dingdang.utils.StringUtils;
 import com.meijialife.dingdang.utils.UIUtils;
 
+import android.support.v4.content.PermissionChecker;
+
 /**
  * 订单详情
- * 
+ *
  * @author windows7
- * 
  */
 
 public class OrderDetailActivity extends BaseActivity {
@@ -111,7 +124,26 @@ public class OrderDetailActivity extends BaseActivity {
     private OrderListDetailsAdapter orderListDetails;
     private LinearLayout layout_add_hour;
     private TextView tv_add_hour;
-    final String arr[] = new String[] { "1", "2", "3", "4", "5", "6", };
+    final String arr[] = new String[]{"1", "2", "3", "4", "5", "6",};
+
+    //photo picker
+    private static final int REQUEST_IMAGE = 1;
+    private static final int REQUEST_VIDEO = 3;
+    private static final int REQUEST_STORAGE_READ_ACCESS_PERMISSION = 101;
+    private static final int REQUEST_VIDEO_VIEW = 4;
+
+    private boolean isImage = Boolean.TRUE;
+    private ArrayList<String> mSelectPath;
+    public static final int REQUEST_IMAGE_VIEW = 2;
+    private TextView mTvChoose, mTvChoosePs;
+    private ImageView mIvChooseImg, mIvChooseVideo;
+    //layout image、video
+    private RelativeLayout mLayoutVideo;
+    //photo
+    private NoScrollGridView mGridViewPhoto;
+    private PublishPhotoAdapter mPublishPhotoAdapter;
+    //hashtag、choose
+    private RelativeLayout mLayoutChoose;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,6 +155,8 @@ public class OrderDetailActivity extends BaseActivity {
         initView();
 
         getOrderListDetail(order_id);
+
+        mSelectPath = new ArrayList<>();
 
     }
 
@@ -181,6 +215,140 @@ public class OrderDetailActivity extends BaseActivity {
         layout_server_details = (LinearLayout) findViewById(R.id.layout_server_details);
         listview_details = (ListViewForInner) findViewById(R.id.listview_details);
 
+
+        //选择照片
+        mTvChoose = (TextView) findViewById(R.id.tv_choose);
+        mTvChoosePs = (TextView) findViewById(R.id.tv_choose_ps);
+        mIvChooseImg = (ImageView) findViewById(R.id.btn_choose_image);
+        mGridViewPhoto = (NoScrollGridView) findViewById(R.id.gridview);
+        mLayoutChoose = (RelativeLayout) findViewById(R.id.layout_choose);
+
+        mIvChooseImg.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UIUtils.showToast(OrderDetailActivity.this, "去选择图片");
+                pickImage();
+            }
+        });
+    }
+
+
+    /**
+     * 挑选图片
+     */
+    public void pickImage() {
+        if (!verifyPermission(Manifest.permission.CAMERA)) {
+            Toast.makeText(this, getResources().getString(R.string.mis_permission_no_camera), Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            isImage = true;
+            requestPermission(Manifest.permission.READ_EXTERNAL_STORAGE,
+                    getString(R.string.permission_rationale),
+                    REQUEST_STORAGE_READ_ACCESS_PERMISSION);
+        } else {
+
+            MultiSelector selector = MultiSelector.create();
+            selector.showCamera(true);//附带拍照
+            selector.count(9);//最多9张
+            selector.multi();//多选
+            selector.origin(mSelectPath);//已选取的图片
+            selector.start(OrderDetailActivity.this, REQUEST_IMAGE);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == REQUEST_STORAGE_READ_ACCESS_PERMISSION) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (isImage) {
+                    pickImage();
+                }
+            }
+        } else {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
+    /**
+     * 删除单张图片
+     */
+    public void deleteSinglePhoto(int position) {
+        mSelectPath.remove(position);
+        mPublishPhotoAdapter = new PublishPhotoAdapter(OrderDetailActivity.this, mSelectPath);
+        mGridViewPhoto.setAdapter(mPublishPhotoAdapter);
+        updatePhotoChoosedStatus();
+    }
+
+    private void updatePhotoChoosedStatus() {
+        if (mSelectPath.size() != 0) {
+            mTvChoose.setText("已选择" + mSelectPath.size() + "张照片");
+            mTvChoosePs.setVisibility(View.VISIBLE);
+            mGridViewPhoto.setVisibility(View.VISIBLE);
+            mLayoutChoose.setVisibility(View.GONE);
+        } else {
+            mTvChoose.setText("添加图片或视频");
+            mTvChoosePs.setVisibility(View.GONE);
+            mGridViewPhoto.setVisibility(View.GONE);
+            mLayoutChoose.setVisibility(View.VISIBLE);
+        }
+    }
+
+    /**
+     * 选取相册返回
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case REQUEST_IMAGE://选取返回
+            case REQUEST_IMAGE_VIEW://预览返回
+                if (resultCode == RESULT_OK) {
+                    mSelectPath.clear();
+                    mSelectPath = data.getStringArrayListExtra(MultiSelector.EXTRA_RESULT);
+                    if (null != mSelectPath) {
+                        mPublishPhotoAdapter = new PublishPhotoAdapter(OrderDetailActivity.this, mSelectPath);
+                        mGridViewPhoto.setAdapter(mPublishPhotoAdapter);
+
+                        updatePhotoChoosedStatus();
+                    } else {
+                        Toast.makeText(OrderDetailActivity.this, "选取失败", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                break;
+
+        }
+    }
+
+
+
+    private boolean verifyPermission(String permissionRequired) {
+        int permission = PermissionChecker.checkSelfPermission(this, permissionRequired);
+        return permission == PackageManager.PERMISSION_GRANTED;
+    }
+
+    /**
+     * 请求读取内存卡权限
+     */
+    private void requestPermission(final String permission, String rationale, final int requestCode) {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
+            new AlertDialog.Builder(this)
+                    .setTitle(R.string.permission_refuse)
+                    .setMessage(rationale)
+                    .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ActivityCompat.requestPermissions(OrderDetailActivity.this, new String[]{permission}, requestCode);
+                        }
+                    })
+                    .setNegativeButton(R.string.cancel, null)
+                    .create().show();
+        } else {
+            ActivityCompat.requestPermissions(this, new String[]{permission}, requestCode);
+        }
     }
 
     private void ShowData(final OrderListVo orderBean) {
@@ -316,9 +484,9 @@ public class OrderDetailActivity extends BaseActivity {
                             String hour = sp_add_hour.getSelectedItem().toString();
 
                             addHour(order_id, hour, moneyString);
-                            
+
                             KeyBoardUtils.closeKeybord(et_add_hour_money, OrderDetailActivity.this);
-                          
+
                         }
                     });
                     dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -363,14 +531,13 @@ public class OrderDetailActivity extends BaseActivity {
                 }
             }
 
-            if(order_status >=3 && order_status < 7){
+            if (order_status >= 3 && order_status < 7) {
                 btn_order_add_hour.setVisibility(View.VISIBLE);
-            }else{
+            } else {
                 btn_order_add_hour.setVisibility(View.GONE);
             }
-          
-            
-            
+
+
             if (order_status == 5 && orderBean.getPay_type() == 6) {
                 slipBtn.setVisibility(View.VISIBLE);
             } else {
@@ -467,9 +634,9 @@ public class OrderDetailActivity extends BaseActivity {
      * 加时接口
      */
     public void addHour(final String id, String hour, String money) {
-       
+
         if (!NetworkUtils.isNetworkConnected(OrderDetailActivity.this)) {
-            Toast.makeText(OrderDetailActivity.this, getString(R.string.net_not_open), 0).show();
+            Toast.makeText(OrderDetailActivity.this, getString(R.string.net_not_open), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -540,7 +707,7 @@ public class OrderDetailActivity extends BaseActivity {
      */
     public void getOrderListDetail(final String id) {
         if (!NetworkUtils.isNetworkConnected(OrderDetailActivity.this)) {
-            Toast.makeText(OrderDetailActivity.this, getString(R.string.net_not_open), 0).show();
+            Toast.makeText(OrderDetailActivity.this, getString(R.string.net_not_open), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -548,9 +715,9 @@ public class OrderDetailActivity extends BaseActivity {
             InputMethodUtils.closeSoftKeyboard(OrderDetailActivity.this);
         } catch (Exception e1) {
             e1.printStackTrace();
-        }        
-        
-        
+        }
+
+
         String staffid = SpFileUtil.getString(OrderDetailActivity.this, SpFileUtil.FILE_UI_PARAMETER, SpFileUtil.KEY_STAFF_ID, "");
         Map<String, String> map = new HashMap<String, String>();
         map.put("staff_id", staffid);
@@ -679,7 +846,7 @@ public class OrderDetailActivity extends BaseActivity {
      */
     private void change_work(String type) {
         if (!NetworkUtils.isNetworkConnected(getApplicationContext())) {
-            Toast.makeText(getApplicationContext(), getApplicationContext().getString(R.string.net_not_open), 0).show();
+            Toast.makeText(getApplicationContext(), getApplicationContext().getString(R.string.net_not_open), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -762,7 +929,7 @@ public class OrderDetailActivity extends BaseActivity {
      */
     private void change_order() {
         if (!NetworkUtils.isNetworkConnected(getApplicationContext())) {
-            Toast.makeText(getApplicationContext(), getApplicationContext().getString(R.string.net_not_open), 0).show();
+            Toast.makeText(getApplicationContext(), getApplicationContext().getString(R.string.net_not_open), Toast.LENGTH_SHORT).show();
             return;
         }
         // if (null != orderBean) {
