@@ -125,6 +125,55 @@ public class OrderListVo implements Serializable {
         this.service_addons = service_addons;
     }
 
+    private List<images> order_imgs;
+
+    public List<images> getOrder_imgs() {
+        return order_imgs;
+    }
+
+    public void setOrder_imgs(List<images> order_imgs) {
+        this.order_imgs = order_imgs;
+    }
+
+    public static class images {
+        private String id;
+        private String link_id;
+        private String link_type;
+        private String img_url;
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public String getLink_id() {
+            return link_id;
+        }
+
+        public void setLink_id(String link_id) {
+            this.link_id = link_id;
+        }
+
+        public String getLink_type() {
+            return link_type;
+        }
+
+        public void setLink_type(String link_type) {
+            this.link_type = link_type;
+        }
+
+        public String getImg_url() {
+            return img_url;
+        }
+
+        public void setImg_url(String img_url) {
+            this.img_url = img_url;
+        }
+    }
+
     public static class ServiceAddonsBean {
         private int id;
         private int order_id;

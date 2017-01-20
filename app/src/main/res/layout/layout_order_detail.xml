@@ -685,6 +685,15 @@
                     android:layout_marginRight="@dimen/activity_horizontal_margin" />
             </RelativeLayout>
 
+            <LinearLayout
+                android:id="@+id/layout_show_Images"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:background="@android:color/white"
+                android:orientation="vertical" />
+
             <RelativeLayout
                 android:id="@+id/layout_choose_title"
                 android:layout_width="match_parent"
@@ -713,6 +722,7 @@
                     android:textSize="11sp"
                     android:visibility="visible" />
             </RelativeLayout>
+
 
             <!-- 选择图片或视频 -->
             <LinearLayout

@@ -51,6 +51,7 @@ import android.widget.Toast;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.utils.poi.BaiduMapPoiSearch;
 import com.baidu.mapapi.utils.poi.PoiParaOption;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.meijialife.dingdang.BaseActivity;
@@ -63,6 +64,7 @@ import com.meijialife.dingdang.bean.OrderListVo.ServiceAddonsBean;
 import com.meijialife.dingdang.bean.ThumbnailImage;
 import com.meijialife.dingdang.bean.UserIndexData;
 import com.meijialife.dingdang.picker.MultiSelector;
+import com.meijialife.dingdang.picker.view.SquaredImageView;
 import com.meijialife.dingdang.service.LocationReportAgain;
 import com.meijialife.dingdang.ui.ListViewForInner;
 import com.meijialife.dingdang.ui.NoScrollGridView;
@@ -158,9 +160,11 @@ public class OrderDetailActivity extends BaseActivity {
     private NoScrollGridView mGridViewPhoto;
     private PublishPhotoAdapter mPublishPhotoAdapter;
     //hashtag、choose
-    private LinearLayout mLayoutChoose;
+    private LinearLayout mLayoutChoose, layout_show_Images;
     private LinkedHashMap<String, File> files = null;
     private ArrayList<ThumbnailImage> tempFiles;
+    private RelativeLayout layout_choose_title;
+
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -253,6 +257,9 @@ public class OrderDetailActivity extends BaseActivity {
         mIvChooseImg = (ImageView) findViewById(R.id.btn_choose_image);
         mGridViewPhoto = (NoScrollGridView) findViewById(R.id.gridview);
         mLayoutChoose = (LinearLayout) findViewById(R.id.layout_choose);
+        layout_show_Images = (LinearLayout) findViewById(R.id.layout_show_Images);
+
+        layout_choose_title = (RelativeLayout) findViewById(R.id.layout_choose_title);
 
         mIvChooseImg.setOnClickListener(new OnClickListener() {
             @Override
@@ -385,6 +392,24 @@ public class OrderDetailActivity extends BaseActivity {
 
     private void ShowData(final OrderListVo orderBean) {
         if (null != orderBean) {
+
+            List<OrderListVo.images> imagesList = orderBean.getOrder_imgs();
+            if (null != imagesList && imagesList.size() > 0) {
+                layout_show_Images.setVisibility(View.VISIBLE);
+                layout_choose_title.setVisibility(View.GONE);
+                mLayoutChoose.setVisibility(View.GONE);
+
+                for (OrderListVo.images images : imagesList) {
+                    SimpleDraweeView simpleDraweeView = new SimpleDraweeView(OrderDetailActivity.this);
+                    simpleDraweeView.setImageURI(Uri.parse(images.getImg_url()));
+                    layout_show_Images.addView(simpleDraweeView);
+                }
+            } else {
+                layout_show_Images.setVisibility(View.GONE);
+                layout_choose_title.setVisibility(View.VISIBLE);
+                mLayoutChoose.setVisibility(View.VISIBLE);
+            }
+
 
             et_input_money.addTextChangedListener(new TextWatcher() {
 
@@ -1150,7 +1175,7 @@ public class OrderDetailActivity extends BaseActivity {
                             dismissDialog();
                             String errorMsg = "";
                             LogOut.i("========", "onSuccess：" + result);
-                            UIUtils.showToast(OrderDetailActivity.this,"上传图片成功"+result);
+                            UIUtils.showToast(OrderDetailActivity.this, "上传图片成功" + result);
 
                             // "开始服务返回："+t.toString());
                             try {
@@ -1193,7 +1218,7 @@ public class OrderDetailActivity extends BaseActivity {
                         @Override
                         public void onError(Throwable ex, boolean isOnCallback) {
                             dismissDialog();
-                            UIUtils.showToast(OrderDetailActivity.this,"上传图片失败");
+                            UIUtils.showToast(OrderDetailActivity.this, "上传图片失败");
                         }
 
                         @Override
