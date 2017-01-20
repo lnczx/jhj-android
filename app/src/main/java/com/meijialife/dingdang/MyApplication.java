@@ -15,6 +15,8 @@ import com.igexin.sdk.PushManager;
 import com.meijialife.dingdang.service.LocationReportService;
 import com.meijialife.dingdang.utils.LogOut;
 
+import org.xutils.x;
+
 public class MyApplication extends Application {
 
     private static final String TAG = "MyApplication";
@@ -47,6 +49,14 @@ public class MyApplication extends Application {
         try {
             Fresco.initialize(this, ImagePipelineConfig.newBuilder(this)
                     .setDownsampleEnabled(true).build());//fresco
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //Xutils3.0 初始化
+        try {
+            x.Ext.init(this);
+            x.Ext.setDebug(false);
         } catch (Exception e) {
             e.printStackTrace();
         }

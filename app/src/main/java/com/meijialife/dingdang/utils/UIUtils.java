@@ -17,22 +17,22 @@ public class UIUtils {
 
     public static void showTestToast(Context context, String msg) {
         if (debugBoolean) {
-            Toast.makeText(context, StringUtils.isEmpty(msg) ? "" : msg, 0).show();
+            Toast.makeText(context, StringUtils.isEmpty(msg) ? "" : msg, Toast.LENGTH_SHORT).show();
         }
     }
 
     public static void showTestToastLong(Context context, String msg) {
         if (debugBoolean) {
-            Toast.makeText(context, StringUtils.isEmpty(msg) ? "" : msg, 1).show();
+            Toast.makeText(context, StringUtils.isEmpty(msg) ? "" : msg, Toast.LENGTH_LONG).show();
         }
     }
 
     public static void showToast(Context context, String msg) {
-        Toast.makeText(context, msg, 0).show();
+        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
     }
 
     public static void showToastLong(Context context, String msg) {
-        Toast.makeText(context, msg, 1).show();
+        Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
     }
 
     // 自定义吐司

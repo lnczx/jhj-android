@@ -2,9 +2,12 @@ package com.meijialife.dingdang.activity;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -13,6 +16,9 @@ import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
 
 import org.json.JSONObject;
+import org.xutils.common.Callback;
+import org.xutils.common.util.LogUtil;
+import org.xutils.http.RequestParams;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -23,9 +29,13 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -42,6 +52,7 @@ import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.utils.poi.BaiduMapPoiSearch;
 import com.baidu.mapapi.utils.poi.PoiParaOption;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.meijialife.dingdang.BaseActivity;
 import com.meijialife.dingdang.Constants;
 import com.meijialife.dingdang.R;
@@ -49,6 +60,7 @@ import com.meijialife.dingdang.adapter.OrderListDetailsAdapter;
 import com.meijialife.dingdang.adapter.PublishPhotoAdapter;
 import com.meijialife.dingdang.bean.OrderListVo;
 import com.meijialife.dingdang.bean.OrderListVo.ServiceAddonsBean;
+import com.meijialife.dingdang.bean.ThumbnailImage;
 import com.meijialife.dingdang.bean.UserIndexData;
 import com.meijialife.dingdang.picker.MultiSelector;
 import com.meijialife.dingdang.service.LocationReportAgain;
@@ -56,6 +68,8 @@ import com.meijialife.dingdang.ui.ListViewForInner;
 import com.meijialife.dingdang.ui.NoScrollGridView;
 import com.meijialife.dingdang.ui.ToggleButton;
 import com.meijialife.dingdang.ui.ToggleButton.OnToggleChanged;
+import com.meijialife.dingdang.utils.AgentApi;
+import com.meijialife.dingdang.utils.CommonUtil;
 import com.meijialife.dingdang.utils.InputMethodUtils;
 import com.meijialife.dingdang.utils.KeyBoardUtils;
 import com.meijialife.dingdang.utils.LogOut;
@@ -63,6 +77,7 @@ import com.meijialife.dingdang.utils.NetworkUtils;
 import com.meijialife.dingdang.utils.SpFileUtil;
 import com.meijialife.dingdang.utils.StringUtils;
 import com.meijialife.dingdang.utils.UIUtils;
+import com.meijialife.dingdang.utils.image.BitmapUtil;
 
 import android.support.v4.content.PermissionChecker;
 
@@ -144,6 +159,22 @@ public class OrderDetailActivity extends BaseActivity {
     private PublishPhotoAdapter mPublishPhotoAdapter;
     //hashtag、choose
     private LinearLayout mLayoutChoose;
+    private LinkedHashMap<String, File> files = null;
+    private ArrayList<ThumbnailImage> tempFiles;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 1://compress failed
+                    Toast.makeText(OrderDetailActivity.this, "上传失败,请检查图片再次发布", Toast.LENGTH_SHORT).show();
+                    break;
+
+                case 3:
+                    dismissDialog();
+                    break;
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -226,7 +257,7 @@ public class OrderDetailActivity extends BaseActivity {
         mIvChooseImg.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                UIUtils.showToast(OrderDetailActivity.this, "去选择图片");
+//                UIUtils.showToast(OrderDetailActivity.this, "去选择图片");
                 pickImage();
             }
         });
@@ -272,6 +303,7 @@ public class OrderDetailActivity extends BaseActivity {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
+
     /**
      * 删除单张图片
      */
@@ -323,7 +355,6 @@ public class OrderDetailActivity extends BaseActivity {
 
         }
     }
-
 
 
     private boolean verifyPermission(String permissionRequired) {
@@ -433,7 +464,8 @@ public class OrderDetailActivity extends BaseActivity {
                                     if (pay_type == 6 && !isSelect) {
                                         UIUtils.showToast(OrderDetailActivity.this, "请线下收款后再完成服务");
                                     } else {
-                                        change_work(OVER);
+//                                        change_work(OVER);
+                                        startUploadImage();
                                     }
                                 }
                             } else if (order_type == 2) {// 助理单
@@ -447,7 +479,8 @@ public class OrderDetailActivity extends BaseActivity {
                                     if (pay_type == 6 && !isSelect) {
                                         UIUtils.showToast(OrderDetailActivity.this, "请线下收款后再完成服务");
                                     } else {
-                                        change_work(OVER);
+//                                        change_work(OVER);
+                                        startUploadImage();
                                     }
                                 }
                             }
@@ -635,6 +668,7 @@ public class OrderDetailActivity extends BaseActivity {
      * 加时接口
      */
     public void addHour(final String id, String hour, String money) {
+
 
         if (!NetworkUtils.isNetworkConnected(OrderDetailActivity.this)) {
             Toast.makeText(OrderDetailActivity.this, getString(R.string.net_not_open), Toast.LENGTH_SHORT).show();
@@ -1035,6 +1069,142 @@ public class OrderDetailActivity extends BaseActivity {
             showDialog();
         }
 
+    }
+
+    /**
+     * 上传图片
+     */
+    private void startUploadImage() {
+        if (null != mSelectPath && !mSelectPath.isEmpty()) {
+            cachePostPhoto();
+        } else {
+            Toast.makeText(OrderDetailActivity.this, "请选择至少一张图片", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /**
+     * 缓存发布的图片文件
+     */
+    private void cachePostPhoto() {
+
+        showDialog();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (null != mSelectPath && !mSelectPath.isEmpty()) {
+                    //folder
+//                    files = new HashMap<>();
+                    files = new LinkedHashMap<>();
+                    tempFiles = new ArrayList<>();
+                    String tempPath = Environment.getExternalStorageDirectory().getPath() + Constants.FOLDER_TEMP;
+                    File dirFile = new File(tempPath);
+                    if (!dirFile.exists()) {
+                        dirFile.mkdirs();
+                    }
+                    for (int i = 0; i < mSelectPath.size(); i++) {
+                    /* 获取文件的后缀名 */
+                        int dotIndex = mSelectPath.get(i).lastIndexOf(".");
+                        String end = mSelectPath.get(i).substring(dotIndex, mSelectPath.get(i).length()).toLowerCase();
+                        if (TextUtils.isEmpty(end)) {
+                            end = ".jpg";
+                        }
+                        long time = System.currentTimeMillis();
+                        //创建临时目录
+                        String toPath = tempPath + File.separator + time + end;
+                        boolean success = BitmapUtil.saveJpgFile(mSelectPath.get(i), toPath);
+                        if (!success) {
+                            mHandler.sendEmptyMessage(1);
+                        } else {
+                            ThumbnailImage thumbnailImage = new ThumbnailImage();
+                            thumbnailImage.setThumbnailBaseUri(toPath);
+                            int[] widthAndHeight = BitmapUtil.getImageWidthHeight(toPath);
+                            thumbnailImage.setWidth(widthAndHeight[0]);
+                            thumbnailImage.setHeight(widthAndHeight[1]);
+                            tempFiles.add(thumbnailImage);
+                            files.put("image-file-" + i + ".jpg", new File(tempPath + File.separator + time + end));
+                        }
+                    }
+                }
+                uploadImage(files);
+            }
+        }).start();
+    }
+
+
+    /**
+     * 发布动态(分享,参加活动)
+     */
+    private void uploadImage(final HashMap<String, File> files) {
+        if (!CommonUtil.isFastClick()) {
+            String staffid = SpFileUtil.getString(getApplicationContext(), SpFileUtil.FILE_UI_PARAMETER, SpFileUtil.KEY_STAFF_ID, "");
+
+            HashMap<String, String> map = new HashMap<>();
+            map.put("staff_id", staffid);
+            map.put("order_id", order_id);
+
+            AgentApi.upload(Constants.URL_GET_OVER_ORDER_WORK,
+                    map, "file", files, "image/jpg", new Callback.CommonCallback<String>() {
+                        @Override
+                        public void onSuccess(String result) {
+                            dismissDialog();
+                            String errorMsg = "";
+                            LogOut.i("========", "onSuccess：" + result);
+                            UIUtils.showToast(OrderDetailActivity.this,"上传图片成功"+result);
+
+                            // "开始服务返回："+t.toString());
+                            try {
+                                if (StringUtils.isNotEmpty(result)) {
+                                    JSONObject obj = new JSONObject(result);
+                                    int status = obj.getInt("status");
+                                    String msg = obj.getString("msg");
+                                    String data = obj.getString("data");
+                                    if (status == Constants.STATUS_SUCCESS) { // 正确
+                                        OrderDetailActivity.this.finish();
+                                        // if (StringUtils.isNotEmpty(data)) {
+                                        // } else {
+                                        // UIUtils.showToast(getApplicationContext(),
+                                        // "数据错误");
+                                        // }
+                                    } else if (status == Constants.STATUS_SERVER_ERROR) { // 服务器错误
+                                        errorMsg = getApplicationContext().getString(R.string.servers_error);
+                                    } else if (status == Constants.STATUS_PARAM_MISS) { // 缺失必选参数
+                                        errorMsg = getApplicationContext().getString(R.string.param_missing);
+                                    } else if (status == Constants.STATUS_PARAM_ILLEGA) { // 参数值非法
+                                        errorMsg = getApplicationContext().getString(R.string.param_illegal);
+                                    } else if (status == Constants.STATUS_OTHER_ERROR) { // 999其他错误
+                                        errorMsg = msg;
+                                    } else {
+                                        errorMsg = getApplicationContext().getString(R.string.servers_error);
+                                    }
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                errorMsg = getApplicationContext().getString(R.string.servers_error);
+
+                            }
+                            // 操作失败，显示错误信息|
+                            if (!StringUtils.isEmpty(errorMsg.trim())) {
+                                UIUtils.showToast(getApplicationContext(), errorMsg);
+                            }
+
+                        }
+
+                        @Override
+                        public void onError(Throwable ex, boolean isOnCallback) {
+                            dismissDialog();
+                            UIUtils.showToast(OrderDetailActivity.this,"上传图片失败");
+                        }
+
+                        @Override
+                        public void onCancelled(CancelledException cex) {
+                        }
+
+                        @Override
+                        public void onFinished() {
+                        }
+                    });
+        }
     }
 
 }
