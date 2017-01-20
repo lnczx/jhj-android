@@ -150,6 +150,7 @@
         <activity
             android:name=".activity.PhotoPreviewActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name=".picker.MultiImageSelectorActivity"
