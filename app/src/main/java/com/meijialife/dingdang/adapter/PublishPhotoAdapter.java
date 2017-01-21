@@ -36,7 +36,7 @@ public class PublishPhotoAdapter extends BaseAdapter {
         this.inflater = LayoutInflater.from(ctx);
         this.mContext = ctx;
         this.mList = list;
-        if (mList.size() == 9) {
+        if (mList.size() == 3) {
             isFull = true;
         }
     }
@@ -44,11 +44,11 @@ public class PublishPhotoAdapter extends BaseAdapter {
     @Override
     public int getCount() {//判断长度(加号)
         if (mList != null && !mList.isEmpty()) {
-            if (mList.size() != 9) {
+            if (mList.size() != 3) {
                 return mList.size() + 1;
             } else {
                 isFull = true;
-                return 9;
+                return 3;
             }
         } else {
             return 1;
@@ -58,7 +58,7 @@ public class PublishPhotoAdapter extends BaseAdapter {
     @Override
     public String getItem(int position) {
         if (null != mList && !mList.isEmpty()) {
-            if (mList.size() != 9) {
+            if (mList.size() != 3) {
                 if (position != getCount() - 1) {
                     return mList.get(position);
                 } else {

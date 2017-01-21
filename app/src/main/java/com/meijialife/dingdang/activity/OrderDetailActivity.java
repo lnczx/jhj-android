@@ -66,8 +66,10 @@ import com.meijialife.dingdang.bean.UserIndexData;
 import com.meijialife.dingdang.picker.MultiSelector;
 import com.meijialife.dingdang.picker.view.SquaredImageView;
 import com.meijialife.dingdang.service.LocationReportAgain;
+import com.meijialife.dingdang.ui.FrescoPhotoView;
 import com.meijialife.dingdang.ui.ListViewForInner;
 import com.meijialife.dingdang.ui.NoScrollGridView;
+import com.meijialife.dingdang.ui.TagGroup;
 import com.meijialife.dingdang.ui.ToggleButton;
 import com.meijialife.dingdang.ui.ToggleButton.OnToggleChanged;
 import com.meijialife.dingdang.utils.AgentApi;
@@ -140,7 +142,7 @@ public class OrderDetailActivity extends BaseActivity {
     private ListViewForInner listview_details;
     private OrderListDetailsAdapter orderListDetails;
     private LinearLayout layout_add_hour;
-    private TextView tv_add_hour;
+    private TextView tv_add_hour, tv_order_from, layout_show_Images_title;
     final String arr[] = new String[]{"1", "2", "3", "4", "5", "6",};
 
     //photo picker
@@ -233,6 +235,8 @@ public class OrderDetailActivity extends BaseActivity {
         slipBtn = (ToggleButton) findViewById(R.id.slipBtn_fatongzhi);
         layout_add_hour = (LinearLayout) findViewById(R.id.layout_add_hour);
         tv_add_hour = (TextView) findViewById(R.id.tv_add_hour);
+        tv_order_from = (TextView) findViewById(R.id.tv_order_from);
+        layout_show_Images_title = (TextView) findViewById(R.id.layout_show_Images_title);
 
         /*
          * slipBtn.setOnToggleChanged(new OnToggleChanged() {
@@ -291,7 +295,7 @@ public class OrderDetailActivity extends BaseActivity {
 
             MultiSelector selector = MultiSelector.create();
             selector.showCamera(true);//附带拍照
-            selector.count(9);//最多9张
+            selector.count(3);//最多3张
             selector.multi();//多选
             selector.origin(mSelectPath);//已选取的图片
             selector.start(OrderDetailActivity.this, REQUEST_IMAGE);
@@ -396,15 +400,22 @@ public class OrderDetailActivity extends BaseActivity {
             List<OrderListVo.images> imagesList = orderBean.getOrder_imgs();
             if (null != imagesList && imagesList.size() > 0) {
                 layout_show_Images.setVisibility(View.VISIBLE);
+                layout_show_Images_title.setVisibility(View.VISIBLE);
                 layout_choose_title.setVisibility(View.GONE);
                 mLayoutChoose.setVisibility(View.GONE);
 
+                layout_show_Images.removeAllViews();
                 for (OrderListVo.images images : imagesList) {
-                    SimpleDraweeView simpleDraweeView = new SimpleDraweeView(OrderDetailActivity.this);
-                    simpleDraweeView.setImageURI(Uri.parse(images.getImg_url()));
-                    layout_show_Images.addView(simpleDraweeView);
+                    FrescoPhotoView photoView = new FrescoPhotoView(OrderDetailActivity.this);
+                    photoView.setImageUri(images.getImg_url(), null);
+
+                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    lp.setMargins(0, 20, 0, 0);
+                    photoView.setLayoutParams(lp);
+                    layout_show_Images.addView(photoView);
                 }
             } else {
+                layout_show_Images_title.setVisibility(View.GONE);
                 layout_show_Images.setVisibility(View.GONE);
                 layout_choose_title.setVisibility(View.VISIBLE);
                 mLayoutChoose.setVisibility(View.VISIBLE);
@@ -628,6 +639,7 @@ public class OrderDetailActivity extends BaseActivity {
             tv_input_content.setText(orderBean.getRemarks_confirm());
             tv_order_addr.setText(orderBean.getService_addr());
             tv_user_type.setText(orderBean.getUser_type_str());
+            tv_order_from.setText(orderBean.getOrder_from_name());
 
             String add_hour = orderBean.getOver_work_str();
             if (StringUtils.isEmpty(add_hour)) {
@@ -1158,7 +1170,7 @@ public class OrderDetailActivity extends BaseActivity {
 
 
     /**
-     * 发布动态(分享,参加活动)
+     * 上传图片，完成服务
      */
     private void uploadImage(final HashMap<String, File> files) {
         if (!CommonUtil.isFastClick()) {
@@ -1175,7 +1187,7 @@ public class OrderDetailActivity extends BaseActivity {
                             dismissDialog();
                             String errorMsg = "";
                             LogOut.i("========", "onSuccess：" + result);
-                            UIUtils.showToast(OrderDetailActivity.this, "上传图片成功" + result);
+                            UIUtils.showToast(OrderDetailActivity.this, "上传图片成功,服务完成");
 
                             // "开始服务返回："+t.toString());
                             try {
@@ -1227,6 +1239,11 @@ public class OrderDetailActivity extends BaseActivity {
 
                         @Override
                         public void onFinished() {
+                            try {
+                                new LocationReportAgain(OrderDetailActivity.this).reportLocationHttp();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
                     });
         }

@@ -51,7 +51,7 @@ public class MultiImageSelectorActivity extends AppCompatActivity
      */
     static final String EXTRA_DEFAULT_SELECTED_LIST = "default_list";
     // Default image size
-    private static final int DEFAULT_IMAGE_SIZE = 9;
+    private static final int DEFAULT_IMAGE_SIZE = 3;
 
     private ArrayList<String> resultList = new ArrayList<>();
     private int mDefaultCount = DEFAULT_IMAGE_SIZE;

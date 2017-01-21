@@ -73,10 +73,17 @@ public class OrderListVo implements Serializable {
     private String user_type_str;
 
     private String over_work_str;
-    
-    
-    
-    
+
+    private String order_from_name;
+
+
+    public String getOrder_from_name() {
+        return order_from_name;
+    }
+
+    public void setOrder_from_name(String order_from_name) {
+        this.order_from_name = order_from_name;
+    }
 
     public int getUser_id() {
         return user_id;
@@ -136,17 +143,27 @@ public class OrderListVo implements Serializable {
     }
 
     public static class images {
-        private String id;
+        private String img_id;
+        private String user_id;
         private String link_id;
         private String link_type;
         private String img_url;
+        private String add_time;
 
-        public String getId() {
-            return id;
+        public String getImg_id() {
+            return img_id;
         }
 
-        public void setId(String id) {
-            this.id = id;
+        public void setImg_id(String img_id) {
+            this.img_id = img_id;
+        }
+
+        public String getUser_id() {
+            return user_id;
+        }
+
+        public void setUser_id(String user_id) {
+            this.user_id = user_id;
         }
 
         public String getLink_id() {
@@ -171,6 +188,14 @@ public class OrderListVo implements Serializable {
 
         public void setImg_url(String img_url) {
             this.img_url = img_url;
+        }
+
+        public String getAdd_time() {
+            return add_time;
+        }
+
+        public void setAdd_time(String add_time) {
+            this.add_time = add_time;
         }
     }
 

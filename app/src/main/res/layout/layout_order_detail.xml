@@ -411,6 +411,28 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/btn_list_item_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:text="订单来源："
+                    android:textSize="@dimen/font_size_12" />
+
+                <TextView
+                    android:id="@+id/tv_order_from"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/simi_color_gray"
+                    android:textSize="@dimen/font_size_12" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/layout_add_hour"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
@@ -685,14 +707,25 @@
                     android:layout_marginRight="@dimen/activity_horizontal_margin" />
             </RelativeLayout>
 
+            <TextView
+                android:id="@+id/layout_show_Images_title"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="15dp"
+                android:gravity="center_vertical"
+                android:text="服务情况"
+                android:textSize="@dimen/font_size_12" />
+
             <LinearLayout
                 android:id="@+id/layout_show_Images"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="14dp"
-                android:layout_marginRight="14dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:background="@android:color/white"
+                android:gravity="center_horizontal"
                 android:orientation="vertical" />
+
 
             <RelativeLayout
                 android:id="@+id/layout_choose_title"
@@ -717,7 +750,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@id/tv_choose"
                     android:layout_toRightOf="@id/tv_choose"
-                    android:text="(最多9张)"
+                    android:text="(最多3张)"
                     android:textColor="#333333"
                     android:textSize="11sp"
                     android:visibility="visible" />

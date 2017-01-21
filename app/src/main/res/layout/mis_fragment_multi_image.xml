@@ -58,7 +58,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="2dp"
             android:layout_toRightOf="@id/divide"
-            android:text="9"
+            android:text="3"
             android:textColor="#999999"
             android:textSize="14sp" />
 

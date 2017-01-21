@@ -174,7 +174,7 @@ public class ImageGridAdapter extends BaseAdapter {
     }
 
     public boolean isFull() {
-        return mSelectedImages.size() == 9;
+        return mSelectedImages.size() == 3;
     }
 
     class ViewHolder {
