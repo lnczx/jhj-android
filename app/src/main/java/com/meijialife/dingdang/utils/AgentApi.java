@@ -55,7 +55,7 @@ public class AgentApi {
             , Callback.CommonCallback commonCallback) {
         RequestParams requestParams = new RequestParams(url);
 //        requestParams.addHeader("X-Remote-User-Info", DEFAULT_USERAGENT);
-        requestParams.addHeader("X-Remote-Client-Info", DEVICE_INFO);
+//        requestParams.addHeader("X-Remote-Client-Info", DEVICE_INFO);
         requestParams.setAsJsonContent(true);
         requestParams.setMultipart(true);
         requestParams.setCharset("UTF-8");

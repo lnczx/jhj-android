@@ -1169,7 +1169,7 @@ public class OrderDetailActivity extends BaseActivity {
             map.put("order_id", order_id);
 
             AgentApi.upload(Constants.URL_GET_OVER_ORDER_WORK,
-                    map, "file", files, "image/jpg", new Callback.CommonCallback<String>() {
+                    map, "imgs", files, "image/jpg", new Callback.CommonCallback<String>() {
                         @Override
                         public void onSuccess(String result) {
                             dismissDialog();
