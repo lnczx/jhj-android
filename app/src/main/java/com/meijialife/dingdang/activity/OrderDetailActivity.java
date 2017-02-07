@@ -729,7 +729,7 @@ public class OrderDetailActivity extends BaseActivity {
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
                 dismissDialog();
-                Toast.makeText(OrderDetailActivity.this, getString(R.string.network_failure), Toast.LENGTH_SHORT).show();
+                Toast.makeText(OrderDetailActivity.this, getString(R.string.network_failure), Toast.LENGTH_LONG).show();
                 UIUtils.showTestToast(OrderDetailActivity.this, "errorMsg:" + strMsg);
             }
 
@@ -767,7 +767,7 @@ public class OrderDetailActivity extends BaseActivity {
                 }
                 // 操作失败，显示错误信息|
                 if (!StringUtils.isEmpty(errorMsg.trim())) {
-                    UIUtils.showToast(OrderDetailActivity.this, errorMsg);
+                    UIUtils.showTestToastLong(OrderDetailActivity.this, errorMsg);
                 }
             }
         });
@@ -1077,7 +1077,7 @@ public class OrderDetailActivity extends BaseActivity {
                 }
                 // 操作失败，显示错误信息|
                 if (!StringUtils.isEmpty(errorMsg.trim())) {
-                    UIUtils.showToast(getApplicationContext(), errorMsg);
+                    UIUtils.showToastLong(getApplicationContext(), errorMsg);
                 }
             }
         });
@@ -1115,7 +1115,7 @@ public class OrderDetailActivity extends BaseActivity {
         if (null != mSelectPath && !mSelectPath.isEmpty()) {
             cachePostPhoto();
         } else {
-            Toast.makeText(OrderDetailActivity.this, "请选择至少一张图片", Toast.LENGTH_SHORT).show();
+            Toast.makeText(OrderDetailActivity.this, "请选择至少一张图片", Toast.LENGTH_LONG).show();
         }
     }
 
