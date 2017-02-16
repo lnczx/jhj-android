@@ -143,7 +143,7 @@ public class OrderDetailActivity extends BaseActivity {
     private OrderListDetailsAdapter orderListDetails;
     private LinearLayout layout_add_hour;
     private TextView tv_add_hour, tv_order_from, layout_show_Images_title;
-    final String arr[] = new String[]{"1", "2", "3", "4", "5", "6",};
+    final String arr[] = new String[]{"0", "1", "2", "3", "4", "5", "6",};
 
     //photo picker
     private static final int REQUEST_IMAGE = 1;
