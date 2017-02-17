@@ -42,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="请输入加时价格"
+            android:text="0"
             android:inputType="numberDecimal"
             android:textSize="16sp" />
     </LinearLayout>

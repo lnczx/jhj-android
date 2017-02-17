@@ -240,7 +240,7 @@ public class OrderDetailActivity extends BaseActivity {
 
         /*
          * slipBtn.setOnToggleChanged(new OnToggleChanged() {
-         * 
+         *
          * @Override public void onToggle(boolean on) { if (on) { isSelect = true; } else { isSelect = false; } } });
          */
 
@@ -730,7 +730,7 @@ public class OrderDetailActivity extends BaseActivity {
                 super.onFailure(t, errorNo, strMsg);
                 dismissDialog();
                 Toast.makeText(OrderDetailActivity.this, getString(R.string.network_failure), Toast.LENGTH_LONG).show();
-                UIUtils.showTestToast(OrderDetailActivity.this, "errorMsg:" + strMsg);
+                UIUtils.showToastLong(OrderDetailActivity.this, "errorMsg:" + strMsg);
             }
 
             @Override
@@ -739,7 +739,7 @@ public class OrderDetailActivity extends BaseActivity {
                 String errorMsg = "";
                 dismissDialog();
                 LogOut.i("========", "onSuccess：" + t);
-                // UIUtils.showTestToast(OrderDetailActivity.this, "order_from："+t.toString());
+
                 try {
                     if (StringUtils.isNotEmpty(t.toString())) {
                         JSONObject obj = new JSONObject(t.toString());
@@ -767,7 +767,9 @@ public class OrderDetailActivity extends BaseActivity {
                 }
                 // 操作失败，显示错误信息|
                 if (!StringUtils.isEmpty(errorMsg.trim())) {
-                    UIUtils.showTestToastLong(OrderDetailActivity.this, errorMsg);
+                    UIUtils.showToastLong(OrderDetailActivity.this, errorMsg);
+                } else {
+                    UIUtils.showToastLong(OrderDetailActivity.this, "加时成功.");
                 }
             }
         });
@@ -983,7 +985,7 @@ public class OrderDetailActivity extends BaseActivity {
                 }
                 // 操作失败，显示错误信息|
                 if (!StringUtils.isEmpty(errorMsg.trim())) {
-                    UIUtils.showToast(getApplicationContext(), errorMsg);
+                    UIUtils.showToastLong(getApplicationContext(), errorMsg);
                 }
 
                 try {
@@ -1077,7 +1079,7 @@ public class OrderDetailActivity extends BaseActivity {
                 }
                 // 操作失败，显示错误信息|
                 if (!StringUtils.isEmpty(errorMsg.trim())) {
-                    UIUtils.showToastLong(getApplicationContext(), errorMsg);
+                    UIUtils.showToast(getApplicationContext(), errorMsg);
                 }
             }
         });
@@ -1115,7 +1117,7 @@ public class OrderDetailActivity extends BaseActivity {
         if (null != mSelectPath && !mSelectPath.isEmpty()) {
             cachePostPhoto();
         } else {
-            Toast.makeText(OrderDetailActivity.this, "请选择至少一张图片", Toast.LENGTH_LONG).show();
+            Toast.makeText(OrderDetailActivity.this, "请选择至少一张图片", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -1187,7 +1189,7 @@ public class OrderDetailActivity extends BaseActivity {
                             dismissDialog();
                             String errorMsg = "";
                             LogOut.i("========", "onSuccess：" + result);
-                            UIUtils.showToast(OrderDetailActivity.this, "上传图片成功,服务完成");
+//                            UIUtils.showToast(OrderDetailActivity.this, "上传图片成功,服务完成");
 
                             // "开始服务返回："+t.toString());
                             try {
@@ -1197,6 +1199,7 @@ public class OrderDetailActivity extends BaseActivity {
                                     String msg = obj.getString("msg");
                                     String data = obj.getString("data");
                                     if (status == Constants.STATUS_SUCCESS) { // 正确
+                                        UIUtils.showToast(OrderDetailActivity.this, "上传图片成功,服务完成");
                                         OrderDetailActivity.this.finish();
                                         // if (StringUtils.isNotEmpty(data)) {
                                         // } else {
@@ -1222,7 +1225,9 @@ public class OrderDetailActivity extends BaseActivity {
                             }
                             // 操作失败，显示错误信息|
                             if (!StringUtils.isEmpty(errorMsg.trim())) {
-                                UIUtils.showToast(getApplicationContext(), errorMsg);
+                                UIUtils.showToastLong(getApplicationContext(), errorMsg);
+                            } else {
+                                UIUtils.showToastLong(getApplicationContext(), "订单已经完成服务。");
                             }
 
                         }
