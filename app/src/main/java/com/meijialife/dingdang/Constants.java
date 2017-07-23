@@ -1,8 +1,8 @@
 package com.meijialife.dingdang;
 
-import java.util.ArrayList;
-
 import android.os.Environment;
+
+import java.util.ArrayList;
 
 public class Constants {
     //folder path
@@ -12,8 +12,8 @@ public class Constants {
 
     //*******************************
     // 主机地址
-//    public static final String HOST1 = "http://123.57.209.81";
-    public static final String HOST1 = "http://www.jia-he-jia.com";
+    public static final String HOST1 = "http://123.57.209.81";
+//    public static final String HOST1 = "http://www.jia-he-jia.com";
     // 基础接口
     public static final String ROOT_URL1 = HOST1 + "/jhj-app/app/";
 
@@ -28,6 +28,11 @@ public class Constants {
     public static final String URL_POST_PUSH_BIND = ROOT_URL1 + "user/post_push_bind.json";
     
     public static final String URL_GET_ORDER_LIST = ROOT_URL1 + "staff/order/get_list.json";
+
+    //请假列表
+    public static final String URL_GET_LEAVE_LIST = ROOT_URL1 + "staff/leave_list.json";
+    //取消请假
+    public static final String URL_GET_CANCEL_LEAVE = ROOT_URL1 + "staff/do_leave_cancel.json";
     //获取用户信息列表接口
     public static final String URL_GET_USER_LIST = ROOT_URL1 + "user/get_user_list.json";
     //获取助理信息列表接口

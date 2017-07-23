@@ -4,18 +4,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/activity_bg_color"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:scrollbars="none" >
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:id="@+id/layout_info"
@@ -25,7 +25,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin" >
+                android:paddingRight="@dimen/activity_horizontal_margin">
 
                 <com.meijialife.dingdang.ui.RoundImageView
                     android:id="@+id/iv_headimg"
@@ -65,7 +65,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin" >
+                android:paddingRight="@dimen/activity_horizontal_margin">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -74,7 +74,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:gravity="center"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -86,7 +86,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/tv_total_order"
@@ -118,7 +118,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="20dp"
                     android:gravity="center"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -129,7 +129,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/tv_total_incoming"
@@ -155,7 +155,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin" >
+                android:paddingRight="@dimen/activity_horizontal_margin">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -177,6 +177,37 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/layout_apply_leave"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="1dp"
+                android:background="@android:color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:drawableLeft="@drawable/icon_account"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="申请请假"
+                    android:textColor="#454545"
+                    android:textSize="@dimen/font_size_16" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/arrow_right" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
                 android:id="@+id/layout_college"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -185,7 +216,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin" >
+                android:paddingRight="@dimen/activity_horizontal_margin">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -215,7 +246,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin" >
+                android:paddingRight="@dimen/activity_horizontal_margin">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -245,7 +276,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin" >
+                android:paddingRight="@dimen/activity_horizontal_margin">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -255,7 +286,7 @@
                     android:drawablePadding="10dp"
                     android:gravity="center_vertical"
                     android:text="用户评价 "
-                   android:textColor="#454545"
+                    android:textColor="#454545"
                     android:textSize="@dimen/font_size_16" />
 
                 <ImageView
@@ -275,7 +306,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin" >
+                android:paddingRight="@dimen/activity_horizontal_margin">
 
                 <TextView
                     android:layout_width="wrap_content"

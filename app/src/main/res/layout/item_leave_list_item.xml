@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_order_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="15dp"
+    android:background="@drawable/list_corner"
+    android:orientation="vertical"
+    android:padding="3dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f8f8f8"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_user_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="申请时间："
+                android:textSize="@dimen/font_size_14" />
+
+            <TextView
+                android:id="@+id/tv_apply_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/tv_user_type"
+                android:textColor="@color/simi_color_gray"
+                android:textSize="@dimen/font_size_14"
+                tools:text="2017" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/tv_fuwu_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="请假时间："
+                android:textSize="@dimen/font_size_14" />
+
+            <TextView
+                android:id="@+id/tv_apply_start_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/tv_fuwu_address"
+                android:textColor="@color/simi_color_gray"
+                android:textSize="@dimen/font_size_14"
+                tools:text="2017-6" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/tv_fuwu_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="请假天数："
+                android:textSize="@dimen/font_size_14" />
+
+            <TextView
+                android:id="@+id/tv_apply_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/tv_fuwu_time"
+                android:textColor="@color/simi_color_gray"
+                android:textSize="@dimen/font_size_14"
+                tools:text="01-21 11:02" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/tv_fuwu_xiangmu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="请假状态："
+                android:textSize="@dimen/font_size_14" />
+
+            <TextView
+                android:id="@+id/tv_leave_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/tv_fuwu_xiangmu"
+                android:textColor="@color/simi_color_gray"
+                android:textSize="@dimen/font_size_14"
+                tools:text="保洁+做饭" />
+
+            <TextView
+                android:id="@+id/iv_leave_change"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/btn_start_order_selectbg"
+                android:padding="5dp"
+                android:text="取消请假"
+                android:textColor="@android:color/white"
+                android:visibility="visible" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

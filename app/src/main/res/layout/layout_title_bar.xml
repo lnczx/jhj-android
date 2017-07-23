@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/title_bar_height"
     android:background="@android:color/white"
-    android:gravity="center_vertical" >
+    android:gravity="center_vertical">
 
     <ImageView
         android:id="@+id/title_btn_left"
@@ -50,10 +50,25 @@
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
         android:layout_gravity="center_vertical"
-        android:src="@drawable/icon_call_kefu"
         android:focusable="true"
         android:scaleType="centerInside"
-        android:visibility="gone"
-       />
+        android:src="@drawable/icon_call_kefu"
+        android:visibility="gone" />
+
+
+    <TextView
+        android:id="@+id/title_btn_right_text"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="10dp"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:scaleType="centerInside"
+        android:text="申请请假"
+        android:textColor="@color/black_60_alpha"
+        android:visibility="gone" />
 
 </RelativeLayout>

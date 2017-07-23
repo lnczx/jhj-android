@@ -1,15 +1,5 @@
 package com.meijialife.dingdang.fra;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import net.tsz.afinal.FinalBitmap;
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
-
-import org.json.JSONObject;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
@@ -25,6 +15,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.meijialife.dingdang.Constants;
 import com.meijialife.dingdang.R;
+import com.meijialife.dingdang.activity.ApplyLeaveActivity;
 import com.meijialife.dingdang.activity.HistoryOrderActivity;
 import com.meijialife.dingdang.activity.MoreActivity;
 import com.meijialife.dingdang.activity.PersonAccountCenterActivity;
@@ -42,9 +33,19 @@ import com.meijialife.dingdang.utils.SpFileUtil;
 import com.meijialife.dingdang.utils.StringUtils;
 import com.meijialife.dingdang.utils.UIUtils;
 
+import net.tsz.afinal.FinalBitmap;
+import net.tsz.afinal.FinalHttp;
+import net.tsz.afinal.http.AjaxCallBack;
+import net.tsz.afinal.http.AjaxParams;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
- 
- * 
+
+ *
  */
 public class PersonalPageFragment extends Fragment implements OnClickListener {
 
@@ -66,7 +67,7 @@ public class PersonalPageFragment extends Fragment implements OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.index_4, null);
-        
+
         init(v);
         getUserData();
         return v;
@@ -77,6 +78,7 @@ public class PersonalPageFragment extends Fragment implements OnClickListener {
 
         view.findViewById(R.id.layout_info).setOnClickListener(this);
         view.findViewById(R.id.layout_account_center).setOnClickListener(this);
+        view.findViewById(R.id.layout_apply_leave).setOnClickListener(this);
         view.findViewById(R.id.layout_college).setOnClickListener(this);
         view.findViewById(R.id.layout_share_friend).setOnClickListener(this);
         view.findViewById(R.id.layout_more).setOnClickListener(this);
@@ -102,36 +104,39 @@ public class PersonalPageFragment extends Fragment implements OnClickListener {
     public void onClick(View arg0) {
         Intent intent = null;
         switch (arg0.getId()) {
-        case R.id.layout_info:
-            intent = new Intent(getActivity(), PersonInfoActivity.class);
-            intent.putExtra("userIndexData", userIndexData);
-            break;
-        case R.id.layout_account_center:
-            intent = new Intent(getActivity(), PersonAccountCenterActivity.class);
-            break;
-        case R.id.layout_college:
-            // intent = new Intent(getActivity(), PersonCollageActivity.class);
-            intent = new Intent(getActivity(), WebViewActivity.class);
-            intent.putExtra("url", Constants.URL_GET_UNIVERSITY + "?staff_id=" + staffid);
-            intent.putExtra("title", "叮当大学");
-            break;
-        case R.id.layout_share_friend:
-            intent = new Intent(getActivity(), ShareActivity.class);
-            break;
-        case R.id.layout_more:
-            intent = new Intent(getActivity(), MoreActivity.class);
-            break;
-        case R.id.layout_user_list://跳转到用户列表
-        	intent = new Intent(getActivity(), UserRateListActivity.class);
-        	break;
-        case R.id.layout_mingxi_shouru://跳转到明细
-            intent = new Intent(getActivity(), PersonPayDetailActivity.class);
-            break;
-        case R.id.layout_history_order://跳转到明细
-            intent = new Intent(getActivity(), HistoryOrderActivity.class);
-            break;
-        default:
-            break;
+            case R.id.layout_info:
+                intent = new Intent(getActivity(), PersonInfoActivity.class);
+                intent.putExtra("userIndexData", userIndexData);
+                break;
+            case R.id.layout_account_center:
+                intent = new Intent(getActivity(), PersonAccountCenterActivity.class);
+                break;
+            case R.id.layout_college:
+                // intent = new Intent(getActivity(), PersonCollageActivity.class);
+                intent = new Intent(getActivity(), WebViewActivity.class);
+                intent.putExtra("url", Constants.URL_GET_UNIVERSITY + "?staff_id=" + staffid);
+                intent.putExtra("title", "叮当大学");
+                break;
+            case R.id.layout_share_friend:
+                intent = new Intent(getActivity(), ShareActivity.class);
+                break;
+            case R.id.layout_more:
+                intent = new Intent(getActivity(), MoreActivity.class);
+                break;
+            case R.id.layout_user_list://跳转到用户列表
+                intent = new Intent(getActivity(), UserRateListActivity.class);
+                break;
+            case R.id.layout_mingxi_shouru://跳转到明细
+                intent = new Intent(getActivity(), PersonPayDetailActivity.class);
+                break;
+            case R.id.layout_history_order://跳转到明细
+                intent = new Intent(getActivity(), HistoryOrderActivity.class);
+                break;
+            case R.id.layout_apply_leave://申请请假
+                intent = new Intent(getActivity(), ApplyLeaveActivity.class);
+                break;
+            default:
+                break;
         }
         if (intent != null) {
             startActivity(intent);
@@ -144,7 +149,7 @@ public class PersonalPageFragment extends Fragment implements OnClickListener {
      */
     private void getUserData() {
         if (!NetworkUtils.isNetworkConnected(getActivity())) {
-            Toast.makeText(getActivity(), getString(R.string.net_not_open), 0).show();
+            Toast.makeText(getActivity(), getString(R.string.net_not_open), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -181,13 +186,13 @@ public class PersonalPageFragment extends Fragment implements OnClickListener {
                                 Gson gson = new Gson();
                                 userIndexData = gson.fromJson(data, UserIndexData.class);
                                 showData(userIndexData);
-                                
+
                                 try {
                                     new LocationReportAgain(getActivity()).reportLocationHttp();
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
-                            }  
+                            }
                         } else if (status == Constants.STATUS_SERVER_ERROR) { // 服务器错误
                             errorMsg = getString(R.string.servers_error);
                         } else if (status == Constants.STATUS_PARAM_MISS) { // 缺失必选参数
