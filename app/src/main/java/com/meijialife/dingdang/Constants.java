@@ -35,6 +35,12 @@ public class Constants {
     public static final String URL_GET_DO_LEAVE = ROOT_URL1 + "staff/do_leave.json";
     //取消请假
     public static final String URL_GET_CANCEL_LEAVE = ROOT_URL1 + "staff/do_leave_cancel.json";
+    //设置支付宝接口
+    public static final String URL_SET_ALIPAY = ROOT_URL1 + "staff/set_alipay.json";
+    //获取财务明细
+    public static final String URL_GET_SALARY = ROOT_URL1 + "staff/get_salary.json";
+
+
     //获取用户信息列表接口
     public static final String URL_GET_USER_LIST = ROOT_URL1 + "user/get_user_list.json";
     //获取助理信息列表接口

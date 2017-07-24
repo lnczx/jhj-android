@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/activity_bg_color"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <include
         android:id="@+id/view_title_bar"
@@ -12,14 +12,14 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/activity_bg_color" >
+        android:background="@color/activity_bg_color">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="vertical"
-            android:paddingBottom="9dp" >
+            android:paddingBottom="9dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -27,7 +27,7 @@
                 android:background="@android:color/white"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:padding="20dp" >
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/tv_total_incoming"
@@ -50,7 +50,8 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin" >
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -77,9 +78,9 @@
                 android:background="@drawable/btn_list_item_bg"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:visibility="gone"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin" >
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -107,7 +108,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin" >
+                android:paddingRight="@dimen/activity_horizontal_margin">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -141,7 +142,94 @@
                 android:text="欠款达到1000元后您将不能接单，请及时向公司缴存欠款"
                 android:textColor="@color/simi_color_gray"
                 android:textSize="@dimen/font_size_12" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="支付宝账号：" />
+
+                <EditText
+                    android:id="@+id/et_alipay_zhanghao"
+                    style="@style/Widget.AppCompat.EditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null" />
+
+                <TextView
+                    android:id="@+id/iv_alipay_change"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/btn_start_order_selectbg"
+                    android:padding="5dp"
+                    android:text="保存"
+                    android:textColor="@android:color/white"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_alipay_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="5dp"
+                android:text="状态：" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/cut_off_rule" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical"
+                android:paddingBottom="20dp"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="账单月份：" />
+
+                    <TextView
+                        android:id="@+id/tv_date_select"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="10dp"
+                        android:drawableRight="@drawable/arrow_down"
+                        android:text="2017年7月" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_account_view"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
         </LinearLayout>
+
     </ScrollView>
 
 </LinearLayout>
