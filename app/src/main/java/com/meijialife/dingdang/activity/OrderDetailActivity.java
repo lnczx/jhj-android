@@ -1,25 +1,5 @@
 package com.meijialife.dingdang.activity;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
-
-import org.json.JSONObject;
-import org.xutils.common.Callback;
-import org.xutils.common.util.LogUtil;
-import org.xutils.http.RequestParams;
-
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -34,6 +14,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.PermissionChecker;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -51,9 +32,7 @@ import android.widget.Toast;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.utils.poi.BaiduMapPoiSearch;
 import com.baidu.mapapi.utils.poi.PoiParaOption;
-import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.meijialife.dingdang.BaseActivity;
 import com.meijialife.dingdang.Constants;
 import com.meijialife.dingdang.R;
@@ -64,12 +43,10 @@ import com.meijialife.dingdang.bean.OrderListVo.ServiceAddonsBean;
 import com.meijialife.dingdang.bean.ThumbnailImage;
 import com.meijialife.dingdang.bean.UserIndexData;
 import com.meijialife.dingdang.picker.MultiSelector;
-import com.meijialife.dingdang.picker.view.SquaredImageView;
 import com.meijialife.dingdang.service.LocationReportAgain;
 import com.meijialife.dingdang.ui.FrescoPhotoView;
 import com.meijialife.dingdang.ui.ListViewForInner;
 import com.meijialife.dingdang.ui.NoScrollGridView;
-import com.meijialife.dingdang.ui.TagGroup;
 import com.meijialife.dingdang.ui.ToggleButton;
 import com.meijialife.dingdang.ui.ToggleButton.OnToggleChanged;
 import com.meijialife.dingdang.utils.AgentApi;
@@ -83,7 +60,19 @@ import com.meijialife.dingdang.utils.StringUtils;
 import com.meijialife.dingdang.utils.UIUtils;
 import com.meijialife.dingdang.utils.image.BitmapUtil;
 
-import android.support.v4.content.PermissionChecker;
+import net.tsz.afinal.FinalHttp;
+import net.tsz.afinal.http.AjaxCallBack;
+import net.tsz.afinal.http.AjaxParams;
+
+import org.json.JSONObject;
+import org.xutils.common.Callback;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 订单详情
@@ -133,7 +122,10 @@ public class OrderDetailActivity extends BaseActivity {
     private TextView tv_input_money;
     private TextView tv_input_content;
     private TextView tv_order_addr;
+    private TextView tv_service_end_time_type;
     private TextView tv_user_type;
+    private TextView tv_order_end_time;
+    private TextView tv_change_time;
     private String order_id;
     private LinearLayout layout_goutong_des;
     private ToggleButton slipBtn;
@@ -166,6 +158,7 @@ public class OrderDetailActivity extends BaseActivity {
     private LinkedHashMap<String, File> files = null;
     private ArrayList<ThumbnailImage> tempFiles;
     private RelativeLayout layout_choose_title;
+    private String servicehour;
 
     private Handler mHandler = new Handler() {
         @Override
@@ -238,6 +231,10 @@ public class OrderDetailActivity extends BaseActivity {
         tv_order_from = (TextView) findViewById(R.id.tv_order_from);
         layout_show_Images_title = (TextView) findViewById(R.id.layout_show_Images_title);
 
+        tv_service_end_time_type = (TextView) findViewById(R.id.tv_service_end_time_type);
+        tv_order_end_time = (TextView) findViewById(R.id.tv_order_end_time);
+        tv_change_time = (TextView) findViewById(R.id.tv_change_time);
+
         /*
          * slipBtn.setOnToggleChanged(new OnToggleChanged() {
          *
@@ -272,6 +269,113 @@ public class OrderDetailActivity extends BaseActivity {
                 pickImage();
             }
         });
+
+        tv_change_time.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                double hour = Double.valueOf(servicehour);
+                if (hour <= 0.5) {
+                    UIUtils.showToast(OrderDetailActivity.this, "低于0.5小时无法调整哦");
+                    return;
+                }
+                View mview = (View) getLayoutInflater().inflate(R.layout.order_detail_changetime_dialog, null);
+                final Spinner sp_change_hour = (Spinner) mview.findViewById(R.id.sp_change_hour);
+
+                List<String> arrHour = new ArrayList<String>();
+
+                double limitHour = hour;
+                double stepHour = 0.5;
+                while (limitHour > stepHour) {
+                    limitHour = limitHour - stepHour;
+                    arrHour.add(limitHour + "");
+                }
+
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(OrderDetailActivity.this, R.layout.spinner_list_item, arrHour);
+                sp_change_hour.setAdapter(arrayAdapter);
+
+                Builder dialog = new AlertDialog.Builder(OrderDetailActivity.this);
+                dialog.setTitle("调整提示");
+                dialog.setView(mview);
+                dialog.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        String hour = sp_change_hour.getSelectedItem().toString();
+                        changeTime(hour);
+                    }
+                });
+                dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).create();
+                dialog.show();
+
+
+            }
+        });
+    }
+
+    /**
+     * 调整时长
+     */
+    public void changeTime(String server_hour) {
+        String staffid = SpFileUtil.getString(OrderDetailActivity.this, SpFileUtil.FILE_UI_PARAMETER, SpFileUtil.KEY_STAFF_ID, "");
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("staff_id", staffid);
+        map.put("order_id", order_id);
+        map.put("service_hour", server_hour);
+        AjaxParams param = new AjaxParams(map);
+
+        showDialog();
+        new FinalHttp().post(Constants.URL_POST_SERVICE_HOUR, param, new AjaxCallBack<Object>() {
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                super.onFailure(t, errorNo, strMsg);
+                dismissDialog();
+                Toast.makeText(OrderDetailActivity.this, getString(R.string.network_failure), Toast.LENGTH_SHORT).show();
+                UIUtils.showTestToast(OrderDetailActivity.this, "errorMsg:" + strMsg);
+            }
+
+            @Override
+            public void onSuccess(Object t) {
+                super.onSuccess(t);
+                String errorMsg = "";
+                dismissDialog();
+                LogOut.i("========", "onSuccess：" + t);
+                // UIUtils.showTestToast(HistoryOrderActivity.this, "order_from："+t.toString());
+                try {
+                    if (StringUtils.isNotEmpty(t.toString())) {
+                        JSONObject obj = new JSONObject(t.toString());
+                        int status = obj.getInt("status");
+                        String msg = obj.getString("msg");
+                        String data = obj.getString("data");
+                        if (status == Constants.STATUS_SUCCESS) { // 正确
+                            UIUtils.showToast(OrderDetailActivity.this, "调整成功");
+                            getOrderListDetail(order_id);
+                        } else if (status == Constants.STATUS_SERVER_ERROR) { // 服务器错误
+                            errorMsg = getString(R.string.servers_error);
+                        } else if (status == Constants.STATUS_PARAM_MISS) { // 缺失必选参数
+                            errorMsg = getString(R.string.param_missing);
+                        } else if (status == Constants.STATUS_PARAM_ILLEGA) { // 参数值非法
+                            errorMsg = getString(R.string.param_illegal);
+                        } else if (status == Constants.STATUS_OTHER_ERROR) { // 999其他错误
+                            errorMsg = msg;
+                        } else {
+                            errorMsg = getString(R.string.servers_error);
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    errorMsg = "网络繁忙，请稍后再试";
+
+                }
+                // 操作失败，显示错误信息|
+                if (!StringUtils.isEmpty(errorMsg.trim())) {
+                    UIUtils.showToast(OrderDetailActivity.this, errorMsg);
+                }
+            }
+        });
+
     }
 
 
@@ -480,6 +584,12 @@ public class OrderDetailActivity extends BaseActivity {
             });
 
             order_status = orderBean.getOrder_status();
+            if (order_status == 5) {
+                tv_change_time.setVisibility(View.VISIBLE);
+            } else {
+                tv_change_time.setVisibility(View.GONE);
+            }
+
             order_type = orderBean.getOrder_type();
 
             btn_order_start_work.setOnClickListener(new OnClickListener() {
@@ -496,6 +606,7 @@ public class OrderDetailActivity extends BaseActivity {
                                 if (order_status == 3) {
                                     change_work(START);
                                 } else if (order_status == 5) {
+
                                     int pay_type = orderBean.getPay_type();
                                     if (pay_type == 6 && !isSelect) {
                                         UIUtils.showToast(OrderDetailActivity.this, "请线下收款后再完成服务");
@@ -538,7 +649,7 @@ public class OrderDetailActivity extends BaseActivity {
 
                 @Override
                 public void onClick(View v) {
-                    View view = (LinearLayout) getLayoutInflater().inflate(R.layout.order_detail_addhour_dialog, null);
+                    View view = (View) getLayoutInflater().inflate(R.layout.order_detail_addhour_dialog, null);
                     sp_add_hour = (Spinner) view.findViewById(R.id.sp_add_hour);
                     et_add_hour_money = (EditText) view.findViewById(R.id.et_add_hour_money);
 
@@ -655,8 +766,11 @@ public class OrderDetailActivity extends BaseActivity {
                 dissmisOrderModify();
                 iv_order_type.setBackgroundResource(R.drawable.icon_zhongdiangong);
                 layout_fuwu_shichang.setVisibility(View.VISIBLE);
-                tv_order_shichang.setText(orderBean.getService_hour() + "小时");
+
+                servicehour = orderBean.getService_hour();
+                tv_order_shichang.setText(servicehour + "小时");
                 tv_service_time_type.setText("服务时间：");
+                tv_order_end_time.setText(orderBean.getService_end_date());
 
             } else if (order_type == 2) {// 助理单
                 ORDERTYPE = ORDERZL;

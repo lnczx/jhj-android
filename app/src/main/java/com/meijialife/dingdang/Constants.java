@@ -42,6 +42,9 @@ public class Constants {
     //获取日期
     public static final String URL_GET_SALARY_DATE = ROOT_URL1 + "staff/get_salary_month.json";
 
+    //调整日期
+    public static final String URL_POST_SERVICE_HOUR = ROOT_URL1 + "staff/order/post_service_hour.json";
+
 
     //获取用户信息列表接口
     public static final String URL_GET_USER_LIST = ROOT_URL1 + "user/get_user_list.json";

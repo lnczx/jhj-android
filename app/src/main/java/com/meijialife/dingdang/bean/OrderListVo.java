@@ -36,6 +36,8 @@ public class OrderListVo implements Serializable {
 
     private String service_date;
 
+    private String service_end_date;
+
     private String button_word;
 
     private Short order_status;
@@ -76,6 +78,13 @@ public class OrderListVo implements Serializable {
 
     private String order_from_name;
 
+    public String getService_end_date() {
+        return service_end_date;
+    }
+
+    public void setService_end_date(String service_end_date) {
+        this.service_end_date = service_end_date;
+    }
 
     public String getOrder_from_name() {
         return order_from_name;
