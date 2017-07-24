@@ -1,15 +1,14 @@
 package com.meijialife.dingdang.activity;
 
-import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.DatePicker;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +32,6 @@ import net.tsz.afinal.http.AjaxParams;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,8 +48,8 @@ public class PersonAccountCenterActivity extends BaseActivity implements
     TextView ivalipaychange;
     @BindView(R.id.tv_alipay_status)
     TextView tvAlipayStatus;
-    @BindView(R.id.tv_date_select)
-    TextView tvDateSelect;
+    @BindView(R.id.sp_select_date)
+    Spinner sp_selectdate;
     @BindView(R.id.layout_account_view)
     LinearLayout layoutAccountView;
     @BindView(R.id.et_alipay_zhanghao)
@@ -60,9 +58,6 @@ public class PersonAccountCenterActivity extends BaseActivity implements
     private String det_money = "0";
     private String total_money = "0";
 
-    int mYear, mMonth, mDay;
-    Button btn;
-    final int DATE_DIALOG = 1;
 
 
     @Override
@@ -86,9 +81,21 @@ public class PersonAccountCenterActivity extends BaseActivity implements
         tv_total_incoming = (TextView) findViewById(R.id.tv_total_incoming);
         tv_alipay_status = (TextView) findViewById(R.id.tv_alipay_status);
 
-        tvDateSelect.setOnClickListener(this);
         ivalipaychange.setOnClickListener(this);
         get_total_dept();
+
+        sp_selectdate.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String time = sp_selectdate.getSelectedItem().toString();
+                getSalary(time);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     @Override
@@ -105,9 +112,6 @@ public class PersonAccountCenterActivity extends BaseActivity implements
                 break;
             case R.id.layout_mingxi://提现明细
                 intent = new Intent(this, PersonPayDetailActivity.class);
-                break;
-            case R.id.tv_date_select://日期选择
-                showDialog(DATE_DIALOG);
                 break;
             case R.id.iv_alipay_change://保存
 
@@ -126,41 +130,8 @@ public class PersonAccountCenterActivity extends BaseActivity implements
             startActivity(intent);
         }
 
-        final Calendar ca = Calendar.getInstance();
-        mYear = ca.get(Calendar.YEAR);
-        mMonth = ca.get(Calendar.MONTH);
-        mDay = ca.get(Calendar.DAY_OF_MONTH);
     }
 
-    @Override
-    protected Dialog onCreateDialog(int id) {
-        switch (id) {
-            case DATE_DIALOG:
-                DatePickerDialog datePickerDialog = new DatePickerDialog(this, mdateListener, mYear, mMonth, 0);
-//                datePickerDialog.getDatePicker().setMinDate();
-                return datePickerDialog;
-        }
-        return null;
-    }
-
-    /**
-     * 设置日期 利用StringBuffer追加
-     */
-    public void display() {
-        tvDateSelect.setText(new StringBuffer().append(mYear).append(" ").append(mMonth + 1));
-    }
-
-    private DatePickerDialog.OnDateSetListener mdateListener = new DatePickerDialog.OnDateSetListener() {
-
-        @Override
-        public void onDateSet(DatePicker view, int year, int monthOfYear,
-                              int dayOfMonth) {
-            mYear = year;
-            mMonth = monthOfYear;
-            mDay = dayOfMonth;
-            display();
-        }
-    };
 
 
     /**
@@ -380,4 +351,71 @@ public class PersonAccountCenterActivity extends BaseActivity implements
         }
     }
 
+
+    /**
+     * 获取salary列表
+     */
+    public void getSalaryDate() {
+        String staffid = SpFileUtil.getString(PersonAccountCenterActivity.this, SpFileUtil.FILE_UI_PARAMETER, SpFileUtil.KEY_STAFF_ID, "");
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("staff_id", staffid);
+        AjaxParams param = new AjaxParams(map);
+
+        showDialog();
+        new FinalHttp().post(Constants.URL_GET_SALARY_DATE, param, new AjaxCallBack<Object>() {
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                super.onFailure(t, errorNo, strMsg);
+                dismissDialog();
+                Toast.makeText(PersonAccountCenterActivity.this, getString(R.string.network_failure), Toast.LENGTH_SHORT).show();
+                UIUtils.showTestToast(PersonAccountCenterActivity.this, "errorMsg:" + strMsg);
+            }
+
+            @Override
+            public void onSuccess(Object t) {
+                super.onSuccess(t);
+                String errorMsg = "";
+                dismissDialog();
+                LogOut.i("========", "onSuccess：" + t);
+                // UIUtils.showTestToast(HistoryOrderActivity.this, "order_from："+t.toString());
+                try {
+                    if (StringUtils.isNotEmpty(t.toString())) {
+                        JSONObject obj = new JSONObject(t.toString());
+                        int status = obj.getInt("status");
+                        String msg = obj.getString("msg");
+                        String data = obj.getString("data");
+                        if (status == Constants.STATUS_SUCCESS) { // 正确
+
+                            ArrayList<String> listData = new Gson().fromJson(data, new TypeToken<ArrayList<String>>() {
+                            }.getType());
+                            if (listData != null && listData.size() > 0) {
+                                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(PersonAccountCenterActivity.this, R.layout.spinner_list_item, listData);
+                                sp_selectdate.setAdapter(arrayAdapter);
+                            }
+
+                        } else if (status == Constants.STATUS_SERVER_ERROR) { // 服务器错误
+                            errorMsg = getString(R.string.servers_error);
+                        } else if (status == Constants.STATUS_PARAM_MISS) { // 缺失必选参数
+                            errorMsg = getString(R.string.param_missing);
+                        } else if (status == Constants.STATUS_PARAM_ILLEGA) { // 参数值非法
+                            errorMsg = getString(R.string.param_illegal);
+                        } else if (status == Constants.STATUS_OTHER_ERROR) { // 999其他错误
+                            errorMsg = msg;
+                        } else {
+                            errorMsg = getString(R.string.servers_error);
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    errorMsg = "网络繁忙，请稍后再试";
+
+                }
+                // 操作失败，显示错误信息|
+                if (!StringUtils.isEmpty(errorMsg.trim())) {
+                    UIUtils.showToast(PersonAccountCenterActivity.this, errorMsg);
+                }
+            }
+        });
+
+    }
 }

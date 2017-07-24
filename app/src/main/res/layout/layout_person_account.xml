@@ -211,13 +211,14 @@
                         android:layout_height="wrap_content"
                         android:text="账单月份：" />
 
-                    <TextView
-                        android:id="@+id/tv_date_select"
+                    <Spinner
+                        android:id="@+id/sp_select_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawablePadding="10dp"
-                        android:drawableRight="@drawable/arrow_down"
-                        android:text="2017年7月" />
+                        android:layout_weight="1"
+                        android:hint="请选择日期"
+                        android:textSize="16sp" />
+
 
                 </LinearLayout>
 

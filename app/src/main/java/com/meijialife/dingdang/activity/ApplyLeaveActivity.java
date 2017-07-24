@@ -1,13 +1,22 @@
 package com.meijialife.dingdang.activity;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -33,14 +42,19 @@ import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import butterknife.ButterKnife;
 
 /**
  * 申请请假
  */
 
 public class ApplyLeaveActivity extends BaseActivity implements OnClickListener {
+
 
     private RadioGroup radiogroup;
     private ArrayList<LeaveEntity> secData;
@@ -58,10 +72,20 @@ public class ApplyLeaveActivity extends BaseActivity implements OnClickListener 
     private ListView layout_order_list;
     private LinearLayout layout_order_detail;
     private LeaveListAdapter listadapter;
+    private int mYear, mMonth, mDay;
+    private Button btn;
+    private final int START_DATE_DIALOG = 1;
+    private final int END_DATE_DIALOG = 2;
+
+    private TextView sp_start_day;
+    private TextView sp_end_day;
+    private Spinner sp_leave_day_type;
+    private EditText et_more;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.layout_history);
+        ButterKnife.bind(this);
         super.onCreate(savedInstanceState);
 
         initView();
@@ -80,6 +104,7 @@ public class ApplyLeaveActivity extends BaseActivity implements OnClickListener 
             public void onClick(View view) {
                 UIUtils.showToast(ApplyLeaveActivity.this, "申请请假");
 //                getApplyLeave();
+                showApplyDialog();
             }
         });
 
@@ -105,7 +130,108 @@ public class ApplyLeaveActivity extends BaseActivity implements OnClickListener 
         });
 
 
+        final Calendar ca = Calendar.getInstance();
+        mYear = ca.get(Calendar.YEAR);
+        mMonth = ca.get(Calendar.MONTH);
+        mDay = ca.get(Calendar.DAY_OF_MONTH);
+
+
     }
+
+    private void showApplyDialog() {
+
+        View view = (LinearLayout) getLayoutInflater().inflate(R.layout.apply_leave_dialog, null);
+
+        sp_start_day = (TextView) view.findViewById(R.id.sp_start_day);
+        sp_end_day = (TextView) view.findViewById(R.id.sp_end_day);
+        sp_leave_day_type = (Spinner) view.findViewById(R.id.sp_leave_day_type);
+        et_more = (EditText) view.findViewById(R.id.et_more);
+
+        sp_start_day.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialog(START_DATE_DIALOG);
+
+            }
+        });
+        sp_end_day.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialog(END_DATE_DIALOG);
+            }
+        });
+        List<String> list = new ArrayList<>();
+        list.add("全天");
+        list.add("上午");
+        list.add("下午");
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ApplyLeaveActivity.this, R.layout.spinner_list_item, list);
+        sp_leave_day_type.setAdapter(arrayAdapter);
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(ApplyLeaveActivity.this);
+        dialog.setTitle("加班申请");
+        dialog.setView(view);
+        dialog.setPositiveButton("提交申请", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                String leave_day_type = sp_leave_day_type.getSelectedItem().toString();
+                String startDay = sp_start_day.getText().toString();
+                String end_day = sp_end_day.getText().toString();
+                String more = et_more.getText().toString();
+                if (sp_end_day == null || leave_day_type == null || startDay == null) {
+                    UIUtils.showToast(ApplyLeaveActivity.this, "请选择请假日期和类型");
+                } else {
+                    getApplyLeave(startDay, end_day, leave_day_type, more);
+                }
+
+
+//                KeyBoardUtils.closeKeybord(sp_leave_day_type, ApplyLeaveActivity.this);
+
+            }
+        });
+        dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        }).create();
+        dialog.show();
+    }
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        switch (id) {
+            case START_DATE_DIALOG:
+                DatePickerDialog startDatePickerDialog = new DatePickerDialog(this, mStartdateListener, mYear, mMonth, mDay);
+//                datePickerDialog.getDatePicker().setMinDate();
+                return startDatePickerDialog;
+            case END_DATE_DIALOG:
+                DatePickerDialog endDatePickerDialog = new DatePickerDialog(this, mEnddateListener, mYear, mMonth, mDay);
+//                datePickerDialog.getDatePicker().setMinDate();
+                return endDatePickerDialog;
+        }
+        return null;
+    }
+
+    private DatePickerDialog.OnDateSetListener mStartdateListener = new DatePickerDialog.OnDateSetListener() {
+
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear,
+                              int dayOfMonth) {
+            mYear = year;
+            mMonth = monthOfYear;
+            mDay = dayOfMonth;
+            sp_start_day.setText(new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay + 1));
+        }
+    };
+    private DatePickerDialog.OnDateSetListener mEnddateListener = new DatePickerDialog.OnDateSetListener() {
+
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear,
+                              int dayOfMonth) {
+            mYear = year;
+            mMonth = monthOfYear;
+            mDay = dayOfMonth;
+            sp_end_day.setText(new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay + 1));
+        }
+    };
 
     /**
      * 设置加载更多按钮状态
@@ -231,17 +357,29 @@ public class ApplyLeaveActivity extends BaseActivity implements OnClickListener 
 
     /**
      * 申请请假接口
+     *
+     * @param startDay
+     * @param sp_end_day
+     * @param leave_day_type
+     * @param more
      */
-    public void getApplyLeave() {
+    public void getApplyLeave(String startDay, String sp_end_day, String leave_day_type, String more) {
         String staffid = SpFileUtil.getString(ApplyLeaveActivity.this, SpFileUtil.FILE_UI_PARAMETER, SpFileUtil.KEY_STAFF_ID, "");
         Map<String, String> map = new HashMap<String, String>();
         map.put("staff_id", staffid);
         map.put("id", "0");
-        map.put("leaveDate", staffid);
-        map.put("leaveDateEnd", staffid);
-        map.put("halfDay", staffid);
+        map.put("leaveDate", startDay);
+        map.put("leaveDateEnd", sp_end_day);
+        if (StringUtils.isEquals(leave_day_type, "全天")) {
+            map.put("halfDay", "0");
+        } else if (StringUtils.isEquals(leave_day_type, "上午")) {
+            map.put("halfDay", "1");
+        } else if (StringUtils.isEquals(leave_day_type, "下午")) {
+            map.put("halfDay", "2");
+        }
+
         map.put("eaveStatus", "1");
-//        map.put("remarks", remarks);
+        map.put("remarks", more);
         AjaxParams param = new AjaxParams(map);
 
         showDialog();
@@ -273,6 +411,7 @@ public class ApplyLeaveActivity extends BaseActivity implements OnClickListener 
                         String data = obj.getString("data");
                         if (status == Constants.STATUS_SUCCESS) { // 正确
                             UIUtils.showToast(ApplyLeaveActivity.this, "申请成功");
+                            getLeaveList(pageIndex);
                         } else if (status == Constants.STATUS_SERVER_ERROR) { // 服务器错误
                             errorMsg = getString(R.string.servers_error);
                         } else if (status == Constants.STATUS_PARAM_MISS) { // 缺失必选参数
