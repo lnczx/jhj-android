@@ -28,9 +28,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 /**
  * 请假适配器
  */
@@ -70,8 +67,18 @@ public class LeaveListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if (convertView == null) {
-            holder = new ViewHolder(convertView);
+            holder = new ViewHolder();
             convertView = inflater.inflate(R.layout.item_leave_list_item, null);
+            holder.tvUserType = (TextView) convertView.findViewById(R.id.tv_user_type);
+            holder.tvApplyTime = (TextView) convertView.findViewById(R.id.tv_apply_time);
+            holder.tvFuwuAddress = (TextView) convertView.findViewById(R.id.tv_fuwu_address);
+            holder.tvApplyStartTime = (TextView) convertView.findViewById(R.id.tv_apply_start_time);
+            holder.tvFuwuTime = (TextView) convertView.findViewById(R.id.tv_fuwu_time);
+            holder.tvApplyDay = (TextView) convertView.findViewById(R.id.tv_apply_day);
+            holder.tvFuwuXiangmu = (TextView) convertView.findViewById(R.id.tv_fuwu_xiangmu);
+            holder.tvLeaveStatus = (TextView) convertView.findViewById(R.id.tv_leave_status);
+            holder.ivLeaveChange = (TextView) convertView.findViewById(R.id.iv_leave_change);
+            holder.layoutOrderItem = (LinearLayout) convertView.findViewById(R.id.layout_order_item);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -81,7 +88,12 @@ public class LeaveListAdapter extends BaseAdapter {
         if (null != leaveEntity) {
             holder.tvApplyTime.setText(leaveEntity.getAdd_date());
             holder.tvApplyStartTime.setText(leaveEntity.getLeave_date());
-            holder.tvApplyDay.setText(leaveEntity.getTotal_days() + "天");
+            String total_days = leaveEntity.getTotal_days();
+            if (StringUtils.isEquals(total_days, "上午") || StringUtils.isEquals(total_days, "下午")) {
+                holder.tvApplyDay.setText(leaveEntity.getTotal_days());
+            } else {
+                holder.tvApplyDay.setText(leaveEntity.getTotal_days() + "天");
+            }
             String status = leaveEntity.getLeave_status();
             if (StringUtils.isEquals("1", status)) {
                 holder.tvLeaveStatus.setText("请假中");
@@ -103,30 +115,16 @@ public class LeaveListAdapter extends BaseAdapter {
 
 
     static class ViewHolder {
-        @BindView(R.id.tv_user_type)
         TextView tvUserType;
-        @BindView(R.id.tv_apply_time)
         TextView tvApplyTime;
-        @BindView(R.id.tv_fuwu_address)
         TextView tvFuwuAddress;
-        @BindView(R.id.tv_apply_start_time)
         TextView tvApplyStartTime;
-        @BindView(R.id.tv_fuwu_time)
         TextView tvFuwuTime;
-        @BindView(R.id.tv_apply_day)
         TextView tvApplyDay;
-        @BindView(R.id.tv_fuwu_xiangmu)
         TextView tvFuwuXiangmu;
-        @BindView(R.id.tv_leave_status)
         TextView tvLeaveStatus;
-        @BindView(R.id.iv_leave_change)
         TextView ivLeaveChange;
-        @BindView(R.id.layout_order_item)
         LinearLayout layoutOrderItem;
-
-        ViewHolder(View view) {
-            ButterKnife.bind(this, view);
-        }
     }
 
 
@@ -138,7 +136,7 @@ public class LeaveListAdapter extends BaseAdapter {
         Map<String, String> map = new HashMap<String, String>();
         map.put("staff_id", staffid);
         map.put("id", leave_id);
-        map.put("leave_status", "2");
+        map.put("leaveStatus", "2");
         AjaxParams param = new AjaxParams(map);
 
         // showDialog();

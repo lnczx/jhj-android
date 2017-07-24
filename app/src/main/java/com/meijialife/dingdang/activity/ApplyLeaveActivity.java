@@ -102,8 +102,8 @@ public class ApplyLeaveActivity extends BaseActivity implements OnClickListener 
         getRightView().setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                UIUtils.showToast(ApplyLeaveActivity.this, "申请请假");
 //                getApplyLeave();
+
                 showApplyDialog();
             }
         });
@@ -218,7 +218,7 @@ public class ApplyLeaveActivity extends BaseActivity implements OnClickListener 
             mYear = year;
             mMonth = monthOfYear;
             mDay = dayOfMonth;
-            sp_start_day.setText(new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay + 1));
+            sp_start_day.setText(new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay));
         }
     };
     private DatePickerDialog.OnDateSetListener mEnddateListener = new DatePickerDialog.OnDateSetListener() {
@@ -229,7 +229,7 @@ public class ApplyLeaveActivity extends BaseActivity implements OnClickListener 
             mYear = year;
             mMonth = monthOfYear;
             mDay = dayOfMonth;
-            sp_end_day.setText(new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay + 1));
+            sp_end_day.setText(new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay));
         }
     };
 
@@ -378,7 +378,7 @@ public class ApplyLeaveActivity extends BaseActivity implements OnClickListener 
             map.put("halfDay", "2");
         }
 
-        map.put("eaveStatus", "1");
+        map.put("leaveStatus", "1");
         map.put("remarks", more);
         AjaxParams param = new AjaxParams(map);
 
@@ -411,6 +411,7 @@ public class ApplyLeaveActivity extends BaseActivity implements OnClickListener 
                         String data = obj.getString("data");
                         if (status == Constants.STATUS_SUCCESS) { // 正确
                             UIUtils.showToast(ApplyLeaveActivity.this, "申请成功");
+                            pageIndex = 1;
                             getLeaveList(pageIndex);
                         } else if (status == Constants.STATUS_SERVER_ERROR) { // 服务器错误
                             errorMsg = getString(R.string.servers_error);
@@ -451,6 +452,7 @@ public class ApplyLeaveActivity extends BaseActivity implements OnClickListener 
     @SuppressWarnings("unused")
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onRefresh(LeaveEntity leaveEntity) {
+        pageIndex = 1;
         getLeaveList(pageIndex);
     }
 

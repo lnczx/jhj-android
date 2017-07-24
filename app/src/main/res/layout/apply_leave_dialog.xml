@@ -93,7 +93,6 @@
             android:layout_weight="1"
             android:background="@color/activity_bg_color"
             android:hint="请输入备注"
-            android:inputType="numberDecimal"
             android:paddingLeft="10dp"
             android:textSize="16sp" />
     </LinearLayout>

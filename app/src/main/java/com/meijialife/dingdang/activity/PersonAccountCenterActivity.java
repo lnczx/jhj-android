@@ -59,7 +59,6 @@ public class PersonAccountCenterActivity extends BaseActivity implements
     private String total_money = "0";
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.layout_person_account);
@@ -96,6 +95,8 @@ public class PersonAccountCenterActivity extends BaseActivity implements
 
             }
         });
+
+        getSalaryDate();
     }
 
     @Override
@@ -114,9 +115,8 @@ public class PersonAccountCenterActivity extends BaseActivity implements
                 intent = new Intent(this, PersonPayDetailActivity.class);
                 break;
             case R.id.iv_alipay_change://保存
-
                 String zhanghao = et_alipayzhanghao.getText().toString().trim();
-                if (zhanghao == null) {
+                if (StringUtils.isNotEmpty(zhanghao)) {
                     UIUtils.showToast(this, "支付宝账号不能为空");
                 } else {
                     setAlipay(zhanghao);
@@ -131,7 +131,6 @@ public class PersonAccountCenterActivity extends BaseActivity implements
         }
 
     }
-
 
 
     /**
@@ -174,15 +173,21 @@ public class PersonAccountCenterActivity extends BaseActivity implements
                         if (status == Constants.STATUS_SUCCESS) { // 正确
                             if (StringUtils.isNotEmpty(data)) {
                                 UserAccountBean userIndexData = new Gson().fromJson(data, UserAccountBean.class);
-                                JSONObject jsonObject = new JSONObject(data);
-                                String dept = jsonObject.optString("total_dept");
-                                String incoming = jsonObject.optString("total_cash");
 
                                 det_money = userIndexData.getTotal_dept();
                                 total_money = userIndexData.getTotal_cash();
                                 tv_total_incoming.setText("本月收入：" + userIndexData.getSalary_after_tax() + "元\n状态：" + userIndexData.getSalary_status_name());
                                 tv_det_money.setText(det_money + "元");
                                 tv_alipay_status.setText("状态：" + userIndexData.getAli_pay_lock_name());
+
+                                String account = userIndexData.getAli_pay_account();
+                                if (StringUtils.isEmpty(account)) {
+                                    et_alipayzhanghao.setText("");
+                                    ivalipaychange.setVisibility(View.VISIBLE);
+                                }else{
+                                    et_alipayzhanghao.setText(account);
+                                    ivalipaychange.setVisibility(View.GONE);
+                                }
                             } else {
                                 UIUtils.showToast(getApplicationContext(), "数据错误");
                             }
@@ -287,7 +292,7 @@ public class PersonAccountCenterActivity extends BaseActivity implements
         AjaxParams param = new AjaxParams(map);
 
         showDialog();
-        new FinalHttp().post(Constants.URL_GET_SALARY, param, new AjaxCallBack<Object>() {
+        new FinalHttp().get(Constants.URL_GET_SALARY, param, new AjaxCallBack<Object>() {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
@@ -343,12 +348,16 @@ public class PersonAccountCenterActivity extends BaseActivity implements
     }
 
     private void showDatas(ArrayList<SalaryEntity> secData) {
-
-        for (int i = 0; i < secData.size(); i++) {
-            TextView textView = new TextView(PersonAccountCenterActivity.this);
-            textView.setText(secData.get(i).getName() + ":" + secData.get(i).getValue());
-            layoutAccountView.addView(textView);
+        if (layoutAccountView != null) {
+            layoutAccountView.removeAllViews();
+            for (int i = 0; i < secData.size(); i++) {
+                TextView textView = new TextView(PersonAccountCenterActivity.this);
+                textView.setTextSize(15);
+                textView.setText(secData.get(i).getName() + ":" + secData.get(i).getValue());
+                layoutAccountView.addView(textView);
+            }
         }
+
     }
 
 
@@ -362,7 +371,7 @@ public class PersonAccountCenterActivity extends BaseActivity implements
         AjaxParams param = new AjaxParams(map);
 
         showDialog();
-        new FinalHttp().post(Constants.URL_GET_SALARY_DATE, param, new AjaxCallBack<Object>() {
+        new FinalHttp().get(Constants.URL_GET_SALARY_DATE, param, new AjaxCallBack<Object>() {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
