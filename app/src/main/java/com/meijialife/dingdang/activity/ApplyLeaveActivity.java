@@ -79,6 +79,7 @@ public class ApplyLeaveActivity extends BaseActivity implements OnClickListener 
             @Override
             public void onClick(View view) {
                 UIUtils.showToast(ApplyLeaveActivity.this, "申请请假");
+//                getApplyLeave();
             }
         });
 
@@ -202,6 +203,76 @@ public class ApplyLeaveActivity extends BaseActivity implements OnClickListener 
                                 layout_no_order.setVisibility(View.VISIBLE);
                                 layout_order_list.setVisibility(View.GONE);
                             }
+                        } else if (status == Constants.STATUS_SERVER_ERROR) { // 服务器错误
+                            errorMsg = getString(R.string.servers_error);
+                        } else if (status == Constants.STATUS_PARAM_MISS) { // 缺失必选参数
+                            errorMsg = getString(R.string.param_missing);
+                        } else if (status == Constants.STATUS_PARAM_ILLEGA) { // 参数值非法
+                            errorMsg = getString(R.string.param_illegal);
+                        } else if (status == Constants.STATUS_OTHER_ERROR) { // 999其他错误
+                            errorMsg = msg;
+                        } else {
+                            errorMsg = getString(R.string.servers_error);
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    errorMsg = "网络繁忙，请稍后再试";
+
+                }
+                // 操作失败，显示错误信息|
+                if (!StringUtils.isEmpty(errorMsg.trim())) {
+                    UIUtils.showToast(ApplyLeaveActivity.this, errorMsg);
+                }
+            }
+        });
+
+    }
+
+    /**
+     * 申请请假接口
+     */
+    public void getApplyLeave() {
+        String staffid = SpFileUtil.getString(ApplyLeaveActivity.this, SpFileUtil.FILE_UI_PARAMETER, SpFileUtil.KEY_STAFF_ID, "");
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("staff_id", staffid);
+        map.put("id", "0");
+        map.put("leaveDate", staffid);
+        map.put("leaveDateEnd", staffid);
+        map.put("halfDay", staffid);
+        map.put("eaveStatus", "1");
+//        map.put("remarks", remarks);
+        AjaxParams param = new AjaxParams(map);
+
+        showDialog();
+        new FinalHttp().post(Constants.URL_GET_DO_LEAVE, param, new AjaxCallBack<Object>() {
+
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                super.onFailure(t, errorNo, strMsg);
+                setLoadMoreStatus(false);
+                dismissDialog();
+                Toast.makeText(ApplyLeaveActivity.this, getString(R.string.network_failure), Toast.LENGTH_SHORT).show();
+                UIUtils.showTestToast(ApplyLeaveActivity.this, "errorMsg:" + strMsg);
+            }
+
+            @Override
+            public void onSuccess(Object t) {
+                super.onSuccess(t);
+                setLoadMoreStatus(false);
+                String errorMsg = "";
+                dismissDialog();
+                LogOut.i("========", "onSuccess：" + t);
+                // UIUtils.showTestToast(HistoryOrderActivity.this, "order_from："+t.toString());
+                try {
+                    if (StringUtils.isNotEmpty(t.toString())) {
+                        JSONObject obj = new JSONObject(t.toString());
+                        int status = obj.getInt("status");
+                        String msg = obj.getString("msg");
+                        String data = obj.getString("data");
+                        if (status == Constants.STATUS_SUCCESS) { // 正确
+                            UIUtils.showToast(ApplyLeaveActivity.this, "申请成功");
                         } else if (status == Constants.STATUS_SERVER_ERROR) { // 服务器错误
                             errorMsg = getString(R.string.servers_error);
                         } else if (status == Constants.STATUS_PARAM_MISS) { // 缺失必选参数
