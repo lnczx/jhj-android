@@ -89,6 +89,7 @@ public class HomeMsgListAdapter extends BaseAdapter {
         holder.tv_msg_goto_url.setText(list.get(position).getGoto_url());
 
         msg_id = list.get(position).getMsg_id();
+        holder.item_msg_close.setVisibility(View.GONE);
         holder.item_msg_close.setOnClickListener(new OnClickListener() {
 
             @Override
