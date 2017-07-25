@@ -168,7 +168,7 @@ public class ApplyLeaveActivity extends BaseActivity implements OnClickListener 
         sp_leave_day_type.setAdapter(arrayAdapter);
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(ApplyLeaveActivity.this);
-        dialog.setTitle("加班申请");
+        dialog.setTitle("申请请假");
         dialog.setView(view);
         dialog.setPositiveButton("提交申请", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
