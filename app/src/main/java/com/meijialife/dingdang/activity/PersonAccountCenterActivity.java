@@ -184,7 +184,7 @@ public class PersonAccountCenterActivity extends BaseActivity implements
                                 if (StringUtils.isEmpty(account)) {
                                     et_alipayzhanghao.setText("");
                                     ivalipaychange.setVisibility(View.VISIBLE);
-                                }else{
+                                } else {
                                     et_alipayzhanghao.setText(account);
                                     ivalipaychange.setVisibility(View.GONE);
                                 }
@@ -351,10 +351,15 @@ public class PersonAccountCenterActivity extends BaseActivity implements
         if (layoutAccountView != null) {
             layoutAccountView.removeAllViews();
             for (int i = 0; i < secData.size(); i++) {
-                TextView textView = new TextView(PersonAccountCenterActivity.this);
-                textView.setTextSize(15);
-                textView.setText(secData.get(i).getName() + ":" + secData.get(i).getValue());
-                layoutAccountView.addView(textView);
+                View mView = getLayoutInflater().inflate(R.layout.item_center_list, null);
+                TextView tv_name= (TextView) mView.findViewById(R.id.tv_name);
+                TextView tv_value= (TextView) mView.findViewById(R.id.tv_value);
+                String name = secData.get(i).getName();
+                String value = secData.get(i).getValue();
+                tv_name.setText(name);
+                tv_value.setText(value);
+
+                layoutAccountView.addView(mView);
             }
         }
 

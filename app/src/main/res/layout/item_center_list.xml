@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingBottom="6dp"
+    android:paddingTop="6dp">
+
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="临工:"
+        android:textColor="@color/simi_color_gray"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="5.64"
+        android:textSize="14sp" />
+
+
+</LinearLayout>
