@@ -136,6 +136,7 @@ public class PersonAccountCenterActivity extends BaseActivity implements
     /**
      * 获取账户信息
      */
+    String account = null;
     private void get_total_dept() {
         if (!NetworkUtils.isNetworkConnected(getApplicationContext())) {
             Toast.makeText(getApplicationContext(), getString(R.string.net_not_open), Toast.LENGTH_SHORT).show();
@@ -180,13 +181,15 @@ public class PersonAccountCenterActivity extends BaseActivity implements
                                 tv_det_money.setText(det_money + "元");
                                 tv_alipay_status.setText("状态：" + userIndexData.getAli_pay_lock_name());
 
-                                String account = userIndexData.getAli_pay_account();
+
+                                account = userIndexData.getAli_pay_account();
                                 int pay_lock = userIndexData.getAli_pay_lock();
                                 if (pay_lock == 0) {
-                                    et_alipayzhanghao.setText("");
+                                    et_alipayzhanghao.setText(account);
                                     ivalipaychange.setVisibility(View.VISIBLE);
                                 } else {
                                     et_alipayzhanghao.setText(account);
+                                    et_alipayzhanghao.setFocusable(false);
                                     ivalipaychange.setVisibility(View.GONE);
                                 }
                             } else {
