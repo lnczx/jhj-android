@@ -181,7 +181,8 @@ public class PersonAccountCenterActivity extends BaseActivity implements
                                 tv_alipay_status.setText("状态：" + userIndexData.getAli_pay_lock_name());
 
                                 String account = userIndexData.getAli_pay_account();
-                                if (StringUtils.isEmpty(account)) {
+                                int pay_lock = userIndexData.getAli_pay_lock();
+                                if (pay_lock == 0) {
                                     et_alipayzhanghao.setText("");
                                     ivalipaychange.setVisibility(View.VISIBLE);
                                 } else {
@@ -352,8 +353,8 @@ public class PersonAccountCenterActivity extends BaseActivity implements
             layoutAccountView.removeAllViews();
             for (int i = 0; i < secData.size(); i++) {
                 View mView = getLayoutInflater().inflate(R.layout.item_center_list, null);
-                TextView tv_name= (TextView) mView.findViewById(R.id.tv_name);
-                TextView tv_value= (TextView) mView.findViewById(R.id.tv_value);
+                TextView tv_name = (TextView) mView.findViewById(R.id.tv_name);
+                TextView tv_value = (TextView) mView.findViewById(R.id.tv_value);
                 String name = secData.get(i).getName();
                 String value = secData.get(i).getValue();
                 tv_name.setText(name);
