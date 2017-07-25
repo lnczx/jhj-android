@@ -117,9 +117,9 @@ public class PersonAccountCenterActivity extends BaseActivity implements
             case R.id.iv_alipay_change://保存
                 String zhanghao = et_alipayzhanghao.getText().toString().trim();
                 if (StringUtils.isNotEmpty(zhanghao)) {
-                    UIUtils.showToast(this, "支付宝账号不能为空");
-                } else {
                     setAlipay(zhanghao);
+                } else {
+                    UIUtils.showToast(this, "支付宝账号不能为空");
                 }
 
                 break;
