@@ -158,11 +158,10 @@
 
                 <EditText
                     android:id="@+id/et_alipay_zhanghao"
-                    style="@style/Widget.AppCompat.EditText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@null" />
+                     />
 
                 <TextView
                     android:id="@+id/iv_alipay_change"
@@ -224,8 +223,8 @@
                 <LinearLayout
                     android:id="@+id/layout_account_view"
                     android:layout_width="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
 
             </LinearLayout>
         </LinearLayout>
