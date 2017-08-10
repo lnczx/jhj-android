@@ -104,8 +104,9 @@ public class PersonAccountCenterActivity extends BaseActivity implements
         Intent intent = null;
         switch (v.getId()) {
             case R.id.layout_qiankuan://欠款
-                intent = new Intent(this, PersonPayDebtActivity.class);
-                intent.putExtra("detMoney", det_money);
+//                intent = new Intent(this, PersonPayDebtActivity.class);
+//                intent.putExtra("detMoney", det_money);
+                  UIUtils.showToast(this, "提示：发放本月工资会将欠款抵扣 ");
                 break;
             case R.id.layout_tixian://提现
                 intent = new Intent(this, PersonTixianActivity.class);
