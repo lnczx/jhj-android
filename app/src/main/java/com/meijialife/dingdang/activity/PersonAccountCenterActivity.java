@@ -353,7 +353,7 @@ public class PersonAccountCenterActivity extends BaseActivity implements
     }
 
     private void showDatas(ArrayList<SalaryEntity> secData) {
-        if (layoutAccountView != null) {
+        if (layoutAccountView != null && secData.size()>0) {
             layoutAccountView.removeAllViews();
             for (int i = 0; i < secData.size(); i++) {
                 View mView = getLayoutInflater().inflate(R.layout.item_center_list, null);
@@ -366,6 +366,13 @@ public class PersonAccountCenterActivity extends BaseActivity implements
 
                 layoutAccountView.addView(mView);
             }
+
+            try {
+                tv_total_incoming.setText("本月收入：" + secData.get(secData.size()-1).getValue()+ "元\n" + secData.get(0).getName() + secData.get(0).getValue());
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
         }
 
     }
@@ -420,8 +427,8 @@ public class PersonAccountCenterActivity extends BaseActivity implements
                             errorMsg = getString(R.string.param_illegal);
                         } else if (status == Constants.STATUS_OTHER_ERROR) { // 999其他错误
                             errorMsg = msg;
-                        } else {
                             errorMsg = getString(R.string.servers_error);
+                        } else {
                         }
                     }
                 } catch (Exception e) {
@@ -435,6 +442,13 @@ public class PersonAccountCenterActivity extends BaseActivity implements
                 }
             }
         });
+
+    }
+
+    /**
+     *
+     */
+    private void showText(){
 
     }
 }

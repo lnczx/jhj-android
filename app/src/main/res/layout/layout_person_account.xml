@@ -34,6 +34,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/simi_color_orange"
+                    android:text="112212112"
                     android:textSize="@dimen/font_size_18" />
             </LinearLayout>
 
@@ -139,6 +140,7 @@
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="10dp"
+                android:visibility="gone"
                 android:text="欠款达到1000元后您将不能接单，请及时向公司缴存欠款"
                 android:textColor="@color/simi_color_gray"
                 android:textSize="@dimen/font_size_12" />
