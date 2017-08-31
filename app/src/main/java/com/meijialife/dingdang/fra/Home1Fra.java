@@ -18,9 +18,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
@@ -57,6 +63,7 @@ public class Home1Fra extends BaseFragment {
     private final static int START_WORK = 1;
     private final static int STOP_WORK = 0;
     private static int WORK_STATE;
+    private static int DAYSIGN;
     private View v;
     private UserInfo userInfo;
 
@@ -75,6 +82,8 @@ public class Home1Fra extends BaseFragment {
     private TextView tv_total_order, tv_now_time;
 
 //    private Button bt_work_state;
+
+    private Button bt_day_sign;
 
     private FinalBitmap finalBitmap;
 
@@ -133,6 +142,16 @@ public class Home1Fra extends BaseFragment {
 //            }
 //        });
 
+        bt_day_sign = (Button) v.findViewById(R.id.bt_day_sign);
+        bt_day_sign.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (DAYSIGN == 0) {
+                    daySign();
+                }
+
+            }
+        });
         String todayTimeAndWeek = CalendarUtils.getTodayTimeAndWeek();
         tv_now_time.setText(todayTimeAndWeek);
 
@@ -343,7 +362,9 @@ public class Home1Fra extends BaseFragment {
             String total_order_money = jsonObject.optString("total_order_money");
             String total_incoming = jsonObject.optString("total_incoming");
             int is_work = jsonObject.optInt("is_work");
+            int daySign = jsonObject.optInt("day_sign");
             WORK_STATE = is_work;
+            DAYSIGN = daySign;
 
             tv_total_order_incoming.setText(total_incoming);
             tv_total_order_money.setText(total_order_money);
@@ -355,6 +376,14 @@ public class Home1Fra extends BaseFragment {
 //            } else if (WORK_STATE == STOP_WORK) {
 //                bt_work_state.setText("开工");
 //            }
+
+            if (DAYSIGN == 0) {
+                bt_day_sign.setText("签到");
+            }
+
+            if (DAYSIGN == 1) {
+                bt_day_sign.setText("已签到");
+            }
 
         } catch (JSONException e) {
             // TODO Auto-generated catch block
@@ -413,6 +442,81 @@ public class Home1Fra extends BaseFragment {
                             // UIUtils.showToast(getActivity(), "数据错误");
                             // }
 
+                            getData();
+                        } else if (status == Constants.STATUS_SERVER_ERROR) { // 服务器错误
+                            errorMsg = getString(R.string.servers_error);
+                        } else if (status == Constants.STATUS_PARAM_MISS) { // 缺失必选参数
+                            errorMsg = getString(R.string.param_missing);
+                        } else if (status == Constants.STATUS_PARAM_ILLEGA) { // 参数值非法
+                            errorMsg = getString(R.string.param_illegal);
+                        } else if (status == Constants.STATUS_OTHER_ERROR) { // 999其他错误
+                            errorMsg = msg;
+                        } else {
+                            errorMsg = getString(R.string.servers_error);
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    errorMsg = getString(R.string.servers_error);
+
+                }
+                // 操作失败，显示错误信息|
+                if (!StringUtils.isEmpty(errorMsg.trim())) {
+                    UIUtils.showToast(getActivity(), errorMsg);
+                }
+            }
+
+        });
+
+    }
+
+    /**
+     * 签到
+     */
+    private void daySign() {
+        if (!NetworkUtils.isNetworkConnected(getActivity())) {
+            Toast.makeText(getActivity(), getString(R.string.net_not_open), 0).show();
+            return;
+        }
+
+        String staffid = SpFileUtil.getString(getActivity(), SpFileUtil.FILE_UI_PARAMETER, SpFileUtil.KEY_STAFF_ID, "");
+
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("staff_id", staffid);
+
+        AjaxParams param = new AjaxParams(map);
+
+        // showDialog();
+        new FinalHttp().post(Constants.URL_POST_DAY_SIGN, param, new AjaxCallBack<Object>() {
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                super.onFailure(t, errorNo, strMsg);
+                UIUtils.showTestToast(getActivity(), "签到errorMsg:" + strMsg);
+                // dismissDialog();
+                Toast.makeText(getActivity(), getString(R.string.network_failure), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onSuccess(Object t) {
+                super.onSuccess(t);
+                String errorMsg = "";
+                // dismissDialog();
+                LogOut.i("========", "onSuccess：" + t);
+//                UIUtils.showTestToast(getActivity(), "签到成功：" + t.toString());
+                try {
+                    if (StringUtils.isNotEmpty(t.toString())) {
+                        JSONObject obj = new JSONObject(t.toString());
+                        int status = obj.getInt("status");
+                        String msg = obj.getString("msg");
+                        String data = obj.getString("data");
+                        if (status == Constants.STATUS_SUCCESS) { // 正确
+                            // if (StringUtils.isNotEmpty(data)) {
+                            // showData(data);
+                            // } else {
+                            // UIUtils.showToast(getActivity(), "数据错误");
+                            // }
+
+                            UIUtils.showTestToast(getActivity(), "签到成功：");
                             getData();
                         } else if (status == Constants.STATUS_SERVER_ERROR) { // 服务器错误
                             errorMsg = getString(R.string.servers_error);

@@ -78,6 +78,16 @@ public class OrderListVo implements Serializable {
 
     private String order_from_name;
 
+    public String getStaff_names() {
+        return staff_names;
+    }
+
+    public void setStaff_names(String staff_names) {
+        this.staff_names = staff_names;
+    }
+
+    private String staff_names;
+
     public String getService_end_date() {
         return service_end_date;
     }

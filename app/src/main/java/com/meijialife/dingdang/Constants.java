@@ -13,7 +13,7 @@ public class Constants {
     //*******************************
     // 主机地址
     public static final String HOST1 = "http://123.57.209.81";
-    //    public static final String HOST1 = "http://www.jia-he-jia.com";
+//        public static final String HOST1 = "http://www.jia-he-jia.com";
     // 基础接口
     public static final String ROOT_URL1 = HOST1 + "/jhj-app/app/";
 
@@ -73,6 +73,8 @@ public class Constants {
     public static final String URL_POST_TOTAL_TODAY = ROOT_URL1 + "msg/post_read.json";
     //开工按钮
     public static final String URL_GET_START_WORK = ROOT_URL1 + "staff/is_work.json";
+    //签到按钮
+    public static final String URL_POST_DAY_SIGN = ROOT_URL1 + "staff/day_sign.json";
     //获取消息列表
     public static final String URL_GET_MSG_LIST = ROOT_URL1 + "msg/get_list.json";
     //已读消息 

@@ -125,6 +125,7 @@ public class OrderDetailActivity extends BaseActivity {
     private TextView tv_service_end_time_type;
     private TextView tv_user_type;
     private TextView tv_order_end_time;
+    private TextView tv_staff_names;
     private TextView tv_change_time;
     private String order_id;
     private LinearLayout layout_goutong_des;
@@ -233,6 +234,7 @@ public class OrderDetailActivity extends BaseActivity {
 
         tv_service_end_time_type = (TextView) findViewById(R.id.tv_service_end_time_type);
         tv_order_end_time = (TextView) findViewById(R.id.tv_order_end_time);
+        tv_staff_names =  (TextView) findViewById(R.id.tv_staff_names);
         tv_change_time = (TextView) findViewById(R.id.tv_change_time);
 
         /*
@@ -771,6 +773,7 @@ public class OrderDetailActivity extends BaseActivity {
                 tv_order_shichang.setText(servicehour + "小时");
                 tv_service_time_type.setText("服务时间：");
                 tv_order_end_time.setText(orderBean.getService_end_date());
+                tv_staff_names.setText(orderBean.getStaff_names());
 
             } else if (order_type == 2) {// 助理单
                 ORDERTYPE = ORDERZL;
