@@ -97,6 +97,7 @@ public class ApplyLeaveActivity extends BaseActivity implements OnClickListener 
     private void initView() {
         setTitleName("请假申请");
         requestBackBtn();
+
         setRightText("申请请假");
 
         getRightView().setOnClickListener(new OnClickListener() {
@@ -105,6 +106,15 @@ public class ApplyLeaveActivity extends BaseActivity implements OnClickListener 
 //                getApplyLeave();
 
                 showApplyDialog();
+            }
+        });
+
+        setHelpText();
+        getHelView().setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                showHelpDialog();
             }
         });
 
@@ -188,6 +198,29 @@ public class ApplyLeaveActivity extends BaseActivity implements OnClickListener 
             }
         });
         dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        }).create();
+        dialog.show();
+    }
+
+
+    private void showHelpDialog() {
+
+
+
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(ApplyLeaveActivity.this);
+        dialog.setTitle("请假管理规则");
+        dialog.setMessage("亲爱的服务人员，请假需要提前两天请假，请假的天数不超过3天，在假期中没有需要服务的订单，就可以自己操作申请请假了，下列情况请大家注意一下：\n" +
+                "1.请假日期中有需要服务的订单，不能申请请假。如需请假请联系客服进行调单处理.\n" +
+                "2.当天请当天假，可以申请通过，但是后两单将按照30%比例提成.\n" +
+                "3.当天请第二天假，可以申请通过，但是后两单将按照30%比例提成.\n" +
+                "4.请假天数超过3天（包含3天），需要在APP上申请，店长审批通过后才能休假.\n" +
+                "5.提前取消假期，当天和前一天请假的也按照30%提成执行。正常审批通过后请假的提成不变.");
+
+        dialog.setNegativeButton("关闭", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
             }

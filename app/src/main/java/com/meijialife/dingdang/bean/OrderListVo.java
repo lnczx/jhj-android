@@ -34,6 +34,10 @@ public class OrderListVo implements Serializable {
 
     private String service_content;
 
+
+
+    private String poi_name;
+
     private String service_date;
 
     private String service_end_date;
@@ -567,6 +571,14 @@ public class OrderListVo implements Serializable {
 
     public void setPay_type(int pay_type) {
         this.pay_type = pay_type;
+    }
+
+    public String getPoi_name() {
+        return poi_name;
+    }
+
+    public void setPoi_name(String poi_name) {
+        this.poi_name = poi_name;
     }
 
 }

@@ -16,7 +16,7 @@ import com.umeng.analytics.MobclickAgent;
  */
 public class BaseActivity extends Activity {
 
-    private TextView title, title_btn_right_text;
+    private TextView title, title_btn_right_text, title_icon_help_text;
     private ImageView title_btn_right;
     private ImageView title_btn_left;
 
@@ -35,7 +35,7 @@ public class BaseActivity extends Activity {
         title_btn_right = (ImageView) findViewById(R.id.title_btn_right);
         title_btn_left = (ImageView) findViewById(R.id.title_btn_left);
         title_btn_right_text = (TextView) findViewById(R.id.title_btn_right_text);
-
+        title_icon_help_text = (TextView) findViewById(R.id.title_icon_help_text);
         title_btn_left.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,6 +60,15 @@ public class BaseActivity extends Activity {
      */
     public void setOnRightClickListener(OnClickListener l) {
         title_btn_right.setOnClickListener(l);
+    }
+
+    /**
+     * 重写问号按钮监听
+     *
+     * @param l
+     */
+    public void setOnHelpClickListener(OnClickListener l) {
+        title_icon_help_text.setOnClickListener(l);
     }
 
     /**
@@ -97,6 +106,9 @@ public class BaseActivity extends Activity {
         return title_btn_right_text;
     }
 
+
+    public TextView getHelView() {return title_icon_help_text; }
+
     /**
      * 显示返回按钮
      */
@@ -111,6 +123,12 @@ public class BaseActivity extends Activity {
         title_btn_right.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * 显示help问号
+     */
+    public void setHelpText() {
+        title_icon_help_text.setVisibility(View.VISIBLE);
+    }
     /**
      * 设置右侧按钮背景
      *

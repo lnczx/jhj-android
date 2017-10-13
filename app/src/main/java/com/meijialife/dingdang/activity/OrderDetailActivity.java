@@ -688,7 +688,7 @@ public class OrderDetailActivity extends BaseActivity {
                 public void onClick(View v) {
                     String service_addrLat = orderBean.getService_addr_lat();
                     String service_addrLng = orderBean.getService_addr_lng();
-                    String service_addr = orderBean.getService_addr();
+                    String service_addr = orderBean.getPoi_name();
                     startPoiNearbySearch(service_addrLat, service_addrLng, service_addr);
 
                 }

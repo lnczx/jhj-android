@@ -78,7 +78,7 @@ public class PersonalPageFragment extends Fragment implements OnClickListener {
 
         view.findViewById(R.id.layout_info).setOnClickListener(this);
         view.findViewById(R.id.layout_account_center).setOnClickListener(this);
-//        view.findViewById(R.id.layout_apply_leave).setOnClickListener(this);
+        view.findViewById(R.id.layout_apply_leave).setOnClickListener(this);
         view.findViewById(R.id.layout_college).setOnClickListener(this);
         view.findViewById(R.id.layout_share_friend).setOnClickListener(this);
         view.findViewById(R.id.layout_more).setOnClickListener(this);
@@ -132,9 +132,9 @@ public class PersonalPageFragment extends Fragment implements OnClickListener {
             case R.id.layout_history_order://跳转到明细
                 intent = new Intent(getActivity(), HistoryOrderActivity.class);
                 break;
-//            case R.id.layout_apply_leave://申请请假
-//                intent = new Intent(getActivity(), ApplyLeaveActivity.class);
-//                break;
+            case R.id.layout_apply_leave://申请请假
+                intent = new Intent(getActivity(), ApplyLeaveActivity.class);
+                break;
             default:
                 break;
         }
