@@ -256,7 +256,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="44dp"
-                        android:text="010-57135749 "
+                        android:text="18511679813 "
                         android:textColor="@color/simi_color_orange" />
                 </RelativeLayout>
 

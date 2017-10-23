@@ -663,12 +663,30 @@ public class OrderDetailActivity extends BaseActivity {
                     dialog.setView(view);
                     dialog.setPositiveButton("确认", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            String moneyString = et_add_hour_money.getText().toString().trim();
-                            String hour = sp_add_hour.getSelectedItem().toString();
 
-                            addHour(order_id, hour, moneyString);
+                            AlertDialog.Builder builder = new AlertDialog.Builder(OrderDetailActivity.this);  //先得到构造器
+                            builder.setTitle("提示"); //设置标题
+                            builder.setMessage("加时价格中输入的金额会产生现金欠款，您确定加时吗？"); //设置内容
+                            builder.setPositiveButton("确定", new DialogInterface.OnClickListener() { //设置确定按钮
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss(); //关闭dialog
 
-                            KeyBoardUtils.closeKeybord(et_add_hour_money, OrderDetailActivity.this);
+                                    String moneyString = et_add_hour_money.getText().toString().trim();
+                                    String hour = sp_add_hour.getSelectedItem().toString();
+
+                                    addHour(order_id, hour, moneyString);
+
+                                    KeyBoardUtils.closeKeybord(et_add_hour_money, OrderDetailActivity.this);
+                                }
+                            });
+                            builder.setNegativeButton("取消", new DialogInterface.OnClickListener() { //设置取消按钮
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                            builder.create().show();
 
                         }
                     });

@@ -1,6 +1,9 @@
 package com.meijialife.dingdang.adapter;
 
+import android.app.AlertDialog;
+import android.content.ContentProvider;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +27,12 @@ import net.tsz.afinal.http.AjaxParams;
 import org.greenrobot.eventbus.EventBus;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -87,7 +94,18 @@ public class LeaveListAdapter extends BaseAdapter {
         leaveEntity = list.get(position);
         if (null != leaveEntity) {
             holder.tvApplyTime.setText(leaveEntity.getAdd_date());
-            holder.tvApplyStartTime.setText(leaveEntity.getLeave_date());
+
+
+
+            String leaveDateStr = leaveEntity.getLeave_date() + "---" + leaveEntity.getLeave_end_date();
+            String allDayStr = "全天";
+            int start = leaveEntity.getStart();
+            int end = leaveEntity.getEnd();
+            if (start >= 14) allDayStr = "下午";
+            if (end <= 14) allDayStr = "上午";
+            leaveDateStr+= " " + allDayStr;
+            holder.tvApplyStartTime.setText(leaveDateStr);
+
             String total_days = leaveEntity.getTotal_days();
             if (StringUtils.isEquals(total_days, "上午") || StringUtils.isEquals(total_days, "下午")) {
                 holder.tvApplyDay.setText(leaveEntity.getTotal_days());
@@ -97,17 +115,73 @@ public class LeaveListAdapter extends BaseAdapter {
             String status = leaveEntity.getLeave_status();
             if (StringUtils.isEquals("1", status)) {
                 holder.tvLeaveStatus.setText("请假中");
+
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
+                Date nowDate = new Date();
+                String today = formatter.format(nowDate);
+
+                String endDateStr = leaveEntity.getLeave_end_date();
+                try {
+                    Date endDate = formatter.parse(endDateStr);
+
+                    if (nowDate.getTime() > endDate.getTime()) {
+                        holder.ivLeaveChange.setVisibility(View.GONE);
+                    }
+
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+
+
                 holder.ivLeaveChange.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        change_leave(leaveEntity.getId() + "");
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());  //先得到构造器
+                        builder.setTitle("提示"); //设置标题
+                        builder.setMessage("您确定要提前结束假期？"); //设置内容
+                        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() { //设置确定按钮
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss(); //关闭dialog
+                                change_leave(leaveEntity.getId() + "");
+                            }
+                        });
+                        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() { //设置取消按钮
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                        builder.create().show();
+
+
+
+
+
+
                     }
                 });
             } else if (StringUtils.isEquals("2", status)) {
                 holder.tvLeaveStatus.setText("请假取消");
+                holder.ivLeaveChange.setVisibility(View.GONE);
             } else if (StringUtils.isEquals("3", status)) {
                 holder.tvLeaveStatus.setText("请假完成");
+                holder.ivLeaveChange.setVisibility(View.GONE);
+            }  else if (StringUtils.isEquals("0", status)) {
+                holder.tvLeaveStatus.setText("请假申请中");
+            }  else if (StringUtils.isEquals("4", status)) {
+                holder.tvLeaveStatus.setText("请假提前结束");
+                holder.ivLeaveChange.setVisibility(View.GONE);
+            }  else if (StringUtils.isEquals("5", status)) {
+                holder.tvLeaveStatus.setText("请假被驳回");
+                holder.ivLeaveChange.setVisibility(View.GONE);
             }
+
+
+
 
         }
         return convertView;

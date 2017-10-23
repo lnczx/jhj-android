@@ -41,10 +41,14 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import butterknife.ButterKnife;
@@ -189,7 +193,77 @@ public class ApplyLeaveActivity extends BaseActivity implements OnClickListener 
                 if (sp_end_day == null || leave_day_type == null || startDay == null) {
                     UIUtils.showToast(ApplyLeaveActivity.this, "请选择请假日期和类型");
                 } else {
-                    getApplyLeave(startDay, end_day, leave_day_type, more);
+
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
+                    Date nowDate = new Date();
+                    String today = formatter.format(nowDate);
+
+                    Calendar c = Calendar.getInstance();
+                    c.add(Calendar.DAY_OF_MONTH, 1);
+                    Date tomorrowDate = c.getTime();
+                    String tomorrowStr = formatter.format(tomorrowDate);
+
+                    String alertMsg = "";
+
+                    try {
+                        Date startDate = formatter.parse(startDay);
+                        Date endDate = formatter.parse(end_day);
+
+                        String startDateStr = formatter.format(startDate);
+                        String endDateStr = formatter.format(endDate);
+
+
+
+                        if (today.equals(startDateStr)) {
+                            //2.当天请当天假，可以申请通过，但是后两单将按照30%比例提成
+                            //（当天请当天假，后两单将按照30%比例提成）（弹出确定和取消按键）
+                            alertMsg = "当天请当天假，后两单将按照30%比例提成";
+                        } else if (tomorrowStr.equals(startDateStr)) {
+                            //当天请第二天假，可以申请通过，但是后两单将按照30%比例提成
+                            // （当天请第二天假，后两单将按照30%比例提成）（弹出确定和取消按键）
+                            alertMsg = "当天请第二天假，后两单将按照30%比例提成";
+                        }
+
+                        int days = getGapCount(startDate, endDate);
+                        if (days >= 3) {
+                            alertMsg+= "\n 请假天数超过3天（包含3天），需要店长审批后才能通过";
+                        }
+
+
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+
+                    if (alertMsg == "") alertMsg = "您确定要请假吗？";
+
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(ApplyLeaveActivity.this);  //先得到构造器
+                    builder.setTitle("提示"); //设置标题
+                    builder.setMessage(alertMsg); //设置内容
+                    builder.setPositiveButton("确定", new DialogInterface.OnClickListener() { //设置确定按钮
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss(); //关闭dialog
+
+                            String leave_day_type = sp_leave_day_type.getSelectedItem().toString();
+                            String startDay = sp_start_day.getText().toString();
+                            String end_day = sp_end_day.getText().toString();
+                            String more = et_more.getText().toString();
+
+                            getApplyLeave(startDay, end_day, leave_day_type, more);
+                        }
+                    });
+                    builder.setNegativeButton("取消", new DialogInterface.OnClickListener() { //设置取消按钮
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    builder.create().show();
+
+
+
                 }
 
 
@@ -494,4 +568,27 @@ public class ApplyLeaveActivity extends BaseActivity implements OnClickListener 
         super.onDestroy();
         EventBus.getDefault().unregister(this);
     }
+
+    /**
+     * 获取两个日期之间的间隔天数
+     * @return
+     */
+    public static int getGapCount(Date startDate, Date endDate) {
+        Calendar fromCalendar = Calendar.getInstance();
+        fromCalendar.setTime(startDate);
+        fromCalendar.set(Calendar.HOUR_OF_DAY, 0);
+        fromCalendar.set(Calendar.MINUTE, 0);
+        fromCalendar.set(Calendar.SECOND, 0);
+        fromCalendar.set(Calendar.MILLISECOND, 0);
+
+        Calendar toCalendar = Calendar.getInstance();
+        toCalendar.setTime(endDate);
+        toCalendar.set(Calendar.HOUR_OF_DAY, 0);
+        toCalendar.set(Calendar.MINUTE, 0);
+        toCalendar.set(Calendar.SECOND, 0);
+        toCalendar.set(Calendar.MILLISECOND, 0);
+
+        return (int) ((toCalendar.getTime().getTime() - fromCalendar.getTime().getTime()) / (1000 * 60 * 60 * 24));
+    }
+
 }

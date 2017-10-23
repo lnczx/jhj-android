@@ -27,6 +27,9 @@ public class LeaveEntity implements Serializable {
     private String add_date;
     private int staff_id;
     private String leave_date;
+    private int start;
+    private int end;
+    private String remarks;
 
     public int getId() {
         return id;
@@ -91,4 +94,29 @@ public class LeaveEntity implements Serializable {
     public void setLeave_date(String leave_date) {
         this.leave_date = leave_date;
     }
+
+    public int getStart() {
+        return start;
+    }
+
+    public void setStart(int start) {
+        this.start = start;
+    }
+
+    public int getEnd() {
+        return end;
+    }
+
+    public void setEnd(int end) {
+        this.end = end;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
 }

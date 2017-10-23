@@ -44,7 +44,7 @@
                     android:gravity="center"
                     android:layout_toRightOf="@id/tv_now_time"
 
-                    android:layout_marginLeft="100dp"
+                    android:layout_marginLeft="50dp"
                     android:text="签到"
                     android:padding="10dp"
                     android:textColor="@color/simi_color_white"
