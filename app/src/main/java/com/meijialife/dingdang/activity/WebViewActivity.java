@@ -79,12 +79,22 @@ public class WebViewActivity extends BaseActivity implements OnClickListener {
         webview.getSettings().setLoadWithOverviewMode(true);// 和setUseWideViewPort(true)一起解决网页自适应问题
         webview.getSettings().setAppCacheEnabled(true);// 是否使用缓存
         webview.getSettings().setDomStorageEnabled(true);// DOM Storage
+        webview.getSettings().setAppCacheMaxSize(1024*1024*2);
+        String appCachePath = getApplicationContext().getCacheDir().getAbsolutePath();
+        webview.getSettings().setAppCachePath(appCachePath);
+        webview.getSettings().setAllowFileAccess(true);
+
+
+
         webview.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
         webview.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
-                return true;
+                if(url.startsWith("intent")||url.startsWith("youku")){
+                    return true;
+                }else{
+                    return super.shouldOverrideUrlLoading(view, url);
+                }
             }
         });
     }

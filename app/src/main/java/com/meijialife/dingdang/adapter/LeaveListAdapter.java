@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.ContentProvider;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,9 @@ import android.widget.Toast;
 
 import com.meijialife.dingdang.Constants;
 import com.meijialife.dingdang.R;
+import com.meijialife.dingdang.activity.OrderDetailActivity;
 import com.meijialife.dingdang.bean.LeaveEntity;
+import com.meijialife.dingdang.bean.OrderListVo;
 import com.meijialife.dingdang.utils.LogOut;
 import com.meijialife.dingdang.utils.SpFileUtil;
 import com.meijialife.dingdang.utils.StringUtils;
@@ -94,9 +97,6 @@ public class LeaveListAdapter extends BaseAdapter {
         leaveEntity = list.get(position);
         if (null != leaveEntity) {
             holder.tvApplyTime.setText(leaveEntity.getAdd_date());
-
-
-
             String leaveDateStr = leaveEntity.getLeave_date() + "---" + leaveEntity.getLeave_end_date();
             String allDayStr = "全天";
             int start = leaveEntity.getStart();
@@ -113,65 +113,39 @@ public class LeaveListAdapter extends BaseAdapter {
                 holder.tvApplyDay.setText(leaveEntity.getTotal_days() + "天");
             }
             String status = leaveEntity.getLeave_status();
-            if (StringUtils.isEquals("1", status)) {
-                holder.tvLeaveStatus.setText("请假中");
+            if (StringUtils.isEquals("1", status) || StringUtils.isEquals("0", status)) {
+
+                if (StringUtils.isEquals("1", status)) {
+                    holder.tvLeaveStatus.setText("请假中");
+                }
+                if (StringUtils.isEquals("0", status)) {
+                    holder.tvLeaveStatus.setText("请假申请中");
+                }
 
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
                 Date nowDate = new Date();
                 String today = formatter.format(nowDate);
-
                 String endDateStr = leaveEntity.getLeave_end_date();
                 try {
                     Date endDate = formatter.parse(endDateStr);
-
                     if (nowDate.getTime() > endDate.getTime()) {
                         holder.ivLeaveChange.setVisibility(View.GONE);
+                    } else {
+                        holder.ivLeaveChange.setVisibility(View.VISIBLE);
                     }
-
-
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
 
+                holder.ivLeaveChange.setOnClickListener(new LeaveListAdapter.MyAdapterListener(leaveEntity));
 
 
-                holder.ivLeaveChange.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());  //先得到构造器
-                        builder.setTitle("提示"); //设置标题
-                        builder.setMessage("您确定要提前结束假期？"); //设置内容
-                        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() { //设置确定按钮
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss(); //关闭dialog
-                                change_leave(leaveEntity.getId() + "");
-                            }
-                        });
-                        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() { //设置取消按钮
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-                        builder.create().show();
-
-
-
-
-
-
-                    }
-                });
             } else if (StringUtils.isEquals("2", status)) {
                 holder.tvLeaveStatus.setText("请假取消");
                 holder.ivLeaveChange.setVisibility(View.GONE);
             } else if (StringUtils.isEquals("3", status)) {
                 holder.tvLeaveStatus.setText("请假完成");
                 holder.ivLeaveChange.setVisibility(View.GONE);
-            }  else if (StringUtils.isEquals("0", status)) {
-                holder.tvLeaveStatus.setText("请假申请中");
             }  else if (StringUtils.isEquals("4", status)) {
                 holder.tvLeaveStatus.setText("请假提前结束");
                 holder.ivLeaveChange.setVisibility(View.GONE);
@@ -179,10 +153,6 @@ public class LeaveListAdapter extends BaseAdapter {
                 holder.tvLeaveStatus.setText("请假被驳回");
                 holder.ivLeaveChange.setVisibility(View.GONE);
             }
-
-
-
-
         }
         return convertView;
     }
@@ -202,6 +172,8 @@ public class LeaveListAdapter extends BaseAdapter {
     }
 
 
+
+
     /**
      * 取消请假
      */
@@ -210,7 +182,7 @@ public class LeaveListAdapter extends BaseAdapter {
         Map<String, String> map = new HashMap<String, String>();
         map.put("staff_id", staffid);
         map.put("id", leave_id);
-        map.put("leaveStatus", "2");
+        map.put("leaveStatus", "4");
         AjaxParams param = new AjaxParams(map);
 
         // showDialog();
@@ -263,7 +235,42 @@ public class LeaveListAdapter extends BaseAdapter {
             }
         });
 
+
+
     }
 
+    class MyAdapterListener implements View.OnClickListener {
+
+        private LeaveEntity leaveEntity;
+
+
+        public MyAdapterListener(LeaveEntity item) {
+            leaveEntity = item;
+        }
+
+        @Override
+        public void onClick(View view) {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());  //先得到构造器
+            builder.setTitle("提示"); //设置标题
+            builder.setMessage("您确定要提前结束假期？"); //设置内容
+
+            builder.setPositiveButton("确定", new DialogInterface.OnClickListener() { //设置确定按钮
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss(); //关闭dialog
+
+                    change_leave(leaveEntity.getId() + "");
+                }
+            });
+            builder.setNegativeButton("取消", new DialogInterface.OnClickListener() { //设置取消按钮
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            builder.create().show();
+        }
+    }
 
 }

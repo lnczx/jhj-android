@@ -4,6 +4,9 @@ import android.os.Environment;
 
 import java.util.ArrayList;
 
+import static android.os.Build.HOST;
+import static com.meijialife.dingdang.alipay.ConsAli.ROOT_URL;
+
 public class Constants {
     //folder path
     public static String FOLDER_NAME = "/jhj";
@@ -12,13 +15,13 @@ public class Constants {
 
     //*******************************
     // 主机地址
-    public static final String HOST1 = "http://123.57.209.81";
-//    public static final String HOST1 = "http://www.jia-he-jia.com";
-    // 基础接口
+//    public static final String HOST1 = "http://tapp.jia-he-jia.com";
+    public static final String HOST1 = "https://app.jia-he-jia.com";
+//     基础接口
     public static final String ROOT_URL1 = HOST1 + "/jhj-app/app/";
 
     // 获取验证码接口
-    public final static String URL_GET_SMS_TOKEN = ROOT_URL1 + "user/get_sms_token.json";
+    public final static String URL_GET_SMS_TOKEN = ROOT_URL1 + "staff/login_sms_token.json";
     public final static String URL_GET_VOICE_TOKEN = ROOT_URL1 + "user/get_voice_token.json";
     // 登录
     public final static String URL_LOGIN = ROOT_URL1 + "staff/login.json";
@@ -101,8 +104,8 @@ public class Constants {
     public static final String URL_GET_USER_RATE_LIST = ROOT_URL1 + "staff/order/get_rates.json";
 
     //叮当大学
-    public static final String URL_GET_UNIVERSITY = HOST1 + "/am-h5/university/university-first.html";
-
+//    public static final String URL_GET_UNIVERSITY = HOST1 + "/am-h5/university/university-first.html";
+    public static final String URL_GET_UNIVERSITY = HOST1 + "/am-h5/learn/learn-index.html";
     // 用户协议
     public final static String URL_WEB_AGREE = HOST1 + "/am-h5/jhj-agreement.html";
 
@@ -116,100 +119,13 @@ public class Constants {
 
     public final static String AlipayHOST = "http://182.92.160.194";
 
-    // 主机地址
-    public static final String HOST = "http://123.57.173.36";
-    // 基础接口
-    public static final String ROOT_URL = HOST + "/simi/app/";
 
-    // 第三方登陆
-    public final static String URL_THIRD_PARTY_LOGIN = ROOT_URL + "user/login-3rd.json";
-
-    /**
-     * 绑定手机号接口
-     **/
-    public static final String URL_POST_BIND_MOBILE = ROOT_URL + "user/bind_mobile.json";
-    /**
-     * 获取我的二维码接口
-     **/
-    public static final String URL_GET_MY_RQ_CODE = ROOT_URL + "user/get_qrcode.json";
-    /**
-     * 添加好友接口
-     **/
-    public static final String URL_GET_ADD_FRIEND = ROOT_URL + "user/add_friend.json";
-    /**
-     * 获取频道列表接口
-     **/
-    public static final String URL_GET_CHANEL_LIST = ROOT_URL + "op/get_channels.json";
-    /**
-     * 获取频道内广告信息接口
-     **/
-    public static final String URL_GET_ADS_LIST = ROOT_URL + "op/get_ads.json";
-    /**
-     * 获得应用列表接口
-     **/
-    public static final String URL_GET_APP_TOOLS = ROOT_URL + "op/get_appTools.json";
 
 
     /**
      * app更新接口
      **/
-    public static final String URL_GET_VERSION = "http://www.jia-he-jia.com/d/version.xml";// 测试用，需更换
-    /**
-     * 城市列表接口
-     **/
-    public static final String URL_GET_CITY_LIST = ROOT_URL + "city/get_list.json";
-    /**
-     * 意见反馈接口
-     **/
-    public static final String URL_POST_FEEDBACK = ROOT_URL + "user/post_feedback.json";
-    /**
-     * 积分明细接口
-     **/
-    public static final String URL_GET_SCORE_DETAILS = ROOT_URL + "user/get_score.json";
-    public static final String URL_GET_USER_IMAGES = ROOT_URL + "user/get_user_imgs.json";
-    public static final String URL_POST_EXCHANGE_DISCOUNT_CARD = ROOT_URL + "user/post_coupon.json";
-    /**
-     * 我的钱包接口（用户消费明细）
-     **/
-    public static final String URL_GET_WALLET_LIST = ROOT_URL + "user/get_detail_pay.json";
-
-
-    /**
-     * 添加通讯录好友接口
-     **/
-    public static final String URL_POST_FRIEND = ROOT_URL + "user/post_friend.json";
-    /**
-     * 用户信息修改接口
-     **/
-    public static final String URL_POST_USERINFO = ROOT_URL + "user/post_userinfo.json";
-    /**
-     * 用户头像上传接口
-     **/
-    public static final String URL_POST_USERIMG = ROOT_URL + "user/post_user_head_img.json";
-    /**
-     * 获取用户地址接口
-     **/
-    public static final String URL_GET_ADDRS = ROOT_URL + "user/get_addrs.json";
-    /**
-     * 地址提交接口
-     **/
-    public static final String URL_POST_ADDRS = ROOT_URL + "user/post_addrs.json";
-    /**
-     * 地址删除接口
-     **/
-    public static final String URL_POST_DEL_ADDRS = ROOT_URL + "user/post_del_addrs.json";
-    /**
-     * 获取用户接口
-     **/
-    public static final String URL_GET_SEC_USER = ROOT_URL + "sec/get_users.json";
-
-
-    public final static String URL_USER_HELP = HOST + "/html/simi-inapp/help.htm";
-//    public final static String URL_ABOUT_US = HOST + "/html/simi-inapp/about-us.htm";
-
-    public final static String URL_MORE_INFO = HOST + "/html/simi-inapp/app-faxian-list.htm";
-    //行政人学院
-    public final static String URL_XUEYUAN = "http://mishuzhuli.com";
+    public static final String URL_GET_VERSION = HOST1 + "/d/version.xml";// 测试用，需更换
 
     /**
      * 订单状态

@@ -228,7 +228,7 @@ public class OrderListVo implements Serializable {
         private String order_no;
         private int user_id;
         private int service_addon_id;
-        private int price;
+        private BigDecimal price;
         private String item_unit;
         private int item_num;
         private int add_time;
@@ -276,11 +276,11 @@ public class OrderListVo implements Serializable {
             this.service_addon_id = service_addon_id;
         }
 
-        public int getPrice() {
+        public BigDecimal getPrice() {
             return price;
         }
 
-        public void setPrice(int price) {
+        public void setPrice(BigDecimal price) {
             this.price = price;
         }
 
