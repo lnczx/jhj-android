@@ -37,7 +37,7 @@ import com.umeng.update.UpdateStatus;
 public class MoreActivity extends BaseActivity implements OnClickListener {
 	
 	RelativeLayout rl_help; // 使用帮助
-	RelativeLayout rl_agree; // 用户协议
+	RelativeLayout rl_agree; // 注册协议
 	RelativeLayout rl_feedback; // 意见反馈
 	RelativeLayout rl_about; // 关于我们
 	RelativeLayout rl_update; // 检查更新
@@ -98,10 +98,10 @@ public class MoreActivity extends BaseActivity implements OnClickListener {
 			intent.putExtra("url", Constants.URL_USER_HELP);
 			intent.putExtra("title", "使用帮助");
 			break;*/
-		case R.id.index_4_rl_agree: // 用户协议
+		case R.id.index_4_rl_agree: // 注册协议
 			intent = new Intent(this, WebViewActivity.class);
 			intent.putExtra("url", Constants.URL_WEB_AGREE);
-			intent.putExtra("title", "用户协议");
+			intent.putExtra("title", "注册协议");
 			break;
 		case R.id.index_4_rl_about: // 关于我们
 			intent = new Intent(this, WebViewActivity.class);

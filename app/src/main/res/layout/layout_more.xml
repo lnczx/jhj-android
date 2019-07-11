@@ -85,7 +85,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                        android:text="用户协议"
+                        android:text="注册协议"
                         android:textColor="@color/simi_color_gray" />
 
                     <ImageView

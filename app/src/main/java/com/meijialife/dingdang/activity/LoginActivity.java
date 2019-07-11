@@ -157,10 +157,10 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
             }
 
             break;
-        case R.id.tv_user_tip:// 用户协议
+        case R.id.tv_user_tip:// 注册协议
             Intent intent = new Intent(this, WebViewActivity.class);
             intent.putExtra("url", Constants.URL_WEB_AGREE);
-            intent.putExtra("title", "用户使用协议");
+            intent.putExtra("title", "注册协议");
             startActivity(intent);
 
             break;

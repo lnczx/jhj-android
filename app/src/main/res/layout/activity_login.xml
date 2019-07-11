@@ -184,7 +184,7 @@
                     android:clickable="true"
                     android:gravity="left"
                     android:onClick="showUserUseAgreement"
-                    android:text="《面向服务人员的服务协议》"
+                    android:text="《注册协议》"
                     android:textColor="@color/simi_color_orange"
                     android:textSize="13sp" />
             </LinearLayout>

@@ -106,7 +106,7 @@ public class Constants {
     //叮当大学
 //    public static final String URL_GET_UNIVERSITY = HOST1 + "/am-h5/university/university-first.html";
     public static final String URL_GET_UNIVERSITY = HOST1 + "/am-h5/learn/learn-index.html";
-    // 用户协议
+    // 注册协议
     public final static String URL_WEB_AGREE = HOST1 + "/am-h5/jhj-agreement.html";
 
 
