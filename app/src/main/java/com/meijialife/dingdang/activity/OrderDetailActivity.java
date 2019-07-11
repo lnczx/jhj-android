@@ -103,7 +103,7 @@ public class OrderDetailActivity extends BaseActivity {
     private Short order_type;
     private EditText et_input_content;
     private EditText et_input_money;
-    private TextView tv_order_money;
+//    private TextView tv_order_money;
     private Short order_status;
     private LinearLayout layout_fuwu_shichang;
     private TextView tv_order_shichang;
@@ -119,7 +119,7 @@ public class OrderDetailActivity extends BaseActivity {
     private TextView btn_order_add_hour;
     private TextView tv_call_phone;
     private TextView tv_goto_address;
-    private TextView tv_input_money;
+//    private TextView tv_input_money;
     private TextView tv_input_content;
     private TextView tv_order_addr;
     private TextView tv_service_end_time_type;
@@ -213,7 +213,7 @@ public class OrderDetailActivity extends BaseActivity {
         tv_order_no = (TextView) findViewById(R.id.tv_order_no);
         tv_order_time = (TextView) findViewById(R.id.tv_order_time);
         tv_order_xiangmu = (TextView) findViewById(R.id.tv_order_xiangmu);
-        tv_order_money = (TextView) findViewById(R.id.tv_order_money);
+//        tv_order_money = (TextView) findViewById(R.id.tv_order_money);
         tv_order_incoming = (TextView) findViewById(R.id.tv_order_incoming);
         tv_order_status = (TextView) findViewById(R.id.tv_order_status);
         tv_service_type_name = (TextView) findViewById(R.id.tv_service_type_name);
@@ -246,9 +246,9 @@ public class OrderDetailActivity extends BaseActivity {
         // 调整订单
 
         tv_input_content = (TextView) findViewById(R.id.tv_input_content);
-        tv_input_money = (TextView) findViewById(R.id.tv_input_money);
+//        tv_input_money = (TextView) findViewById(R.id.tv_input_money);
         et_input_content = (EditText) findViewById(R.id.et_input_content);
-        et_input_money = (EditText) findViewById(R.id.et_input_order_money);
+//        et_input_money = (EditText) findViewById(R.id.et_input_order_money);
 
         layout_server_details = (LinearLayout) findViewById(R.id.layout_server_details);
         listview_details = (ListViewForInner) findViewById(R.id.listview_details);
@@ -528,38 +528,38 @@ public class OrderDetailActivity extends BaseActivity {
             }
 
 
-            et_input_money.addTextChangedListener(new TextWatcher() {
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                }
-
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-                    String money = et_input_money.getText().toString().trim();
-                    String order_ratio = orderBean.getOrder_ratio();
-
-                    if (StringUtils.isNotEmpty(money) && money.length() > 0) {
-                        Double input_money = Double.valueOf(money);
-                        Double ratio = Double.valueOf(order_ratio);
-
-                        double result = input_money * ratio;
-
-                        String res = String.valueOf(result);
-
-                        tv_order_incoming.setText(res + "元");
-                    } else {
-                        tv_order_incoming.setText("0元");
-                    }
-
-                }
-            });
+//            et_input_money.addTextChangedListener(new TextWatcher() {
+//
+//                @Override
+//                public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//                }
+//
+//                @Override
+//                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//                }
+//
+//                @Override
+//                public void afterTextChanged(Editable s) {
+//                    String money = et_input_money.getText().toString().trim();
+//                    String order_ratio = orderBean.getOrder_ratio();
+//
+//                    if (StringUtils.isNotEmpty(money) && money.length() > 0) {
+//                        Double input_money = Double.valueOf(money);
+//                        Double ratio = Double.valueOf(order_ratio);
+//
+//                        double result = input_money * ratio;
+//
+//                        String res = String.valueOf(result);
+//
+//                        tv_order_incoming.setText(res + "元");
+//                    } else {
+//                        tv_order_incoming.setText("0元");
+//                    }
+//
+//                }
+//            });
 
             title_btn_right.setOnClickListener(new OnClickListener() {
 
@@ -762,7 +762,7 @@ public class OrderDetailActivity extends BaseActivity {
             tv_order_no.setText(orderBean.getOrder_no());
             tv_order_time.setText(orderBean.getService_date());
             tv_order_xiangmu.setText(orderBean.getService_content());
-            tv_order_money.setText(orderBean.getOrder_money() + "元");
+//            tv_order_money.setText(orderBean.getOrder_money() + "元");
             tv_order_incoming.setText(orderBean.getOrder_incoming() + "元");
             tv_order_status.setText(orderBean.getPay_type_name());
             tv_service_type_name.setText(orderBean.getService_type_name());
@@ -812,12 +812,12 @@ public class OrderDetailActivity extends BaseActivity {
 
             if (order_type == 2 && order_status == 2) {
                 tv_input_content.setVisibility(View.GONE);
-                tv_order_money.setVisibility(View.GONE);
+//                tv_order_money.setVisibility(View.GONE);
                 et_input_content.setVisibility(View.VISIBLE);
                 et_input_money.setVisibility(View.VISIBLE);
             } else {
                 tv_input_content.setVisibility(View.VISIBLE);
-                tv_order_money.setVisibility(View.VISIBLE);
+//                tv_order_money.setVisibility(View.VISIBLE);
                 et_input_content.setVisibility(View.GONE);
                 et_input_money.setVisibility(View.GONE);
             }

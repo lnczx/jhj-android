@@ -20,14 +20,14 @@
         android:layout_height="match_parent"
         android:background="@color/simi_color_gray" />
 
-    <TextView
-        android:id="@+id/tv_details_price"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:textColor="@color/simi_color_gray"
-        android:textSize="@dimen/font_size_12" />
+    <!--<TextView-->
+        <!--android:id="@+id/tv_details_price"-->
+        <!--android:layout_width="60dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+        <!--android:gravity="center"-->
+        <!--android:textColor="@color/simi_color_gray"-->
+        <!--android:textSize="@dimen/font_size_12" />-->
 
     <View
         android:layout_width="0.5dp"

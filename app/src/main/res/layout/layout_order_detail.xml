@@ -380,15 +380,15 @@
                             android:layout_height="match_parent"
                             android:background="@color/simi_color_gray" />
 
-                        <TextView
-                            android:id="@+id/tv_details_price"
-                            android:layout_width="60dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="折扣价"
-                            android:textColor="@color/simi_color_gray"
-                            android:textSize="@dimen/font_size_12" />
+                        <!--<TextView-->
+                            <!--android:id="@+id/tv_details_price"-->
+                            <!--android:layout_width="60dp"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:gravity="center"-->
+                            <!--android:text="折扣价"-->
+                            <!--android:textColor="@color/simi_color_gray"-->
+                            <!--android:textSize="@dimen/font_size_12" />-->
 
                         <View
                             android:layout_width="0.5dp"
@@ -671,33 +671,33 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/tv_input_money"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:text="订单金额:"
-                    android:textSize="@dimen/font_size_15" />
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_input_money"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="@dimen/activity_horizontal_margin"-->
+                    <!--android:text="订单金额:"-->
+                    <!--android:textSize="@dimen/font_size_15" />-->
 
-                <EditText
-                    android:id="@+id/et_input_order_money"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:background="@null"
-                    android:hint="请输入金额"
-                    android:inputType="number"
-                    android:textSize="@dimen/font_size_15"
-                    android:visibility="gone" />
+                <!--<EditText-->
+                    <!--android:id="@+id/et_input_order_money"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="@dimen/activity_horizontal_margin"-->
+                    <!--android:background="@null"-->
+                    <!--android:hint="请输入金额"-->
+                    <!--android:inputType="number"-->
+                    <!--android:textSize="@dimen/font_size_15"-->
+                    <!--android:visibility="gone" />-->
 
-                <TextView
-                    android:id="@+id/tv_order_money"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:text="100元"
-                    android:textColor="@color/simi_color_orange"
-                    android:textSize="@dimen/font_size_15" />
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_order_money"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="5dp"-->
+                    <!--android:text="100元"-->
+                    <!--android:textColor="@color/simi_color_orange"-->
+                    <!--android:textSize="@dimen/font_size_15" />-->
             </LinearLayout>
 
             <LinearLayout

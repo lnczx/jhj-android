@@ -96,7 +96,7 @@ public class OrderListAdapter extends BaseAdapter {
             holder.tv_service_date = (TextView) convertView.findViewById(R.id.tv_service_date);
             holder.tv_service_hours = (TextView) convertView.findViewById(R.id.tv_service_hours);
             holder.tv_service_content = (TextView) convertView.findViewById(R.id.tv_service_content);
-            holder.tv_order_money = (TextView) convertView.findViewById(R.id.tv_order_money);
+//            holder.tv_order_money = (TextView) convertView.findViewById(R.id.tv_order_money);
             holder.iv_start_server = (TextView) convertView.findViewById(R.id.iv_start_server);
             holder.tv_fuwu_time = (TextView) convertView.findViewById(R.id.tv_fuwu_time);
             holder.tv_shichang = (TextView) convertView.findViewById(R.id.tv_shichang);
@@ -151,7 +151,7 @@ public class OrderListAdapter extends BaseAdapter {
             holder.tv_service_addr_distance.setText(orderListVo.getService_addr_distance());
 
             holder.tv_service_content.setText(orderListVo.getService_content());
-            holder.tv_order_money.setText(orderListVo.getOrder_money() + "元");
+//            holder.tv_order_money.setText(orderListVo.getOrder_money() + "元");
             holder.iv_start_server.setText(orderListVo.getButton_word());
             holder.tv_service_date.setText(orderListVo.getService_date());
             holder.tv_user_type_content.setText(orderListVo.getUser_type_str());
@@ -182,7 +182,7 @@ public class OrderListAdapter extends BaseAdapter {
         TextView tv_service_date;
         TextView tv_service_hours;
         TextView tv_service_content;
-        TextView tv_order_money;
+//        TextView tv_order_money;
         TextView iv_start_server;
         TextView tv_shichang;
         TextView tv_fuwu_time;

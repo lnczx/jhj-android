@@ -90,7 +90,7 @@ public class OrderListDetailsAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.item_order_details, null);
 
             holder.tv_details_catege = (TextView) convertView.findViewById(R.id.tv_details_catege);
-            holder.tv_details_price = (TextView) convertView.findViewById(R.id.tv_details_price);
+//            holder.tv_details_price = (TextView) convertView.findViewById(R.id.tv_details_price);
             holder.tv_details_num = (TextView) convertView.findViewById(R.id.tv_details_num);
 
             convertView.setTag(holder);
@@ -101,7 +101,7 @@ public class OrderListDetailsAdapter extends BaseAdapter {
         orderListdetails = getItem(position);
         if (null != orderListdetails) {
             holder.tv_details_catege.setText(orderListdetails.getService_addon_name() + "");
-            holder.tv_details_price.setText(orderListdetails.getPrice() + orderListdetails.getItem_unit() + "");
+//            holder.tv_details_price.setText(orderListdetails.getPrice() + orderListdetails.getItem_unit() + "");
             holder.tv_details_num.setText(String.valueOf(orderListdetails.getItem_num()));
 
         }
@@ -110,7 +110,7 @@ public class OrderListDetailsAdapter extends BaseAdapter {
 
     class Holder {
         TextView tv_details_catege;
-        TextView tv_details_price;
+//        TextView tv_details_price;
         TextView tv_details_num;
 
     }

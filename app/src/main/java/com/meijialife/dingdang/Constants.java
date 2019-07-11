@@ -15,8 +15,8 @@ public class Constants {
 
     //*******************************
     // 主机地址
-//    public static final String HOST1 = "http://tapp.jia-he-jia.com";
-    public static final String HOST1 = "https://app.jia-he-jia.com";
+    public static final String HOST1 = "http://tapp.jia-he-jia.com";
+//    public static final String HOST1 = "https://app.jia-he-jia.com";
 //     基础接口
     public static final String ROOT_URL1 = HOST1 + "/jhj-app/app/";
 
