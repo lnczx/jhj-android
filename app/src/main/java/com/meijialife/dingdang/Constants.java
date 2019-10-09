@@ -15,8 +15,8 @@ public class Constants {
 
     //*******************************
     // 主机地址
-    public static final String HOST1 = "http://tapp.jia-he-jia.com";
-//    public static final String HOST1 = "https://app.jia-he-jia.com";
+//    public static final String HOST1 = "http://tapp.jia-he-jia.com";
+    public static final String HOST1 = "https://app.jia-he-jia.com";
 //     基础接口
     public static final String ROOT_URL1 = HOST1 + "/jhj-app/app/";
 
@@ -32,11 +32,11 @@ public class Constants {
 
     public static final String URL_GET_ORDER_LIST = ROOT_URL1 + "staff/order/get_list.json";
 
-    //请假列表
+    //下线列表
     public static final String URL_GET_LEAVE_LIST = ROOT_URL1 + "staff/leave_list.json";
-    //申请请假
+    //申请下线
     public static final String URL_GET_DO_LEAVE = ROOT_URL1 + "staff/do_leave.json";
-    //取消请假
+    //取消下线
     public static final String URL_GET_CANCEL_LEAVE = ROOT_URL1 + "staff/do_leave_cancel.json";
     //设置支付宝接口
     public static final String URL_SET_ALIPAY = ROOT_URL1 + "staff/set_alipay.json";

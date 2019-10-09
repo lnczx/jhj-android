@@ -48,7 +48,7 @@
                 android:id="@+id/tv_fuwu_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="请假时间："
+                android:text="下线时间："
                 android:textSize="@dimen/font_size_14" />
 
             <TextView
@@ -70,7 +70,7 @@
                 android:id="@+id/tv_fuwu_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="请假天数："
+                android:text="下线天数："
                 android:textSize="@dimen/font_size_14" />
 
             <TextView
@@ -93,7 +93,7 @@
                 android:id="@+id/tv_fuwu_xiangmu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="请假状态："
+                android:text="下线状态："
                 android:textSize="@dimen/font_size_14" />
 
             <TextView
@@ -112,7 +112,7 @@
                 android:layout_alignParentRight="true"
                 android:background="@drawable/btn_start_order_selectbg"
                 android:padding="5dp"
-                android:text="取消请假"
+                android:text="取消下线"
                 android:textColor="@android:color/white"
                 android:visibility="visible" />
         </RelativeLayout>

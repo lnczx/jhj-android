@@ -54,7 +54,7 @@ import java.util.Map;
 import butterknife.ButterKnife;
 
 /**
- * 申请请假
+ * 申请下线
  */
 
 public class ApplyLeaveActivity extends BaseActivity implements OnClickListener {
@@ -99,10 +99,10 @@ public class ApplyLeaveActivity extends BaseActivity implements OnClickListener 
     }
 
     private void initView() {
-        setTitleName("请假申请");
+        setTitleName("下线申请");
         requestBackBtn();
 
-        setRightText("申请请假");
+        setRightText("申请下线");
 
         getRightView().setOnClickListener(new OnClickListener() {
             @Override
@@ -182,7 +182,7 @@ public class ApplyLeaveActivity extends BaseActivity implements OnClickListener 
         sp_leave_day_type.setAdapter(arrayAdapter);
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(ApplyLeaveActivity.this);
-        dialog.setTitle("申请请假");
+        dialog.setTitle("申请下线");
         dialog.setView(view);
         dialog.setPositiveButton("提交申请", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
@@ -191,7 +191,7 @@ public class ApplyLeaveActivity extends BaseActivity implements OnClickListener 
                 String end_day = sp_end_day.getText().toString();
                 String more = et_more.getText().toString();
                 if (sp_end_day == null || leave_day_type == null || startDay == null) {
-                    UIUtils.showToast(ApplyLeaveActivity.this, "请选择请假日期和类型");
+                    UIUtils.showToast(ApplyLeaveActivity.this, "请选择下线日期和类型");
                 } else {
 
                     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
@@ -226,7 +226,7 @@ public class ApplyLeaveActivity extends BaseActivity implements OnClickListener 
 
                         int days = getGapCount(startDate, endDate);
                         if (days >= 3) {
-                            alertMsg+= "\n 请假天数超过3天（包含3天），需要店长审批后才能通过";
+                            alertMsg+= "\n 下线天数超过3天（包含3天），需要店长审批后才能通过";
                         }
 
 
@@ -235,7 +235,7 @@ public class ApplyLeaveActivity extends BaseActivity implements OnClickListener 
                     }
 
 
-                    if (alertMsg == "") alertMsg = "您确定要请假吗？";
+                    if (alertMsg == "") alertMsg = "您确定要下线吗？";
 
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(ApplyLeaveActivity.this);  //先得到构造器
@@ -286,13 +286,13 @@ public class ApplyLeaveActivity extends BaseActivity implements OnClickListener 
 
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(ApplyLeaveActivity.this);
-        dialog.setTitle("请假管理规则");
-        dialog.setMessage("亲爱的服务人员，请假需要提前两天请假，请假的天数不超过3天，在假期中没有需要服务的订单，就可以自己操作申请请假了，下列情况请大家注意一下：\n" +
-                "1.请假日期中有需要服务的订单，不能申请请假。如需请假请联系客服进行调单处理.\n" +
-                "2.当天请当天假，可以申请通过，但是后两单将按照30%比例提成.\n" +
-                "3.当天请第二天假，可以申请通过，但是后两单将按照30%比例提成.\n" +
-                "4.请假天数超过3天（包含3天），需要在APP上申请，店长审批通过后才能休假.\n" +
-                "5.提前取消假期，当天和前一天请假的也按照30%提成执行。正常审批通过后请假的提成不变.");
+        dialog.setTitle("下线管理规则");
+        dialog.setMessage("亲爱的服务人员，下线需要提前两天下线，下线的天数不超过3天，在下线中没有需要服务的订单，就可以自己操作申请下线了，下列情况请大家注意一下：\n" +
+                "1.下线日期中有需要服务的订单，不能申请下线。如需下线请联系客服进行调单处理.\n" +
+                "2.当天操作下线，可以申请通过，但是后两单将按照30%比例提成.\n" +
+                "3.当天操作第二天下线，可以申请通过，但是后两单将按照30%比例提成.\n" +
+                "4.下线天数超过3天（包含3天），需要在APP上申请，店长审批通过后才能休假.\n" +
+                "5.提前取消下线，当天和前一天下线的也按照30%提成执行。正常审批通过后下线的提成不变.");
 
         dialog.setNegativeButton("关闭", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
@@ -463,7 +463,7 @@ public class ApplyLeaveActivity extends BaseActivity implements OnClickListener 
     }
 
     /**
-     * 申请请假接口
+     * 申请下线接口
      *
      * @param startDay
      * @param sp_end_day

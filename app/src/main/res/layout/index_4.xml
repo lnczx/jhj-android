@@ -194,7 +194,7 @@
                     android:drawableLeft="@drawable/icon_account"
                     android:drawablePadding="10dp"
                     android:gravity="center_vertical"
-                    android:text="申请请假"
+                    android:text="申请下线"
                     android:textColor="#454545"
                     android:textSize="@dimen/font_size_16" />
 

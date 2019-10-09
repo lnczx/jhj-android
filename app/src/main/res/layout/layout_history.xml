@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:text="暂无请假记录哦" />
+            android:text="暂无下线记录哦" />
     </LinearLayout>
 
 </RelativeLayout>

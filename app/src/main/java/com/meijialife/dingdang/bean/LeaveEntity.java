@@ -3,7 +3,7 @@ package com.meijialife.dingdang.bean;
 import java.io.Serializable;
 
 /**
- * 请假相关
+ * 下线相关
  */
 public class LeaveEntity implements Serializable {
 
@@ -11,7 +11,7 @@ public class LeaveEntity implements Serializable {
     /**
      * id : 207
      * leave_status : 1
-     * status_name : 假期中
+     * status_name : 下线中
      * total_days : 1
      * leave_end_date : 2017-07-15
      * add_date : 2017-02-24

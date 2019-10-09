@@ -6,6 +6,7 @@ import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -68,6 +69,7 @@ import org.json.JSONObject;
 import org.xutils.common.Callback;
 
 import java.io.File;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -571,19 +573,31 @@ public class OrderDetailActivity extends BaseActivity {
 
                 }
             });
+            Short orderType = orderBean.getOrder_type();
+            BigDecimal orderMoney = orderBean.getOrder_money();
+            BigDecimal compare500 = new BigDecimal(500);
 
-            tv_call_phone.setOnClickListener(new OnClickListener() {
+            //超过500元的单的客服手机号
+            if (orderType.equals((short)1) && orderMoney.compareTo(compare500) >= 0) {
+                tv_call_phone.setVisibility(View.GONE);
 
-                @Override
-                public void onClick(View v) {
-                    if (null != orderBean) {
-                        String mobile = orderBean.getMobile();
-                        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + mobile));
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
+            } else {
+                tv_call_phone.setVisibility(View.VISIBLE);
+                tv_call_phone.setOnClickListener(new OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        if (null != orderBean) {
+                            String mobile = orderBean.getMobile();
+                            Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + mobile));
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                        }
                     }
-                }
-            });
+                });
+            }
+
+
 
             order_status = orderBean.getOrder_status();
             if (order_status == 5) {
@@ -819,7 +833,7 @@ public class OrderDetailActivity extends BaseActivity {
                 tv_input_content.setVisibility(View.VISIBLE);
 //                tv_order_money.setVisibility(View.VISIBLE);
                 et_input_content.setVisibility(View.GONE);
-                et_input_money.setVisibility(View.GONE);
+//                et_input_money.setVisibility(View.GONE);
             }
 
             // 列表展示

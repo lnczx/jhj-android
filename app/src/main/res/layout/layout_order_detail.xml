@@ -129,7 +129,8 @@
                     android:paddingLeft="10dp"
                     android:text="打电话"
                     android:textColor="@android:color/white"
-                    android:textSize="@dimen/font_size_13" />
+                    android:textSize="@dimen/font_size_13"
+                    android:visibility="gone"/>
 
                 <View
                     android:layout_width="1dp"

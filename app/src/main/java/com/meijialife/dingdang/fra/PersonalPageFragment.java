@@ -132,7 +132,7 @@ public class PersonalPageFragment extends Fragment implements OnClickListener {
             case R.id.layout_history_order://跳转到明细
                 intent = new Intent(getActivity(), HistoryOrderActivity.class);
                 break;
-            case R.id.layout_apply_leave://申请请假
+            case R.id.layout_apply_leave://申请下线
                 intent = new Intent(getActivity(), ApplyLeaveActivity.class);
                 break;
             default:

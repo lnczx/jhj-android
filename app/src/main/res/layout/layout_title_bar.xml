@@ -83,7 +83,7 @@
         android:focusable="true"
         android:gravity="center_vertical"
         android:scaleType="centerInside"
-        android:text="申请请假"
+        android:text="申请下线"
         android:textColor="@color/black_60_alpha"
         android:visibility="gone" />
 

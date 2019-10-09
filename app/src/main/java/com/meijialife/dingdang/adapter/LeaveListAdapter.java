@@ -39,7 +39,7 @@ import java.util.Locale;
 import java.util.Map;
 
 /**
- * 请假适配器
+ * 下线适配器
  */
 public class LeaveListAdapter extends BaseAdapter {
     private LayoutInflater inflater;
@@ -116,10 +116,10 @@ public class LeaveListAdapter extends BaseAdapter {
             if (StringUtils.isEquals("1", status) || StringUtils.isEquals("0", status)) {
 
                 if (StringUtils.isEquals("1", status)) {
-                    holder.tvLeaveStatus.setText("请假中");
+                    holder.tvLeaveStatus.setText("下线中");
                 }
                 if (StringUtils.isEquals("0", status)) {
-                    holder.tvLeaveStatus.setText("请假申请中");
+                    holder.tvLeaveStatus.setText("下线申请中");
                 }
 
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
@@ -141,16 +141,16 @@ public class LeaveListAdapter extends BaseAdapter {
 
 
             } else if (StringUtils.isEquals("2", status)) {
-                holder.tvLeaveStatus.setText("请假取消");
+                holder.tvLeaveStatus.setText("下线取消");
                 holder.ivLeaveChange.setVisibility(View.GONE);
             } else if (StringUtils.isEquals("3", status)) {
-                holder.tvLeaveStatus.setText("请假完成");
+                holder.tvLeaveStatus.setText("下线完成");
                 holder.ivLeaveChange.setVisibility(View.GONE);
             }  else if (StringUtils.isEquals("4", status)) {
-                holder.tvLeaveStatus.setText("请假提前结束");
+                holder.tvLeaveStatus.setText("下线提前结束");
                 holder.ivLeaveChange.setVisibility(View.GONE);
             }  else if (StringUtils.isEquals("5", status)) {
-                holder.tvLeaveStatus.setText("请假被驳回");
+                holder.tvLeaveStatus.setText("下线被驳回");
                 holder.ivLeaveChange.setVisibility(View.GONE);
             }
         }
@@ -175,7 +175,7 @@ public class LeaveListAdapter extends BaseAdapter {
 
 
     /**
-     * 取消请假
+     * 取消下线
      */
     private void change_leave(String leave_id) {
         String staffid = SpFileUtil.getString(context, SpFileUtil.FILE_UI_PARAMETER, SpFileUtil.KEY_STAFF_ID, "");
@@ -253,7 +253,7 @@ public class LeaveListAdapter extends BaseAdapter {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());  //先得到构造器
             builder.setTitle("提示"); //设置标题
-            builder.setMessage("您确定要提前结束假期？"); //设置内容
+            builder.setMessage("您确定要提前结束下线？"); //设置内容
 
             builder.setPositiveButton("确定", new DialogInterface.OnClickListener() { //设置确定按钮
                 @Override
