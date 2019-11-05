@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
     <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         package="com.meijialife.dingdang"
-        android:versionCode="25"
-        android:versionName="1.2.0.3">
+        >
 
     <!-- 上传多张照片所需权限 -->
     <uses-feature android:name="android.hardware.camera" />
