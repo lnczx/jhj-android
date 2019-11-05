@@ -3,11 +3,6 @@
         package="com.meijialife.dingdang"
         android:versionCode="25"
         android:versionName="1.2.0.3">
- 
-
-    <uses-sdk
-        android:minSdkVersion="11"
-        android:targetSdkVersion="22" />
 
     <!-- 上传多张照片所需权限 -->
     <uses-feature android:name="android.hardware.camera" />

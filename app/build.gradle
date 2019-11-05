@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
 
     defaultConfig {
         applicationId "com.meijialife.dingdang"
         minSdkVersion 15
-        targetSdkVersion 22
+        targetSdkVersion 26
     }
 
     signingConfigs {
@@ -52,37 +52,37 @@ android {
 }
 
 dependencies {
-    compile 'com.google.code.gson:gson:2.7'
-    compile files('libs/GetuiExt-2.0.3.jar')
-    compile files('libs/GetuiSDK2.6.1.0.jar')
-    compile files('libs/alipaySDK-20151014.jar')
-    compile files('libs/baidumapapi_base_v3_6_1.jar')
-    compile files('libs/baidumapapi_cloud_v3_6_1.jar')
-    compile files('libs/baidumapapi_map_v3_6_1.jar')
-    compile files('libs/baidumapapi_radar_v3_6_1.jar')
-    compile files('libs/baidumapapi_search_v3_6_1.jar')
-    compile files('libs/baidumapapi_util_v3_6_1.jar')
-    compile files('libs/final.jar')
-    compile files('libs/httpmime-4.2.4.jar')
-    compile files('libs/locSDK_6.13.jar')
-//    compile files('libs/picasso-2.4.0.jar')
-    compile files('libs/umeng-analytics-v5.6.1.jar')
-    compile files('libs/umeng-update-v2.6.0.1.jar')
-    compile files('libs/universal-image-loader-1.9.2-with-sources.jar')
-    compile 'com.android.support:support-v4:25.3.1'
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:design:25.3.1'
-    compile 'com.android.support:preference-v7:25.3.1'
-    compile 'com.facebook.fresco:fresco:0.13.0'
-    compile 'com.facebook.fresco:animated-gif:0.13.0'
-    compile 'com.github.chrisbanes:PhotoView:1.2.7'
-    compile 'org.xutils:xutils:3.3.36'
+    implementation 'com.google.code.gson:gson:2.7'
+    implementation files('libs/GetuiExt-2.0.3.jar')
+    implementation files('libs/GetuiSDK2.6.1.0.jar')
+    implementation files('libs/alipaySDK-20151014.jar')
+    implementation files('libs/baidumapapi_base_v3_6_1.jar')
+    implementation files('libs/baidumapapi_cloud_v3_6_1.jar')
+    implementation files('libs/baidumapapi_map_v3_6_1.jar')
+    implementation files('libs/baidumapapi_radar_v3_6_1.jar')
+    implementation files('libs/baidumapapi_search_v3_6_1.jar')
+    implementation files('libs/baidumapapi_util_v3_6_1.jar')
+    implementation files('libs/final.jar')
+    implementation files('libs/httpmime-4.2.4.jar')
+    implementation files('libs/locSDK_6.13.jar')
+//    implementation files('libs/picasso-2.4.0.jar')
+    implementation files('libs/umeng-analytics-v5.6.1.jar')
+    implementation files('libs/umeng-update-v2.6.0.1.jar')
+    implementation files('libs/universal-image-loader-1.9.2-with-sources.jar')
+    implementation 'com.android.support:support-v4:25.3.1'
+    implementation 'com.android.support:appcompat-v7:25.3.1'
+    implementation 'com.android.support:design:25.3.1'
+    implementation 'com.android.support:preference-v7:25.3.1'
+    implementation 'com.facebook.fresco:fresco:0.13.0'
+    implementation 'com.facebook.fresco:animated-gif:0.13.0'
+    implementation 'com.github.chrisbanes:PhotoView:1.2.7'
+    implementation 'org.xutils:xutils:3.3.36'
 
-    compile 'com.android.support:cardview-v7:25.3.1'
+    implementation 'com.android.support:cardview-v7:25.3.1'
     //注解
-    compile 'com.jakewharton:butterknife:8.5.1'
+    implementation 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 
-    compile 'org.greenrobot:eventbus:3.0.0'
+    implementation 'org.greenrobot:eventbus:3.0.0'
 
 }
